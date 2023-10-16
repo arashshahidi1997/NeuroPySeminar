@@ -1,0 +1,15 @@
+Week,Topic
+1,Introduction
+2,TimeSeries_Part1
+3,TimeSeries_Part2
+4,MultiWaveletMethods
+5,Superlet_EMDVariations
+6,ImageProcessing_Scikit
+7,WaveDetection
+8,DimensionReduction_PCA
+9,CCA_TensorExtensions
+10,GeneralizedEigenvalue
+11,FactorAnalysis_SpectralContent
+12,DynamicalSystems_Introduction
+13,StateTransition_HMM
+14,LatentVariables_Dynamics

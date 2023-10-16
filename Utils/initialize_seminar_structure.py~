@@ -1,0 +1,32 @@
+import os
+import csv
+
+
+# Create the base folder
+os.makedirs(base_folder, exist_ok=True)
+
+# Load topics from schedule.csv
+topics = {}
+with open('schedule.csv', 'r') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        week_num = int(row['Week'])
+        topic = row['Topic']
+        topics[week_num] = topic
+
+# Create subfolders for each week
+for week_num in range(1, weeks + 1):
+    topic_name = topics.get(week_num, "TopicName")  # Use 'TopicName' as a default if the week doesn't have a specified topic
+    week_folder = os.path.join(base_folder, f"Week_{week_num:02d}_{topic_name}")
+    os.makedirs(week_folder, exist_ok=True)
+    
+    subfolders = ["Lecture_Notes", "Jupyter_Notebooks", "Data_Samples"]
+    for subfolder in subfolders:
+        os.makedirs(os.path.join(week_folder, subfolder), exist_ok=True)
+
+# Create additional folders
+additional_folders = ["Reference_Texts", "Additional_Resources", "Utils"]
+for folder in additional_folders:
+    os.makedirs(os.path.join(base_folder, folder), exist_ok=True)
+
+print(f"Folder structure for {base_folder} created successfully!")
