@@ -16,20 +16,13 @@ weeks = len(df)
 for week_num in range(1, weeks + 1):
     topic_name = topics.get(week_num, "TopicName")  # Use 'TopicName' as default if the week doesn't have a specified topic
     week_folder = base_path / f"Week_{week_num:02d}_{topic_name}"
-    week_folder.mkdir(parents=True, exist_ok=True)
     
-    subfolders = ["resources", "code", "data"]
-    del_subfolders = ["Lecture_Notes", "Jupyter_Notebooks", "Data_Samples"]
+    subfolders = ["resources/resources.md", "code/code.md", "data/data.md"]
     for subfolder in subfolders:
-        (week_folder / subfolder).mkdir(exist_ok=True)
-
-    for del_subfolder in del_subfolders:
-        del_subfolder_ = (week_folder / del_subfolder)
-        if del_subfolder_.is_dir():
-            del_subfolder_.rmdir()
+        (week_folder / subfolder).touch()
         
 # Create additional folders
-additional_folders = ["Reference_Texts", "Additional_Resources", "Utils"]
+additional_folders = ["References", "Additional_Resources", "Utils"]
 for folder in additional_folders:
     (base_path / folder).mkdir(exist_ok=True)
 
