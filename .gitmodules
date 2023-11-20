@@ -1,3 +1,3 @@
-[submodule "Modules/Waveform"]
-	path = Modules/Waveform
+[submodule "src/waveform"]
+	path = src/waveform
 	url = git@github.com:OHBA-analysis/Quinn2021_Waveform.git
