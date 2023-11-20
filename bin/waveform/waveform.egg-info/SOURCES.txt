@@ -1,0 +1,15 @@
+setup.py
+waveform/__init__.py
+waveform/emd_waveform_0_analysis.py
+waveform/emd_waveform_dynamic_sim.py
+waveform/emd_waveform_fig2.py
+waveform/emd_waveform_fig345.py
+waveform/emd_waveform_fig68.py
+waveform/emd_waveform_fig7.py
+waveform/emd_waveform_fig910.py
+waveform/emd_waveform_supp1_masks.py
+waveform/emd_waveform_utils.py
+waveform.egg-info/PKG-INFO
+waveform.egg-info/SOURCES.txt
+waveform.egg-info/dependency_links.txt
+waveform.egg-info/top_level.txt
