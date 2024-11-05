@@ -1,0 +1,16 @@
+name: neuropy-emd
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy=1.26.4
+  - matplotlib
+  - scipy
+  - emd=0.6.2
+  - ipykernel
+  - ipympl
+  - ipywidgets
+  - pytest
+  - seaborn
+  - pandas
