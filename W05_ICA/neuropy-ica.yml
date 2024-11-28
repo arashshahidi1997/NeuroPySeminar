@@ -1,0 +1,16 @@
+name: neuropy-ica
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - scikit-learn
+  - matplotlib
+  - scipy
+  - ipykernel
+  - ipympl
+  - ipywidgets
+  - seaborn
+  - pandas
+  - tqdm
