@@ -54,6 +54,8 @@ In addition to the papers, the following books will be referred to
 - Observed Brain Dynamics, Mitra & Bokil
 - Advanced Data Analysis in Neuroscience, Daniel Durstewitz
 
+![](png/textbooks.png)
+
 ## Recommended tools and resources
 
 - [https://goodresearch.dev/](https://goodresearch.dev/) A short Handbook on how to setup and organize your projects in Python.
