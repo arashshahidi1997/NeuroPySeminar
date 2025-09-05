@@ -9,10 +9,10 @@ Long text: Advances in Data Analysis: Python
 Frequency: Every Winter Semester
 
 Lecturer:
-*Shahidi, Arash, Phd Student*
+*Shahidi, Arash, Phd Student at Sirota Lab*
 
 Organisationsal Unit:
-*Faculty of Biology*
+*Faculty of Biology - Ludwig-Maximilian University of Munich*
 
 **Content**:
 Implementing new data analysis methods used in recent publications in python, with the aim of reproducing and exploring results from the papers, with a side look at the theoretical and algorithmic basis of the methods relying on analysis text books.
