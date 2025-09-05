@@ -2,11 +2,14 @@
 
 
 # NeuroPySeminar
+### *Advances in Data Analysis: Python*
+
 An interactive Python-based seminar repository diving into contemporary data analysis methods from recent research papers. Engage hands-on with real data, explore foundational theories, and focus on techniques in time series analysis, dimensionality reduction, and dynamical systems.  
 
 ![](png/CourseDescription.png)
 
 ---
+## Links
 [GitHub: NeuroPySeminar](https://github.com/arashshahidi1997/NeuroPySeminar)
 
 [PaperPool](https://drive.google.com/drive/folders/1VpsuUBgtw8SKk-36mkHAx9cFyWfhLA1e?usp=drive_link)
@@ -21,28 +24,22 @@ An interactive Python-based seminar repository diving into contemporary data ana
 
 
 ---
-# Advances in Data Analysis 
-
+## Course Description
 Type of Course: Seminar
-Number: 19409
+LSF Number: 19409
 Term: WiSe2025/26
 Max. participants: 12
 Language: English
-Long text: Advances in Data Analysis: Python
-Frequency: Every Winter Semester
+Title: Advances in Data Analysis: Python
 
-Lecturer:
 *Shahidi, Arash, Phd Student at Sirota Lab*
-
-Organisationsal Unit:
 *Faculty of Biology - Ludwig-Maximilian University of Munich*
 
-**Course Description**:
-	This seminar introduces recent data analysis methods highlighted in current research papers. Using Python, participants will  implement these techniques and apply to data, either publicly available or data from their own projects. We'll particularly focus on analysis methods regarding ***time series data, dimensionality reduction, and dynamical systems***. The foundational theories behind these methods will be discussed, referencing established analytical texts.
+This seminar introduces recent data analysis methods highlighted in current research papers. Using Python, participants will  implement these techniques and apply to data, either publicly available or data from their own projects. We'll particularly focus on analysis methods regarding ***time series data, dimensionality reduction, and dynamical systems***. The foundational theories behind these methods will be discussed, referencing established analytical texts.
 
 
-****
-**Assessment**
+---
+## Assessment
 - **60% *Main Presentations*:**
 	Presenting (at least) **one** theory session (50 min) along with the corresponding exercise session (30 min).
 	- send your ***top 3 choices***  from the paper pool to the instructor.
@@ -52,8 +49,9 @@ Organisationsal Unit:
 
 
 ---
-
 ## Text Books
+
+
 In addition to the papers, the following books will be referred to
 
 - Observed Brain Dynamics, Mitra & Bokil
@@ -61,8 +59,10 @@ In addition to the papers, the following books will be referred to
 
 ![](png/textbooks.png)
 
-## Recommended tools and resources
 
+
+---
+## Recommended tools and resources
 - [https://goodresearch.dev/](https://goodresearch.dev/) A short Handbook on how to setup and organize your projects in Python.
 - **VSCode**: A popular IDE with an abundance of plugins that make coding easier
 - **Github Copilot** : AI coder added as a plugin to VSCode - Free for all students and teachers Apply for GitHub [Education Benefits](https://github.com/settings/education/benefits).
@@ -72,4 +72,3 @@ Other useful tools:
 - Obsidian
 - Zotero
 - ChatGPT, Claude, etc.
-
