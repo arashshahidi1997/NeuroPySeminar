@@ -1,23 +1,23 @@
 # Advances in Data Analysis 
 
 Type of Course: Seminar
-Number:
-Term:
-Max. participants:
+Number: 19409
+Term: WiSe2025/26
+Max. participants: 12
 Language: English
 Long text: Advances in Data Analysis: Python
-Frequency: jedes Semester
+Frequency: Every Winter Semester
 
 Lecturer:
-Shahidi, Arash, Phd Student
+*Shahidi, Arash, Phd Student*
 
 Organisationsal Unit:
-Faculty of Biology
+*Faculty of Biology*
 
-Content:
+**Content**:
 Implementing new data analysis methods used in recent publications in python, with the aim of reproducing and exploring results from the papers, with a side look at the theoretical and algorithmic basis of the methods relying on analysis text books.
 
-Learning outcome:
+**Learning outcome**:
 Students obtain hands on experience with implementation of recent data analysis methods and reproduce and explore data from published papers, preparing them for using the methods and potentially adapting them to their own research needs. The seminar will also provide students with knowledge on how to critically evaluate 
 
 
