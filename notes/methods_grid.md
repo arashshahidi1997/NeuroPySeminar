@@ -69,8 +69,8 @@
 </td>
 <td align="center" valign="top">
   <img src="png/10_SINDy.png" width="150"><br>
-  <strong>W10_(TBA)</strong><br>
-  TBA<br>
+  <strong>W10_SINDy</strong><br>
+  Sparse Identification of Nonlinear Dynamical systems<br>
   <em>Dynamics</em><br>
   
 </td>
