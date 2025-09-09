@@ -9,7 +9,7 @@ An interactive Python-based seminar repository diving into contemporary data ana
 ![](png/CourseDescription.png)
 
 ---
-## Papers
+## Methods
 <!-- include:notes/methods_grid.md -->
 
 ---
