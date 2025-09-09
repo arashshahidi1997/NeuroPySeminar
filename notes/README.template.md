@@ -21,6 +21,10 @@ An interactive Python-based seminar repository diving into contemporary data ana
 <!-- include:notes/CourseDescription.md -->
 
 ---
+## Prerequisites
+<!-- include:notes/Prerequisites.md -->
+
+---
 ## Assessment
 <!-- include:notes/Assessment.md -->
 
