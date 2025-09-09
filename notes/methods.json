@@ -48,12 +48,12 @@
     "Extra": ""
   },
   {
-    "Method Abbreviation": "W07_FA",
-    "Method Name": "FA",
+    "Method Abbreviation": "W07_CCA",
+    "Method Name": "CCA",
     "Method Category": "DimReduction",
-    "Method_png_path": "07_FA.png",
-    "Method_link": "https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FactorAnalysis.html",
-    "Extra": ""
+    "Method_png_path": "07_CCA.png",
+    "Method_link": "",
+    "Extra": "https://gregorygundersen.com/blog/2018/07/17/cca/"
   },
   {
     "Method Abbreviation": "W08_NNMF",
@@ -72,8 +72,8 @@
     "Extra": ""
   },
   {
-    "Method Abbreviation": "W10_(TBA)",
-    "Method Name": "TBA",
+    "Method Abbreviation": "W10_SINDy",
+    "Method Name": "Sparse Identification of Nonlinear Dynamical systems",
     "Method Category": "Dynamics",
     "Method_png_path": "10_SINDy.png",
     "Method_link": "",

@@ -57,11 +57,11 @@ An interactive Python-based seminar repository diving into contemporary data ana
   <a href="https://umap-learn.readthedocs.io/en/latest/">Link</a>
 </td>
 <td align="center" valign="top">
-  <img src="png/07_FA.png" width="150"><br>
-  <strong>W07_FA</strong><br>
-  FA<br>
+  <img src="png/07_CCA.png" width="150"><br>
+  <strong>W07_CCA</strong><br>
+  CCA<br>
   <em>DimReduction</em><br>
-  <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FactorAnalysis.html">Link</a>
+  <br><a href="https://gregorygundersen.com/blog/2018/07/17/cca/">Extra</a>
 </td>
 <td align="center" valign="top">
   <img src="png/08_NNMF.png" width="150"><br>

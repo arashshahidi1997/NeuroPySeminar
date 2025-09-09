@@ -6,7 +6,7 @@
 | W04_PCA | PCA | DimReduction | 04_PCA.png | https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html |  |
 | W05_ICA | ICA | DimReduction | 05_ICA.png | https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html |  |
 | W06_UMAP | UMAP | DimReduction | 06_UMAP.png | https://umap-learn.readthedocs.io/en/latest/ |  |
-| W07_FA | FA | DimReduction | 07_FA.png | https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FactorAnalysis.html |  |
+| W07_CCA | CCA | DimReduction | 07_CCA.png |  | https://gregorygundersen.com/blog/2018/07/17/cca/ |
 | W08_NNMF | NNMF | DimReduction | 08_NNMF.png | https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html |  |
 | W09_GPFA | GPFA | Dynamics | 09_GPFA.png | https://elephant.readthedocs.io/en/latest/tutorials/gpfa.html |  |
 | W10_(TBA) | TBA | Dynamics | 10_SINDy.png |  |  |
