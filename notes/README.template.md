@@ -10,7 +10,7 @@ An interactive Python-based seminar repository diving into contemporary data ana
 
 ---
 ## Papers
-
+<!-- include:notes/methods_grid.md -->
 
 ---
 ## Links
