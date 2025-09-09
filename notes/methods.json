@@ -1,0 +1,98 @@
+[
+  {
+    "Method Abbreviation": "W01_EMD",
+    "Method Name": "EMD",
+    "Method Category": "TimeSeries",
+    "Method_png_path": "01_EMD.png",
+    "Method_link": "https://emd.readthedocs.io/en/stable/",
+    "Extra": ""
+  },
+  {
+    "Method Abbreviation": "W02_Multitaper",
+    "Method Name": "Multitaper",
+    "Method Category": "TimeSeries",
+    "Method_png_path": "02_Multitaper.png",
+    "Method_link": "https://github.com/preraulab/multitaper_toolbox",
+    "Extra": ""
+  },
+  {
+    "Method Abbreviation": "W03_AR",
+    "Method Name": "AR",
+    "Method Category": "TimeSeries",
+    "Method_png_path": "03_AR.png",
+    "Method_link": "https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html",
+    "Extra": "https://compneuro.neuromatch.io/tutorials/W2D2_LinearSystems/student/W2D2_Tutorial4.html"
+  },
+  {
+    "Method Abbreviation": "W04_PCA",
+    "Method Name": "PCA",
+    "Method Category": "DimReduction",
+    "Method_png_path": "04_PCA.png",
+    "Method_link": "https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html",
+    "Extra": ""
+  },
+  {
+    "Method Abbreviation": "W05_ICA",
+    "Method Name": "ICA",
+    "Method Category": "DimReduction",
+    "Method_png_path": "05_ICA.png",
+    "Method_link": "https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html",
+    "Extra": ""
+  },
+  {
+    "Method Abbreviation": "W06_UMAP",
+    "Method Name": "UMAP",
+    "Method Category": "DimReduction",
+    "Method_png_path": "06_UMAP.png",
+    "Method_link": "https://umap-learn.readthedocs.io/en/latest/",
+    "Extra": ""
+  },
+  {
+    "Method Abbreviation": "W07_FA",
+    "Method Name": "FA",
+    "Method Category": "DimReduction",
+    "Method_png_path": "07_FA.png",
+    "Method_link": "https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FactorAnalysis.html",
+    "Extra": ""
+  },
+  {
+    "Method Abbreviation": "W08_NNMF",
+    "Method Name": "NNMF",
+    "Method Category": "DimReduction",
+    "Method_png_path": "08_NNMF.png",
+    "Method_link": "https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html",
+    "Extra": ""
+  },
+  {
+    "Method Abbreviation": "W09_GPFA",
+    "Method Name": "GPFA",
+    "Method Category": "Dynamics",
+    "Method_png_path": "09_GPFA.png",
+    "Method_link": "https://elephant.readthedocs.io/en/latest/tutorials/gpfa.html",
+    "Extra": ""
+  },
+  {
+    "Method Abbreviation": "W10_(TBA)",
+    "Method Name": "TBA",
+    "Method Category": "Dynamics",
+    "Method_png_path": "10_SINDy.png",
+    "Method_link": "",
+    "Extra": ""
+  },
+  {
+    "Method Abbreviation": "W11_Network",
+    "Method Name": "Network",
+    "Method Category": "Dynamics",
+    "Method_png_path": "11_Network.png",
+    "Method_link": "https://networkx.org/",
+    "Extra": ""
+  },
+  {
+    "Method Abbreviation": "W12_HMM",
+    "Method Name": "HMM",
+    "Method Category": "Dynamics",
+    "Method_png_path": "12_HMM.png",
+    "Method_link": "https://compneuro.neuromatch.io/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial2.html?highlight=hidden+markov",
+    "Extra": ""
+  }
+]
