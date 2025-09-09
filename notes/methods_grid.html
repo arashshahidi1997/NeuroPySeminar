@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NeuroPySeminar Methods Grid</title>
+  <style>
+    :root { --gap: 20px; --card-pad: 12px; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 24px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--gap);
+      text-align: center;
+      align-items: start;
+    }
+    .card {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: var(--card-pad);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .card img { max-width: 100%; height: auto; border-radius: 8px; }
+    .card a { text-decoration: none; }
+    .card a:hover { text-decoration: underline; }
+    .header { margin-bottom: 16px; display:flex; justify-content: space-between; align-items: baseline; }
+    .header h1 { font-size: 20px; margin: 0; }
+    .count { color: #6b7280; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>NeuroPySeminar Methods</h1>
+    <div class="count">12 items</div>
+  </div>
+  <div class="grid">
+    <div class="card">
+  <img src="01_EMD.png" alt="EMD" width="150"/><br/>
+  <strong>W01_EMD</strong><br/>
+  EMD<br/>
+  <em>TimeSeries</em><br/>
+  <a href="https://emd.readthedocs.io/en/stable/">Link</a>
+
+</div><div class="card">
+  <img src="02_Multitaper.png" alt="Multitaper" width="150"/><br/>
+  <strong>W02_Multitaper</strong><br/>
+  Multitaper<br/>
+  <em>TimeSeries</em><br/>
+  <a href="https://github.com/preraulab/multitaper_toolbox">Link</a>
+
+</div><div class="card">
+  <img src="03_AR.png" alt="AR" width="150"/><br/>
+  <strong>W03_AR</strong><br/>
+  AR<br/>
+  <em>TimeSeries</em><br/>
+  <a href="https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html">Link</a>
+  <br/><a href="https://compneuro.neuromatch.io/tutorials/W2D2_LinearSystems/student/W2D2_Tutorial4.html">Extra</a>
+</div><div class="card">
+  <img src="04_PCA.png" alt="PCA" width="150"/><br/>
+  <strong>W04_PCA</strong><br/>
+  PCA<br/>
+  <em>DimReduction</em><br/>
+  <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">Link</a>
+
+</div><div class="card">
+  <img src="05_ICA.png" alt="ICA" width="150"/><br/>
+  <strong>W05_ICA</strong><br/>
+  ICA<br/>
+  <em>DimReduction</em><br/>
+  <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html">Link</a>
+
+</div><div class="card">
+  <img src="06_UMAP.png" alt="UMAP" width="150"/><br/>
+  <strong>W06_UMAP</strong><br/>
+  UMAP<br/>
+  <em>DimReduction</em><br/>
+  <a href="https://umap-learn.readthedocs.io/en/latest/">Link</a>
+
+</div><div class="card">
+  <img src="07_FA.png" alt="FA" width="150"/><br/>
+  <strong>W07_FA</strong><br/>
+  FA<br/>
+  <em>DimReduction</em><br/>
+  <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FactorAnalysis.html">Link</a>
+
+</div><div class="card">
+  <img src="08_NNMF.png" alt="NNMF" width="150"/><br/>
+  <strong>W08_NNMF</strong><br/>
+  NNMF<br/>
+  <em>DimReduction</em><br/>
+  <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html">Link</a>
+
+</div><div class="card">
+  <img src="09_GPFA.png" alt="GPFA" width="150"/><br/>
+  <strong>W09_GPFA</strong><br/>
+  GPFA<br/>
+  <em>Dynamics</em><br/>
+  <a href="https://elephant.readthedocs.io/en/latest/tutorials/gpfa.html">Link</a>
+
+</div><div class="card">
+  <img src="10_SINDy.png" alt="TBA" width="150"/><br/>
+  <strong>W10_(TBA)</strong><br/>
+  TBA<br/>
+  <em>Dynamics</em><br/>
+
+
+</div><div class="card">
+  <img src="11_Network.png" alt="Network" width="150"/><br/>
+  <strong>W11_Network</strong><br/>
+  Network<br/>
+  <em>Dynamics</em><br/>
+  <a href="https://networkx.org/">Link</a>
+
+</div><div class="card">
+  <img src="12_HMM.png" alt="HMM" width="150"/><br/>
+  <strong>W12_HMM</strong><br/>
+  HMM<br/>
+  <em>Dynamics</em><br/>
+  <a href="https://compneuro.neuromatch.io/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial2.html?highlight=hidden+markov">Link</a>
+
+</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NeuroPySeminar Methods Grid (JS)</title>
+  <style>
+    :root { --gap: 20px; --card-pad: 12px; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 24px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--gap);
+      text-align: center;
+      align-items: start;
+    }
+    .card {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: var(--card-pad);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .card img { max-width: 100%; height: auto; border-radius: 8px; }
+    .card a { text-decoration: none; }
+    .card a:hover { text-decoration: underline; }
+    .header { margin-bottom: 16px; display:flex; justify-content: space-between; align-items: baseline; }
+    .header h1 { font-size: 20px; margin: 0; }
+    .count { color: #6b7280; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>NeuroPySeminar Methods</h1>
+    <div class="count" id="count"></div>
+  </div>
+  <div id="grid" class="grid"></div>
+  <script>
+    async function main() {
+      const res = await fetch('methods.json');
+      const data = await res.json();
+      const grid = document.getElementById('grid');
+      document.getElementById('count').textContent = `${data.length} items`;
+      grid.innerHTML = data.map(row => {
+        const img = row.Method_png_path ? `<img src="${row.Method_png_path}" alt="${row["Method Name"]}" width="150"/><br/>` : "";
+        const link = row.Method_link ? `<a href="${row.Method_link}">Link</a>` : "";
+        const extra = row.Extra ? `<br/><a href="${row.Extra}">Extra</a>` : "";
+        return `<div class="card">${img}<strong>${row["Method Abbreviation"]}</strong><br/>${row["Method Name"]}<br/><em>${row["Method Category"]}</em><br/>${link}${extra}</div>`;
+      }).join('');
+    }
+    main();
+  </script>
+</body>
+</html>

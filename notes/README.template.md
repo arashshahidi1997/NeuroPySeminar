@@ -9,6 +9,10 @@ An interactive Python-based seminar repository diving into contemporary data ana
 ![](png/CourseDescription.png)
 
 ---
+## Papers
+
+
+---
 ## Links
 <!-- include:notes/Links.md -->
 
