@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroPy 2025 — SSH Access Setup</title>
+  <style>
+    :root{
+      --bg:#0b1020; --panel:#121a33; --muted:#7680a6; --text:#e7ecff; --accent:#7aa2ff; --accent2:#56e4c8; --border:#1f2a52;
+      --code-bg:#0f1630; --code-border:#243060;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text); background:radial-gradient(1200px 800px at 80% -10%, #1a2350 0%, #0b1020 55%) fixed;
+    }
+    .wrap{max-width:1100px; margin:32px auto; padding:24px;}
+    .card{background:var(--panel); border:1px solid var(--border); border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    header{padding:28px 28px 12px}
+    header h1{margin:0; font-size:clamp(22px,3.6vw,34px)}
+    header p{margin:6px 0 0; color:var(--muted)}
+
+    .meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:10px; padding:0 28px 18px}
+    .meta .kv{background:rgba(255,255,255,.03); border:1px solid var(--border); padding:10px 12px; border-radius:12px}
+    .kv b{display:block; color:#a9b6e8; font-weight:600}
+
+    .tabs{padding:0 14px 14px}
+    .tabbar{display:flex; flex-wrap:wrap; gap:8px; padding:12px; border-bottom:1px solid var(--border)}
+    .tabbar button{
+      appearance:none; border:1px solid var(--border); background:linear-gradient(180deg,#18224a,#121a33);
+      color:var(--text); padding:10px 14px; border-radius:12px; cursor:pointer; transition:.2s;
+    }
+    .tabbar button[aria-selected="true"]{border-color:#2a3a7a; box-shadow:0 0 0 2px rgba(122,162,255,.25) inset; color:var(--accent)}
+    .tabpanes{padding:14px}
+    .pane{display:none}
+    .pane[data-active="true"]{display:block}
+
+    h2{margin:16px 0 8px}
+    h3{margin:18px 0 8px}
+    .note{color:#a9b6e8}
+
+    pre{background:var(--code-bg); border:1px solid var(--code-border); padding:14px; border-radius:12px; overflow:auto}
+    code{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,"Liberation Mono","Courier New", monospace; font-size:0.94rem}
+    .grid{display:grid; gap:12px}
+    .twocol{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+
+    .callout{border-left:3px solid var(--accent2); background:rgba(86,228,200,.06); padding:12px 14px; border-radius:10px}
+    .footer{padding:8px 20px 20px; color:var(--muted); font-size:14px}
+
+    .copy{float:right; margin-top:-6px}
+    .copy button{background:#223067; border:1px solid #2b3a78; color:#dbe4ff; padding:4px 8px; border-radius:8px; cursor:pointer}
+    .kbd{display:inline-block; border:1px solid var(--border); border-bottom-color:#0a0f22; background:#0e1530; border-radius:6px; padding:0 6px; font:600 12px/20px ui-monospace,monospace}
+    a{color:var(--accent)}
+  </style>
+</head>
+<body>
+  <div class="wrap card">
+    <header>
+      <h1>NeuroPy 2025 — SSH Access Setup</h1>
+      <p class="note">Use the tabs below for instructions tailored to your operating system. Replace <span class="kbd">ephysXX</span> with your assigned username (e.g., <span class="kbd">ephys03</span>).</p>
+    </header>
+
+    <section class="meta">
+      <div class="kv"><b>Server Host</b> 10.153.170.43</div>
+      <div class="kv"><b>Alias</b> gamma3</div>
+      <div class="kv"><b>SSH Port</b> 22</div>
+      <div class="kv"><b>Course Folder</b> /storage2/arash/teaching/neuropy</div>
+      <div class="kv"><b>Your Account</b> ephys01 … ephys10</div>
+    </section>
+
+    <section class="tabs">
+      <div role="tablist" aria-label="OS Tabs" class="tabbar">
+        <button role="tab" aria-selected="true" aria-controls="pane-overview" id="tab-overview">Overview</button>
+        <button role="tab" aria-selected="false" aria-controls="pane-macos" id="tab-macos">macOS</button>
+        <button role="tab" aria-selected="false" aria-controls="pane-linux" id="tab-linux">Linux</button>
+        <button role="tab" aria-selected="false" aria-controls="pane-windows" id="tab-windows">Windows</button>
+      </div>
+      <div class="tabpanes">
+        <!-- Overview -->
+        <div class="pane" id="pane-overview" data-active="true" role="tabpanel" aria-labelledby="tab-overview">
+          <div class="grid twocol">
+            <div>
+              <h2>What You Will Do</h2>
+              <ol>
+                <li>Generate an SSH key on your laptop/desktop.</li>
+                <li>Configure a convenient <code>Host gamma3</code> entry.</li>
+                <li>Test the first login with your temporary password.</li>
+                <li>Install your public key on the server (password-less login).</li>
+                <li>Verify you can write inside your personal folder.</li>
+              </ol>
+              <div class="callout"><strong>Tip:</strong> Choose the tab that matches your OS. Commands are already adapted for you.</div>
+            </div>
+            <div>
+              <h2>Server Details</h2>
+              <pre><code>Host gamma3
+  HostName 10.153.170.43
+  User ephysXX
+  Port 22</code></pre>
+              <p class="note">Replace <code>ephysXX</code> with your username (e.g., <code>ephys07</code>).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- macOS -->
+        <div class="pane" id="pane-macos" role="tabpanel" aria-labelledby="tab-macos">
+          <h2>macOS — Terminal</h2>
+          <h3>1) Generate SSH key</h3>
+          <pre><code>ssh-keygen -t ed25519 -C "your_email@domain.com"</code></pre>
+          <p>Press <span class="kbd">Enter</span> to accept the default path <code>~/.ssh/id_ed25519</code>. Optionally set a passphrase.</p>
+
+          <h3>2) Configure SSH</h3>
+          <pre><code>nano ~/.ssh/config</code></pre>
+          <pre><code>Host gamma3
+  HostName 10.153.170.43
+  User ephysXX
+  Port 22</code></pre>
+          <p>Save with <span class="kbd">Ctrl</span>+<span class="kbd">O</span>, <span class="kbd">Enter</span>, then exit with <span class="kbd">Ctrl</span>+<span class="kbd">X</span>.</p>
+
+          <h3>3) Test first login (password)</h3>
+          <pre><code>ssh gamma3</code></pre>
+          <p>Use your temporary password (provided separately). Type <code>exit</code> to log out.</p>
+
+          <h3>4) Install your public key</h3>
+          <p>Preferred (automatic):</p>
+          <pre><code>ssh-copy-id gamma3</code></pre>
+          <p>Manual (if needed):</p>
+          <pre><code>cat ~/.ssh/id_ed25519.pub
+ssh gamma3
+mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh
+echo "&lt;paste-your-key-here&gt;" &gt;&gt; ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys</code></pre>
+
+          <h3>5) Verify write access</h3>
+          <pre><code>ssh gamma3
+cd /storage2/arash/teaching/neuropy
+cd &lt;your_firstname&gt;
+touch test.txt
+ls -l
+rm test.txt</code></pre>
+        </div>
+
+        <!-- Linux -->
+        <div class="pane" id="pane-linux" role="tabpanel" aria-labelledby="tab-linux">
+          <h2>Linux — Terminal</h2>
+          <h3>1) Generate SSH key</h3>
+          <pre><code>ssh-keygen -t ed25519 -C "your_email@domain.com"</code></pre>
+
+          <h3>2) Configure SSH</h3>
+          <pre><code>nano ~/.ssh/config</code></pre>
+          <pre><code>Host gamma3
+  HostName 10.153.170.43
+  User ephysXX
+  Port 22</code></pre>
+
+          <h3>3) Test first login (password)</h3>
+          <pre><code>ssh gamma3</code></pre>
+
+          <h3>4) Install your public key</h3>
+          <pre><code>ssh-copy-id gamma3</code></pre>
+          <p>If <code>ssh-copy-id</code> is missing, use the manual method shown on the macOS tab — it's identical on Linux.</p>
+
+          <h3>5) Verify write access</h3>
+          <pre><code>ssh gamma3
+cd /storage2/arash/teaching/neuropy
+cd &lt;your_firstname&gt;
+touch test.txt
+ls -l
+rm test.txt</code></pre>
+        </div>
+
+        <!-- Windows -->
+        <div class="pane" id="pane-windows" role="tabpanel" aria-labelledby="tab-windows">
+          <h2>Windows — PowerShell (or Git Bash)</h2>
+          <h3>1) Generate SSH key</h3>
+          <pre><code>ssh-keygen -t ed25519 -C "your_email@domain.com"</code></pre>
+          <p>Default location is <code>C:\Users\&lt;You&gt;\.ssh\id_ed25519</code>. Optionally set a passphrase.</p>
+
+          <h3>2) Configure SSH</h3>
+          <p>Create (or edit) the file <code>C:\Users\&lt;You&gt;\.ssh\config</code> with:</p>
+          <pre><code>Host gamma3
+  HostName 10.153.170.43
+  User ephysXX
+  Port 22</code></pre>
+
+          <h3>3) Test first login (password)</h3>
+          <pre><code>ssh gamma3</code></pre>
+
+          <h3>4) Install your public key</h3>
+          <p>Show your public key locally:</p>
+          <pre><code>type $env:USERPROFILE\.ssh\id_ed25519.pub</code></pre>
+          <p>Copy the full line that starts with <code>ssh-ed25519</code>, then on the server:</p>
+          <pre><code>ssh gamma3
+mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh
+nano ~/.ssh/authorized_keys  # paste your key, save
+chmod 600 ~/.ssh/authorized_keys</code></pre>
+          <p>If you prefer PuTTY: generate an <strong>Ed25519</strong> key with PuTTYgen, save the <code>.ppk</code>, and paste the public key text into <code>authorized_keys</code>. In PuTTY, save a session named <em>gamma3</em> with HostName <code>10.153.170.43</code> and your username.</p>
+
+          <h3>5) Verify write access</h3>
+          <pre><code>ssh gamma3
+cd /storage2/arash/teaching/neuropy
+cd &lt;your_firstname&gt;
+touch test.txt
+ls -l
+rm test.txt</code></pre>
+        </div>
+      </div>
+    </section>
+    <div class="footer">Questions? Contact <a href="mailto:shahidi.arash@gmail.com">Arash Shahidi</a>.</div>
+  </div>
+
+  <script>
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    const panes = new Map(Array.from(document.querySelectorAll('.pane')).map(p => [p.id, p]));
+
+    function select(id){
+      tabs.forEach(t => t.setAttribute('aria-selected', String(t.id === 'tab-'+id)));
+      panes.forEach((el, pid) => el.dataset.active = String(pid === 'pane-'+id));
+    }
+
+    tabs.forEach(btn => btn.addEventListener('click', () => select(btn.id.replace('tab-',''))));
+
+    // Allow deep-linking like #windows or #linux
+    const hash = (location.hash || '#overview').replace('#','');
+    const valid = ['overview','macos','linux','windows'];
+    if(valid.includes(hash)) select(hash);
+    window.addEventListener('hashchange', () => {
+      const h = location.hash.replace('#','');
+      if(valid.includes(h)) select(h);
+    });
+  </script>
+</body>
+</html>
