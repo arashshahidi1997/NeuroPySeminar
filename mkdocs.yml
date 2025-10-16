@@ -1,0 +1,34 @@
+site_name: NeuroPy Seminar
+site_url: https://arashshahidi1997.github.io/NeuroPySeminar/
+repo_url: https://github.com/arashshahidi1997/NeuroPySeminar
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.indexes      # 👈 enables section landing pages
+    - content.code.copy
+
+plugins:
+  - search
+  - roamlinks
+
+markdown_extensions:
+  - admonition
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+
+docs_dir: docs
+site_dir: site
+
+nav:
+  - Home: index.md
+  - Tools:
+      - index: tools/index.md        # 👈 landing page for Tools tab
+      - Rescheduler: tools/Reschedule.html
+      - Paper Pool: tools/PaperPool.html
+      - Method Picker: tools/MethodPicker.html
+      - SSH Setup: tools/SSHSetup.html
