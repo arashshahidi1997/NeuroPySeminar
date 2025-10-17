@@ -5,7 +5,8 @@
     "Method Category": "TimeSeries",
     "Method_png_path": "01_EMD.png",
     "Method_link": "https://emd.readthedocs.io/en/stable/",
-    "Extra": ""
+    "Extra": "",
+    "Method_tip": "Empirical Mode Decomposition: adaptive decomposition of non-stationary signals into intrinsic mode functions."
   },
   {
     "Method Abbreviation": "W02",
@@ -13,7 +14,8 @@
     "Method Category": "TimeSeries",
     "Method_png_path": "02_Multitaper.png",
     "Method_link": "https://github.com/preraulab/multitaper_toolbox",
-    "Extra": ""
+    "Extra": "",
+    "Method_tip": "Multitaper spectral estimation: reduces variance using multiple orthogonal tapers."
   },
   {
     "Method Abbreviation": "W03",
@@ -21,7 +23,8 @@
     "Method Category": "TimeSeries",
     "Method_png_path": "03_AR.png",
     "Method_link": "https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html",
-    "Extra": "https://compneuro.neuromatch.io/tutorials/W2D2_LinearSystems/student/W2D2_Tutorial4.html"
+    "Extra": "https://compneuro.neuromatch.io/tutorials/W2D2_LinearSystems/student/W2D2_Tutorial4.html",
+    "Method_tip": "Autoregressive modeling / ARIMA: linear models for time-series forecasting and structure."
   },
   {
     "Method Abbreviation": "W04",
@@ -29,7 +32,8 @@
     "Method Category": "DimReduction",
     "Method_png_path": "04_PCA.png",
     "Method_link": "https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html",
-    "Extra": ""
+    "Extra": "",
+    "Method_tip": "Principal Component Analysis: orthogonal linear embedding capturing maximal variance."
   },
   {
     "Method Abbreviation": "W05",
@@ -37,7 +41,8 @@
     "Method Category": "DimReduction",
     "Method_png_path": "05_ICA.png",
     "Method_link": "https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html",
-    "Extra": ""
+    "Extra": "",
+    "Method_tip": "Independent Component Analysis: blind source separation under statistical independence."
   },
   {
     "Method Abbreviation": "W06",
@@ -45,7 +50,8 @@
     "Method Category": "DimReduction",
     "Method_png_path": "06_UMAP.png",
     "Method_link": "https://umap-learn.readthedocs.io/en/latest/",
-    "Extra": ""
+    "Extra": "",
+    "Method_tip": "Uniform Manifold Approximation and Projection: fast non-linear manifold embedding."
   },
   {
     "Method Abbreviation": "W07",
@@ -53,7 +59,8 @@
     "Method Category": "DimReduction",
     "Method_png_path": "07_CCA.png",
     "Method_link": "https://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.CCA.html",
-    "Extra": "https://gregorygundersen.com/blog/2018/07/17/cca/"
+    "Extra": "https://gregorygundersen.com/blog/2018/07/17/cca/",
+    "Method_tip": "Canonical Correlation Analysis: finds linear projections maximizing correlation between two datasets."
   },
   {
     "Method Abbreviation": "W08",
@@ -61,7 +68,8 @@
     "Method Category": "DimReduction",
     "Method_png_path": "08_NNMF.png",
     "Method_link": "https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html",
-    "Extra": ""
+    "Extra": "",
+    "Method_tip": "Non-negative Matrix Factorization: parts-based low-rank factorization for non-negative data."
   },
   {
     "Method Abbreviation": "W09",
@@ -69,7 +77,8 @@
     "Method Category": "Dynamics",
     "Method_png_path": "09_GPFA.png",
     "Method_link": "https://elephant.readthedocs.io/en/latest/tutorials/gpfa.html",
-    "Extra": ""
+    "Extra": "",
+    "Method_tip": "Gaussian-Process Factor Analysis: latent trajectories with GP temporal priors."
   },
   {
     "Method Abbreviation": "W10",
@@ -77,7 +86,8 @@
     "Method Category": "Dynamics",
     "Method_png_path": "10_SINDy.png",
     "Method_link": "https://pysindy.readthedocs.io/en/stable/examples/2_introduction_to_sindy/example.html",
-    "Extra": ""
+    "Extra": "",
+    "Method_tip": "Sparse Identification of Nonlinear Dynamics: discovers parsimonious governing equations from data."
   },
   {
     "Method Abbreviation": "W11",
@@ -85,7 +95,8 @@
     "Method Category": "Dynamics",
     "Method_png_path": "11_Network.png",
     "Method_link": "https://networkx.org/",
-    "Extra": ""
+    "Extra": "",
+    "Method_tip": "Network analysis: graph-based models of connectivity, centrality, motifs, and dynamics."
   },
   {
     "Method Abbreviation": "W12",
@@ -93,6 +104,7 @@
     "Method Category": "Dynamics",
     "Method_png_path": "12_HMM.png",
     "Method_link": "https://compneuro.neuromatch.io/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial2.html?highlight=hidden+markov",
-    "Extra": ""
+    "Extra": "",
+    "Method_tip": "Hidden Markov Models: discrete latent states with probabilistic transitions and emissions."
   }
 ]

@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroPySeminar • Schedule &amp; Picker (WiSe 2025)</title>
+  <style>:root {
+    --bg: #0b0c10;
+    --card: #14161a;
+    --muted: #9aa4b2;
+    --text: #e6edf3;
+    --accent: #6ee7b7;
+    --ring: #3b82f6;
+    --grid: #23262d;
+}
+
+html,
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial;
+}
+
+.wrap {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+h1 {
+    font-size: 1.6rem;
+    margin: 0 0 6px;
+}
+
+.sub {
+    color: var(--muted);
+    margin: 0 0 16px;
+}
+
+/* toolbar */
+.toolbar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 14px 0;
+}
+
+.btn {
+    background: #111827;
+    border: 1px solid #2b2f36;
+    color: var(--text);
+    padding: 10px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    filter: brightness(1.08);
+}
+
+/* schedule table */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--card);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background: #111318;
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid var(--grid);
+    font-weight: 600;
+}
+
+tbody td {
+    padding: 10px 12px;
+    border-top: 1px solid var(--grid);
+    vertical-align: middle;
+}
+
+tbody tr:hover {
+    background: #161a20;
+}
+
+/* topic cell */
+.topic {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.topic a {
+    color: var(--accent);
+}
+
+.rank-chip {
+  background: #1f2937;
+  color: #fff;
+  border: 1px solid #374151;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: .8rem;
+}
+
+.rank-chip.rank-none {
+  display: none !important;
+}
+.rank-1 { background: #14532d; border-color: #166534 }
+.rank-2 { background: #1e3a8a; border-color: #1d4ed8 }
+.rank-3 { background: #581c87; border-color: #7c3aed }
+
+.rank-select {
+    width: 120px;
+    background: #0f1115;
+    color: var(--text);
+    border: 1px solid #2b2f36;
+    border-radius: 10px;
+    padding: 6px;
+}
+
+.rank-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, .35);
+    border-color: var(--ring);
+}
+
+/* tooltip */
+.tooltip {
+    position: absolute;
+    z-index: 50;
+    pointer-events: none;
+    background: #111827;
+    border: 1px solid #374151;
+    color: #e5e7eb;
+    max-width: 320px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .45);
+    font-size: .9rem;
+}
+
+.tooltip.hidden {
+    display: none;
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+	<h1>NeuroPySeminar — Weeks 1–14</h1>
+	<p class="sub">Hover over a topic for a short description. Pick your top three <em>methods</em> (ranks 1–3). Your rank applies to both the Theory and Exercise session of that method automatically.</p>
+	<div class="toolbar">
+	  <input id="name" type="text" placeholder="Your name" />
+	  <button class="btn" id="exportCsv">Export CSV</button>
+	  <button class="btn" id="save">Save</button>
+	  <button class="btn" id="clear">Clear</button>
+	  <button class="btn" id="email">Save & Email</button>
+	</div>
+	<div class="tablewrap">
+	  <table aria-label="Schedule"><thead><tr>
+		<th style="width:60px">Week</th>
+		<th style="width:92px">Date</th>
+		<th style="width:64px">Day</th>
+		<th style="width:220px">Type</th>
+		<th>Topic</th>
+		<th style="width:160px">Presenter</th>
+		<th style="width:140px">Your Rank</th>
+	  </tr></thead><tbody>
+<tr><td>0</td><td>Oct 16</td><td>Thu</td><td>Exercise</td><td class="topic" data-tip="Introductory session for course structure, logistics, and overview.">Intro Session</td><td><strong>Arash</strong></td><td></td></tr><tr><td>1</td><td>Oct 21</td><td>Tue</td><td>Theory</td><td class="topic" data-link="https://emd.readthedocs.io/en/stable/" data-tip="Empirical Mode Decomposition: adaptive decomposition of non-stationary signals into intrinsic mode functions."><a href="https://emd.readthedocs.io/en/stable/">EMD</a></td><td><strong>Arash</strong></td><td></td></tr><tr><td>1</td><td>Oct 23</td><td>Thu</td><td>Exercise</td><td class="topic" data-link="https://emd.readthedocs.io/en/stable/" data-tip="Empirical Mode Decomposition: adaptive decomposition of non-stationary signals into intrinsic mode functions."><a href="https://emd.readthedocs.io/en/stable/">EMD</a></td><td><strong>Arash</strong></td><td></td></tr><tr><td>2</td><td>Oct 28</td><td>Tue</td><td>Theory</td><td class="topic" data-link="https://github.com/preraulab/multitaper_toolbox" data-tip="Multitaper spectral estimation: reduces variance using multiple orthogonal tapers."><a href="https://github.com/preraulab/multitaper_toolbox">Multitaper</a></td><td><strong>Arash</strong></td><td></td></tr><tr><td>2</td><td>Oct 30</td><td>Thu</td><td>Exercise</td><td class="topic" data-link="https://github.com/preraulab/multitaper_toolbox" data-tip="Multitaper spectral estimation: reduces variance using multiple orthogonal tapers."><a href="https://github.com/preraulab/multitaper_toolbox">Multitaper</a></td><td><strong>Arash</strong></td><td></td></tr><tr><td>3</td><td>Nov 4</td><td>Tue</td><td>Theory</td><td class="topic" data-topic="AR" data-link="https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html" data-tip="Autoregressive modeling / ARIMA: linear models for time-series forecasting and structure."><span class="rank-chip rank-none"></span><a href="https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html">AR</a></td><td></td><td class="rank"><select class="rank-select" data-for="AR"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>3</td><td>Nov 6</td><td>Thu</td><td>Exercise</td><td class="topic" data-topic="AR" data-link="https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html" data-tip="Autoregressive modeling / ARIMA: linear models for time-series forecasting and structure."><span class="rank-chip rank-none"></span><a href="https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html">AR</a></td><td></td><td class="rank"><select class="rank-select" data-for="AR"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>4</td><td>Nov 11</td><td>Tue</td><td>Data Hacks I</td><td class="topic">Project management (git, datalad, snakemake)</td><td><strong>Arash</strong></td><td></td></tr><tr><td>4</td><td>Nov 13</td><td>Thu</td><td>Data Hacks II</td><td class="topic">Plotting multidimensional data (xarray, holoviews)</td><td><strong>Arash</strong></td><td></td></tr><tr><td>5</td><td>Nov 18</td><td>Tue</td><td>Theory</td><td class="topic" data-topic="PCA" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html" data-tip="Principal Component Analysis: orthogonal linear embedding capturing maximal variance."><span class="rank-chip rank-none"></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA</a></td><td></td><td class="rank"><select class="rank-select" data-for="PCA"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>5</td><td>Nov 20</td><td>Thu</td><td>Exercise</td><td class="topic" data-topic="PCA" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html" data-tip="Principal Component Analysis: orthogonal linear embedding capturing maximal variance."><span class="rank-chip rank-none"></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA</a></td><td></td><td class="rank"><select class="rank-select" data-for="PCA"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>6</td><td>Nov 25</td><td>Tue</td><td>Theory</td><td class="topic" data-topic="ICA" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html" data-tip="Independent Component Analysis: blind source separation under statistical independence."><span class="rank-chip rank-none"></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html">ICA</a></td><td></td><td class="rank"><select class="rank-select" data-for="ICA"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>6</td><td>Nov 27</td><td>Thu</td><td>Exercise</td><td class="topic" data-topic="ICA" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html" data-tip="Independent Component Analysis: blind source separation under statistical independence."><span class="rank-chip rank-none"></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html">ICA</a></td><td></td><td class="rank"><select class="rank-select" data-for="ICA"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>7</td><td>Dec 2</td><td>Tue</td><td>Theory</td><td class="topic" data-topic="UMAP" data-link="https://umap-learn.readthedocs.io/en/latest/" data-tip="Uniform Manifold Approximation and Projection: fast non-linear manifold embedding."><span class="rank-chip rank-none"></span><a href="https://umap-learn.readthedocs.io/en/latest/">UMAP</a></td><td></td><td class="rank"><select class="rank-select" data-for="UMAP"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>7</td><td>Dec 4</td><td>Thu</td><td>Exercise</td><td class="topic" data-topic="UMAP" data-link="https://umap-learn.readthedocs.io/en/latest/" data-tip="Uniform Manifold Approximation and Projection: fast non-linear manifold embedding."><span class="rank-chip rank-none"></span><a href="https://umap-learn.readthedocs.io/en/latest/">UMAP</a></td><td></td><td class="rank"><select class="rank-select" data-for="UMAP"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>8</td><td>Dec 9</td><td>Tue</td><td>Theory</td><td class="topic" data-topic="CCA" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.CCA.html" data-tip="Canonical Correlation Analysis: finds linear projections maximizing correlation between two datasets."><span class="rank-chip rank-none"></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.CCA.html">CCA</a></td><td></td><td class="rank"><select class="rank-select" data-for="CCA"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>8</td><td>Dec 11</td><td>Thu</td><td>Exercise</td><td class="topic" data-topic="CCA" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.CCA.html" data-tip="Canonical Correlation Analysis: finds linear projections maximizing correlation between two datasets."><span class="rank-chip rank-none"></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.CCA.html">CCA</a></td><td></td><td class="rank"><select class="rank-select" data-for="CCA"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>9</td><td>Dec 16</td><td>Tue</td><td>Theory</td><td class="topic" data-topic="NNMF" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html" data-tip="Non-negative Matrix Factorization: parts-based low-rank factorization for non-negative data."><span class="rank-chip rank-none"></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html">NNMF</a></td><td></td><td class="rank"><select class="rank-select" data-for="NNMF"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>9</td><td>Dec 18</td><td>Thu</td><td>Exercise</td><td class="topic" data-topic="NNMF" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html" data-tip="Non-negative Matrix Factorization: parts-based low-rank factorization for non-negative data."><span class="rank-chip rank-none"></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html">NNMF</a></td><td></td><td class="rank"><select class="rank-select" data-for="NNMF"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>10</td><td>Jan 13</td><td>Tue</td><td>Theory</td><td class="topic" data-topic="GPFA" data-link="https://elephant.readthedocs.io/en/latest/tutorials/gpfa.html" data-tip="Gaussian-Process Factor Analysis: latent trajectories with GP temporal priors."><span class="rank-chip rank-none"></span><a href="https://elephant.readthedocs.io/en/latest/tutorials/gpfa.html">GPFA</a></td><td></td><td class="rank"><select class="rank-select" data-for="GPFA"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>10</td><td>Jan 15</td><td>Thu</td><td>Exercise</td><td class="topic" data-topic="GPFA" data-link="https://elephant.readthedocs.io/en/latest/tutorials/gpfa.html" data-tip="Gaussian-Process Factor Analysis: latent trajectories with GP temporal priors."><span class="rank-chip rank-none"></span><a href="https://elephant.readthedocs.io/en/latest/tutorials/gpfa.html">GPFA</a></td><td></td><td class="rank"><select class="rank-select" data-for="GPFA"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>11</td><td>Jan 20</td><td>Tue</td><td>Theory</td><td class="topic" data-topic="SINDy" data-link="https://pysindy.readthedocs.io/en/stable/examples/2_introduction_to_sindy/example.html" data-tip="Sparse Identification of Nonlinear Dynamics: discovers parsimonious governing equations from data."><span class="rank-chip rank-none"></span><a href="https://pysindy.readthedocs.io/en/stable/examples/2_introduction_to_sindy/example.html">SINDy</a></td><td></td><td class="rank"><select class="rank-select" data-for="SINDy"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>11</td><td>Jan 22</td><td>Thu</td><td>Exercise</td><td class="topic" data-topic="SINDy" data-link="https://pysindy.readthedocs.io/en/stable/examples/2_introduction_to_sindy/example.html" data-tip="Sparse Identification of Nonlinear Dynamics: discovers parsimonious governing equations from data."><span class="rank-chip rank-none"></span><a href="https://pysindy.readthedocs.io/en/stable/examples/2_introduction_to_sindy/example.html">SINDy</a></td><td></td><td class="rank"><select class="rank-select" data-for="SINDy"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>12</td><td>Jan 27</td><td>Tue</td><td>Theory</td><td class="topic" data-topic="Network" data-link="https://networkx.org/" data-tip="Network analysis: graph-based models of connectivity, centrality, motifs, and dynamics."><span class="rank-chip rank-none"></span><a href="https://networkx.org/">Network</a></td><td></td><td class="rank"><select class="rank-select" data-for="Network"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>12</td><td>Jan 29</td><td>Thu</td><td>Exercise</td><td class="topic" data-topic="Network" data-link="https://networkx.org/" data-tip="Network analysis: graph-based models of connectivity, centrality, motifs, and dynamics."><span class="rank-chip rank-none"></span><a href="https://networkx.org/">Network</a></td><td></td><td class="rank"><select class="rank-select" data-for="Network"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>13</td><td>Feb 3</td><td>Tue</td><td>Theory</td><td class="topic" data-topic="HMM" data-link="https://compneuro.neuromatch.io/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial2.html?highlight=hidden+markov" data-tip="Hidden Markov Models: discrete latent states with probabilistic transitions and emissions."><span class="rank-chip rank-none"></span><a href="https://compneuro.neuromatch.io/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial2.html?highlight=hidden+markov">HMM</a></td><td></td><td class="rank"><select class="rank-select" data-for="HMM"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr><tr><td>13</td><td>Feb 5</td><td>Thu</td><td>Exercise</td><td class="topic" data-topic="HMM" data-link="https://compneuro.neuromatch.io/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial2.html?highlight=hidden+markov" data-tip="Hidden Markov Models: discrete latent states with probabilistic transitions and emissions."><span class="rank-chip rank-none"></span><a href="https://compneuro.neuromatch.io/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial2.html?highlight=hidden+markov">HMM</a></td><td></td><td class="rank"><select class="rank-select" data-for="HMM"><option value="">No rank</option><option value="1">Rank 1</option><option value="2">Rank 2</option><option value="3">Rank 3</option></select></td></tr>
+	  </tbody></table>
+	  <div id="tooltip" class="tooltip hidden"></div>
+	</div>
+  </div>
+  <script>/* <![CDATA[ */ // ---------------- Tooltip logic on .topic cells ----------------
+const tip = document.getElementById('tooltip');
+function showTip(e, text) {
+    if (!text) return;
+    tip.textContent = text;
+    tip.classList.remove('hidden');
+    const pad = 10;
+    const x = e.clientX + pad;
+    const y = e.clientY + pad + window.scrollY;
+    Object.assign(tip.style, { left: x + 'px', top: y + 'px' });
+}
+function hideTip() { tip.classList.add('hidden'); }
+document.querySelectorAll('.topic').forEach(cell => {
+    const txt = cell.dataset.tip || '';
+    cell.addEventListener('mousemove', (e) => showTip(e, txt));
+    cell.addEventListener('mouseleave', hideTip);
+});
+
+// ---------------- Ranking state across methods (topics) ----------------
+const SELECTORS = Array.from(document.querySelectorAll('.rank-select'));
+const TOPIC_CELLS = Array.from(document.querySelectorAll('.topic[data-topic]'));
+const KEY = 'neuro-method-picks-v2';
+
+// Map rank->topic and topic->rank
+const rankState = { 1: null, 2: null, 3: null };
+const topicRank = {}; // topic -> '1'|'2'|'3'|''
+
+function updateChipsFor(topic) {
+    const rank = topicRank[topic] || '';
+    TOPIC_CELLS.filter(c => c.dataset.topic === topic).forEach(cell => {
+        const chip = cell.querySelector('.rank-chip');
+        chip.className = 'rank-chip ' + (rank ? ('rank-' + rank) : 'rank-none');
+        chip.textContent = rank ? ('Rank ' + rank) : '';
+    });
+    SELECTORS.filter(s => s.dataset.for === topic).forEach(sel => sel.value = rank);
+}
+
+function assignRank(topic, val) {
+    // clear previous holder of this rank
+    if (val) {
+        const prevTopic = rankState[val];
+        if (prevTopic && prevTopic !== topic) { topicRank[prevTopic] = ''; updateChipsFor(prevTopic); }
+        rankState[val] = topic;
+    }
+    // clear ranks 1..3 if this topic held any other
+    ['1', '2', '3'].forEach(r => { if (rankState[r] === topic && r !== val) { rankState[r] = null; } });
+    topicRank[topic] = val || '';
+    updateChipsFor(topic);
+    persistLocal();
+}
+
+SELECTORS.forEach(sel => sel.addEventListener('change', (e) => {
+    const topic = e.currentTarget.dataset.for;
+    const val = e.currentTarget.value; // '', '1','2','3'
+    assignRank(topic, val);
+}));
+
+function persistLocal() {
+    const data = Object.entries(topicRank).map(([topic, rank]) => {
+        const link = (document.querySelector(`.topic[data-topic="${topic}"]`) || {}).dataset?.link || '';
+        return { topic, rank, link };
+    });
+    localStorage.setItem(KEY, JSON.stringify({ rankState, topicRank, data }));
+}
+
+function restoreLocal() {
+    const raw = localStorage.getItem(KEY); if (!raw) return;
+    try {
+        const { rankState: rs, topicRank: tr } = JSON.parse(raw);
+        if (rs) { rankState[1] = rs[1]; rankState[2] = rs[2]; rankState[3] = rs[3]; }
+        if (tr) { Object.assign(topicRank, tr); }
+        Object.keys(topicRank).forEach(updateChipsFor);
+    } catch (err) { console.warn('restore failed', err); }
+}
+
+// ---------------- Export helpers (pairs per topic) ----------------
+function rowInfo(tr) {
+    const tds = tr.querySelectorAll('td');
+    return {
+        week: tds[0]?.textContent?.trim() || '',
+        date: tds[1]?.textContent?.trim() || '',
+        day: tds[2]?.textContent?.trim() || '',
+        type: tds[3]?.textContent?.trim() || '',
+        topic: tr.querySelector('.topic a')?.textContent?.trim() || '',
+        presenter: tds[5]?.textContent?.trim() || ''
+    };
+}
+function rowsForTopic(topic) {
+    return Array.from(document.querySelectorAll('tr')).filter(tr => {
+        const cell = tr.querySelector('.topic[data-topic]');
+        return cell && cell.dataset.topic === topic;
+    }).map(rowInfo);
+}
+
+function toCSV(rows) {
+    const esc = v => '"' + String(v).replace(/"/g, '""') + '"';
+    const header = ['Rank', 'Week', 'Date', 'Day', 'Type', 'Topic', 'Presenter'];
+    const lines = [header.map(esc).join(',')];
+    rows.forEach(r => lines.push([r.rank, r.week, r.date, r.day, r.type, r.topic, r.presenter].map(esc).join(',')));
+    return lines.join('\n');
+}
+function download(filename, text) {
+    const blob = new Blob([text], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename; a.click();
+    URL.revokeObjectURL(url);
+}
+
+document.getElementById('exportCsv').addEventListener('click', () => {
+    const rankedTopics = Object.entries(topicRank).filter(([, r]) => r).sort((a, b) => a[1].localeCompare(b[1]));
+    if (!rankedTopics.length) { alert('No selections yet. Assign Rank 1–3 first.'); return; }
+    const rows = [];
+    rankedTopics.forEach(([topic, rank]) => {
+        const pair = rowsForTopic(topic);
+        pair.forEach(info => rows.push({ rank, ...info }));
+    });
+    const csv = toCSV(rows);
+    download('method_pairs.csv', csv);
+});
+
+document.getElementById('save').addEventListener('click', () => { persistLocal(); alert('Saved locally.'); });
+document.getElementById('clear').addEventListener('click', () => {
+    localStorage.removeItem(KEY);
+    ['1', '2', '3'].forEach(r => rankState[r] = null);
+    Object.keys(topicRank).forEach(k => topicRank[k] = '');
+    SELECTORS.forEach(sel => sel.value = '');
+    TOPIC_CELLS.forEach(cell => { const chip = cell.querySelector('.rank-chip'); chip.className = 'rank-chip rank-none'; chip.textContent = ''; });
+});
+
+document.getElementById('email').addEventListener('click', () => {
+    const rankedTopics = Object.entries(topicRank).filter(([, r]) => r).sort((a, b) => a[1].localeCompare(b[1]));
+    if (!rankedTopics.length) { alert('No selections yet. Assign Rank 1–3 first.'); return; }
+    let bodyTxt = 'Here are my top 3 method picks for NeuroPy 2025:\n\n';
+    rankedTopics.forEach(([topic, rank]) => {
+        const pair = rowsForTopic(topic);
+        bodyTxt += `Rank ${rank}: ${topic}\n`;
+        pair.forEach(p => { bodyTxt += `  - ${p.date} (${p.day}) • ${p.type} • ${p.presenter || ''}\n`; });
+        const link = (document.querySelector(`.topic[data-topic="${topic}"]`) || {}).dataset?.link || '';
+        if (link) bodyTxt += `  ${link}\n`;
+        bodyTxt += `\n`;
+    });
+    // add name at the end of the email
+    bodyTxt += '\nName: ';
+    const name = (document.getElementById('name').value || '').trim();
+    bodyTxt += name;
+    const subject = encodeURIComponent(`NeuroPy 2025: My Top 3 Methods (Theory + Exercise pairs) - ${name}`);
+    const body = encodeURIComponent(bodyTxt.trim());
+    window.location.href = `mailto:shahidi.arash@gmail.com?subject=${subject}&body=${body}`;
+});
+
+// Initialize topicRank keys from DOM so everything syncs nicely even on first load
+new Set(TOPIC_CELLS.map(c => c.dataset.topic)).forEach(t => { if (t) topicRank[t] = topicRank[t] || ''; });
+
+// boot
+restoreLocal();
+Object.keys(topicRank).forEach(updateChipsFor);
+
+// ---------------- Minimal self-tests (console) ----------------
+(function selfTests() {
+    try {
+        // Test 1: rowsForTopic should return 2 rows for AR
+        const arRows = rowsForTopic('AR');
+        console.assert(Array.isArray(arRows) && arRows.length === 2, 'rowsForTopic("AR") should return 2 rows');
+        // Test 2: toCSV should contain header and two data lines when passed two rows
+        const csvSample = toCSV([{ rank: '1', week: '3', date: 'Oct 30', day: 'Thu', type: 'Theory', topic: 'AR', presenter: '' }, { rank: '1', week: '3', date: 'Nov 4', day: 'Tue', type: 'Exercise', topic: 'AR', presenter: '' }]);
+        console.assert(csvSample.split('\n').length === 3, 'toCSV should produce 3 lines (1 header + 2 rows)');
+        // Test 3: assignRank uniqueness across ranks
+        assignRank('AR', '1');
+        assignRank('PCA', '1'); // should move rank 1 from AR to PCA
+        console.assert((topicRank['AR'] || '') === '' && topicRank['PCA'] === '1', 'assignRank should keep rank unique');
+        // cleanup: clear state
+        ['AR', 'PCA'].forEach(t => assignRank(t, ''));
+        console.log('%cSelf-tests passed', 'color:#6ee7b7');
+    } catch (e) { console.warn('Self-tests failed:', e); }
+})(); /* ]]> */</script>
+</body>
+</html>
