@@ -32,3 +32,8 @@ nav:
       - Paper Pool: tools/PaperPool.html
       - Method Picker: tools/MethodPicker.html
       - SSH Setup: tools/SSHSetup.html
+
+# Added by script: Announcements tab
+  - Announcements:
+      - index: announcements/index.md
+      - Apply Flyer: announcements/apply-flyer.html
