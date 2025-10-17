@@ -49,7 +49,7 @@
   <strong>W07</strong><br>
   CCA<br>
   <em>DimReduction</em><br>
-  <br><a href="https://gregorygundersen.com/blog/2018/07/17/cca/">Extra</a>
+  <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.CCA.html">Link</a><br><a href="https://gregorygundersen.com/blog/2018/07/17/cca/">Extra</a>
 </td>
 <td align="center" valign="top">
   <img src="png/08_NNMF.png" width="150"><br>
@@ -72,7 +72,7 @@
   <strong>W10</strong><br>
   SINDy<br>
   <em>Dynamics</em><br>
-  
+  <a href="https://pysindy.readthedocs.io/en/stable/examples/2_introduction_to_sindy/example.html">Link</a>
 </td>
 <td align="center" valign="top">
   <img src="png/11_Network.png" width="150"><br>

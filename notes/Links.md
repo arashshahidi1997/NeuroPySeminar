@@ -1,5 +1,7 @@
 [GitHub: NeuroPySeminar](https://github.com/arashshahidi1997/NeuroPySeminar)
 
+[GitHub-Pages: NeuroPySeminar](https://arashshahidi1997.github.io/NeuroPySeminar/)
+
 [PaperPool](https://drive.google.com/drive/folders/1VpsuUBgtw8SKk-36mkHAx9cFyWfhLA1e?usp=drive_link)
 
 [Slides](https://drive.google.com/drive/folders/1QMZwbCVyKqIJ01K1uxoHsYW4xBDH8xlG?usp=drive_link)
