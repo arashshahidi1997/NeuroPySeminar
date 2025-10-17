@@ -25,6 +25,7 @@ docs_dir: docs
 site_dir: site
 
 nav:
+  - Registration: register.md
   - Home: index.md
   - Tools:
       - index: tools/index.md        # 👈 landing page for Tools tab
