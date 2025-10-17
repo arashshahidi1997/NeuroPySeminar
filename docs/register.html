@@ -1,0 +1,50 @@
+<section style="max-width: 600px; margin: 2em auto; font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.5;">
+  <h2 style="text-align: center; margin-bottom: 0.5em;">🧠 NeuroPy Seminar Registration</h2>
+  <p style="text-align: center; color: #444;">
+    Please fill in your details below to register. Once you click “Submit,” your email client will open with your application ready to send.
+  </p>
+
+  <form id="neuroPyForm" onsubmit="sendEmail(event)" style="display: flex; flex-direction: column; gap: 0.8em;">
+    <label><strong>Full Name:</strong><br>
+      <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
+    </label>
+
+    <label><strong>LMU Email Address:</strong><br>
+      <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
+    </label>
+
+    <label><strong>Program / Department:</strong><br>
+      <input type="text" id="program" name="program" placeholder="e.g. MSc Neuroscience" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
+    </label>
+
+    <label><strong>Motivation (1–2 sentences):</strong><br>
+      <textarea id="motivation" name="motivation" rows="3" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+    </label>
+
+    <button type="submit"
+      style="margin-top: 1em; padding: 10px 22px; background-color: #0072c6; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">
+      📩 Submit Registration
+    </button>
+  </form>
+
+  <script>
+    function sendEmail(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const program = document.getElementById('program').value;
+      const motivation = document.getElementById('motivation').value;
+
+      const subject = encodeURIComponent('NeuroPy Seminar Registration');
+      const body = encodeURIComponent(
+        `Full Name: ${name}\nEmail: ${email}\nProgram/Department: ${program}\nMotivation:\n${motivation}`
+      );
+
+      window.location.href = `mailto:A.Shahidi@campus.lmu.de?subject=${subject}&body=${body}`;
+    }
+  </script>
+
+  <p style="text-align: center; margin-top: 1.5em; color: #666;">
+    💡 Your registration will be sent via email to <a href="mailto:A.Shahidi@campus.lmu.de">A.Shahidi@campus.lmu.de</a>.
+  </p>
+</section>
