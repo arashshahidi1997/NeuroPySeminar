@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weekly Course Schedule</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121a33;
+      --ink:#eaf0ff;
+      --muted:#a9b3ce;
+      --accent:#6ea8fe;
+      --theory:#8bd3dd;
+      --exercise:#cdb4db;
+      --tutorial:#b9fbc0;
+      --border:rgba(255,255,255,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
+      color:var(--ink); background:linear-gradient(180deg,#0a0f1e 0%, #0b1020 100%);
+      display:flex; align-items:center; justify-content:center; padding:32px;
+    }
+    .wrap{width:min(1000px,100%);}
+    header{margin-bottom:20px}
+    h1{font-size:clamp(22px,3.2vw,34px); margin:0 0 6px}
+    .subtitle{color:var(--muted)}
+
+    .grid{display:grid; grid-template-columns:1fr; gap:16px}
+    @media (min-width:780px){ .grid{grid-template-columns:1fr 1fr} }
+
+    .col{background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .col>header{padding:14px 16px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:10px}
+    .day{font-weight:700; letter-spacing:.3px}
+    .pill{margin-left:auto; font-size:12px; color:var(--muted)}
+
+    .slot{display:grid; grid-template-columns:110px 1fr; gap:16px; padding:16px; align-items:start}
+    .slot+.slot{border-top:1px dashed var(--border)}
+    .time{color:var(--muted); font-weight:600}
+    .card{border-radius:12px; border:1px solid var(--border); padding:14px; background:rgba(255,255,255,.02)}
+    .tag{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.3px; padding:4px 8px; border-radius:999px; margin-bottom:8px; border:1px solid var(--border)}
+    .tag.theory{background:color-mix(in oklab, var(--theory) 25%, transparent);}
+    .tag.exercise{background:color-mix(in oklab, var(--exercise) 25%, transparent);}
+    .tag.tutorial{background:color-mix(in oklab, var(--tutorial) 25%, transparent);}
+
+    h3{margin:.2rem 0 .4rem; font-size:18px}
+    p{margin:.2rem 0}
+    .meta{font-size:13px; color:var(--muted)}
+    .room{display:inline-block; padding:2px 8px; border-radius:999px; border:1px solid var(--border); margin-top:8px; font-size:12px}
+    footer{margin-top:18px; color:var(--muted); font-size:14px}
+    .legend{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .legend span{display:inline-flex; align-items:center; gap:8px}
+    .dot{width:12px; height:12px; border-radius:50%}
+    .dot.theory{background:var(--theory)}
+    .dot.exercise{background:var(--exercise)}
+    .dot.tutorial{background:var(--tutorial)}
+
+    /* print */
+    @media print{
+      body{background:#fff; color:#111}
+      .col{box-shadow:none}
+      .tag{border-color:#ddd}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Weekly Course Schedule</h1>
+      <div class="subtitle">All times local • Europe/Berlin</div>
+      <div class="legend">
+        <span><i class="dot theory"></i>Theory</span>
+        <span><i class="dot exercise"></i>Short Exercise Presentations</span>
+        <span><i class="dot tutorial"></i>Main Exercise Tutorial</span>
+      </div>
+    </header>
+
+    <section class="grid">
+      <!-- Tuesday -->
+      <article class="col">
+        <header>
+          <div class="day">Tuesday</div>
+          <div class="pill">15:45–16:45</div>
+        </header>
+        <div class="slot">
+          <div class="time">15:45–16:45</div>
+          <div class="card">
+            <div class="tag theory">THEORY</div>
+            <h3>Main Paper Presentation</h3>
+            <p class="meta">Format: Hybrid • <strong>Room announced separately</strong></p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Thursday -->
+      <article class="col">
+        <header>
+          <div class="day">Thursday</div>
+          <div class="pill">14:30–16:30</div>
+        </header>
+
+        <div class="slot">
+          <div class="time">14:30–15:30</div>
+          <div class="card">
+            <div class="tag exercise">SHORT EXERCISES</div>
+            <h3>Short Exercise Presentations</h3>
+            <p>
+              <strong>From the previous week's topic</strong>: concise 10‑minute student presentations that showcase methods on provided or self-chosen data.
+            </p>
+            <p class="meta">In person • Room D00.03</p>
+            <span class="room">Prev. week recaps ×3</span>
+          </div>
+        </div>
+
+        <div class="slot">
+          <div class="time">15:30–16:30</div>
+          <div class="card">
+            <div class="tag tutorial">TUTORIAL</div>
+            <h3>Main Exercise Tutorial</h3>
+            <p>
+              Hands‑on walkthrough for the <strong>current week's theory</strong> (datasets, simulated demos, or personal project data encouraged).
+            </p>
+            <p class="meta">In person • Room D00.03</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      Assessment: 60% main presentations (one 50‑min theory + 30‑min tutorial), 40% exercises (3 × 10‑min on other topics).
+    </footer>
+  </div>
+</body>
+</html>

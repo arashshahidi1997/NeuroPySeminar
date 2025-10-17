@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroPySeminar • Schedule &amp; Picker (WiSe 2025)</title>
+  <style>:root {
+    --bg: #0b0c10;
+    --card: #14161a;
+    --muted: #9aa4b2;
+    --text: #e6edf3;
+    --accent: #6ee7b7;
+    --ring: #3b82f6;
+    --grid: #23262d;
+}
+
+html,
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial;
+}
+
+.wrap {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+h1 {
+    font-size: 1.6rem;
+    margin: 0 0 6px;
+}
+
+.sub {
+    color: var(--muted);
+    margin: 0 0 16px;
+}
+
+/* toolbar */
+.toolbar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 14px 0;
+}
+
+.btn {
+    background: #111827;
+    border: 1px solid #2b2f36;
+    color: var(--text);
+    padding: 10px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    filter: brightness(1.08);
+}
+
+/* schedule table */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--card);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background: #111318;
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid var(--grid);
+    font-weight: 600;
+}
+
+tbody td {
+    padding: 10px 12px;
+    border-top: 1px solid var(--grid);
+    vertical-align: middle;
+}
+
+tbody tr:hover {
+    background: #161a20;
+}
+
+/* topic cell */
+.topic {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.topic a {
+    color: var(--accent);
+}
+
+/* tooltip */
+.tooltip {
+    position: absolute;
+    z-index: 50;
+    pointer-events: none;
+    background: #111827;
+    border: 1px solid #374151;
+    color: #e5e7eb;
+    max-width: 320px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .45);
+    font-size: .9rem;
+}
+
+.tooltip.hidden {
+    display: none;
+}</style>
+</head>
+<body>
+  <div class="wrap">
+	<h1>NeuroPySeminar — Weeks 1–14</h1>
+	<p class="sub">Hover over a topic for a short description.</p>
+	<div class="toolbar">
+	  <button class="btn" id="exportCsv">Export CSV</button>
+	</div>
+	<div class="tablewrap">
+	  <table aria-label="Schedule"><thead><tr>
+		<th style="width:60px">Week</th>
+		<th style="width:92px">Date</th>
+		<th style="width:64px">Day</th>
+		<th style="width:220px">Type</th>
+		<th>Topic</th>
+		<th style="width:160px">Presenter</th>
+	  </tr></thead><tbody>
+<tr><td>0</td><td>Oct 16</td><td>Thu</td><td>Exercise</td><td class="topic" data-tip="Introductory session for course structure, logistics, and overview.">Intro Session</td><td><strong>Arash</strong></td></tr><tr><td>1</td><td>Oct 21</td><td>Tue</td><td>Theory</td><td class="topic" data-link="https://emd.readthedocs.io/en/stable/" data-tip="Empirical Mode Decomposition: adaptive decomposition of non-stationary signals into intrinsic mode functions."><a href="https://emd.readthedocs.io/en/stable/">EMD</a></td><td><strong>Arash</strong></td></tr><tr><td>1</td><td>Oct 23</td><td>Thu</td><td>Exercise</td><td class="topic" data-link="https://emd.readthedocs.io/en/stable/" data-tip="Empirical Mode Decomposition: adaptive decomposition of non-stationary signals into intrinsic mode functions."><a href="https://emd.readthedocs.io/en/stable/">EMD</a></td><td><strong>Arash</strong></td></tr><tr><td>2</td><td>Oct 28</td><td>Tue</td><td>Theory</td><td class="topic" data-link="https://github.com/preraulab/multitaper_toolbox" data-tip="Multitaper spectral estimation: reduces variance using multiple orthogonal tapers."><a href="https://github.com/preraulab/multitaper_toolbox">Multitaper</a></td><td><strong>Arash</strong></td></tr><tr><td>2</td><td>Oct 30</td><td>Thu</td><td>Exercise</td><td class="topic" data-link="https://github.com/preraulab/multitaper_toolbox" data-tip="Multitaper spectral estimation: reduces variance using multiple orthogonal tapers."><a href="https://github.com/preraulab/multitaper_toolbox">Multitaper</a></td><td><strong>Arash</strong></td></tr><tr><td>3</td><td>Nov 4</td><td>Tue</td><td>Theory</td><td class="topic" data-link="https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html" data-tip="Autoregressive modeling / ARIMA: linear models for time-series forecasting and structure."><a href="https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html">AR</a></td><td></td></tr><tr><td>3</td><td>Nov 6</td><td>Thu</td><td>Exercise</td><td class="topic" data-link="https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html" data-tip="Autoregressive modeling / ARIMA: linear models for time-series forecasting and structure."><a href="https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html">AR</a></td><td></td></tr><tr><td>4</td><td>Nov 11</td><td>Tue</td><td>Data Hacks I</td><td class="topic">Project management (git, datalad, snakemake)</td><td><strong>Arash</strong></td></tr><tr><td>4</td><td>Nov 13</td><td>Thu</td><td>Data Hacks II</td><td class="topic">Plotting multidimensional data (xarray, holoviews)</td><td><strong>Arash</strong></td></tr><tr><td>5</td><td>Nov 18</td><td>Tue</td><td>Theory</td><td class="topic" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html" data-tip="Principal Component Analysis: orthogonal linear embedding capturing maximal variance."><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA</a></td><td></td></tr><tr><td>5</td><td>Nov 20</td><td>Thu</td><td>Exercise</td><td class="topic" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html" data-tip="Principal Component Analysis: orthogonal linear embedding capturing maximal variance."><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA</a></td><td></td></tr><tr><td>6</td><td>Nov 25</td><td>Tue</td><td>Theory</td><td class="topic" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html" data-tip="Independent Component Analysis: blind source separation under statistical independence."><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html">ICA</a></td><td></td></tr><tr><td>6</td><td>Nov 27</td><td>Thu</td><td>Exercise</td><td class="topic" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html" data-tip="Independent Component Analysis: blind source separation under statistical independence."><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html">ICA</a></td><td></td></tr><tr><td>7</td><td>Dec 2</td><td>Tue</td><td>Theory</td><td class="topic" data-link="https://umap-learn.readthedocs.io/en/latest/" data-tip="Uniform Manifold Approximation and Projection: fast non-linear manifold embedding."><a href="https://umap-learn.readthedocs.io/en/latest/">UMAP</a></td><td></td></tr><tr><td>7</td><td>Dec 4</td><td>Thu</td><td>Exercise</td><td class="topic" data-link="https://umap-learn.readthedocs.io/en/latest/" data-tip="Uniform Manifold Approximation and Projection: fast non-linear manifold embedding."><a href="https://umap-learn.readthedocs.io/en/latest/">UMAP</a></td><td></td></tr><tr><td>8</td><td>Dec 9</td><td>Tue</td><td>Theory</td><td class="topic" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.CCA.html" data-tip="Canonical Correlation Analysis: finds linear projections maximizing correlation between two datasets."><a href="https://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.CCA.html">CCA</a></td><td></td></tr><tr><td>8</td><td>Dec 11</td><td>Thu</td><td>Exercise</td><td class="topic" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.CCA.html" data-tip="Canonical Correlation Analysis: finds linear projections maximizing correlation between two datasets."><a href="https://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.CCA.html">CCA</a></td><td></td></tr><tr><td>9</td><td>Dec 16</td><td>Tue</td><td>Theory</td><td class="topic" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html" data-tip="Non-negative Matrix Factorization: parts-based low-rank factorization for non-negative data."><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html">NNMF</a></td><td></td></tr><tr><td>9</td><td>Dec 18</td><td>Thu</td><td>Exercise</td><td class="topic" data-link="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html" data-tip="Non-negative Matrix Factorization: parts-based low-rank factorization for non-negative data."><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html">NNMF</a></td><td></td></tr><tr><td>10</td><td>Jan 13</td><td>Tue</td><td>Theory</td><td class="topic" data-link="https://elephant.readthedocs.io/en/latest/tutorials/gpfa.html" data-tip="Gaussian-Process Factor Analysis: latent trajectories with GP temporal priors."><a href="https://elephant.readthedocs.io/en/latest/tutorials/gpfa.html">GPFA</a></td><td></td></tr><tr><td>10</td><td>Jan 15</td><td>Thu</td><td>Exercise</td><td class="topic" data-link="https://elephant.readthedocs.io/en/latest/tutorials/gpfa.html" data-tip="Gaussian-Process Factor Analysis: latent trajectories with GP temporal priors."><a href="https://elephant.readthedocs.io/en/latest/tutorials/gpfa.html">GPFA</a></td><td></td></tr><tr><td>11</td><td>Jan 20</td><td>Tue</td><td>Theory</td><td class="topic" data-link="https://pysindy.readthedocs.io/en/stable/examples/2_introduction_to_sindy/example.html" data-tip="Sparse Identification of Nonlinear Dynamics: discovers parsimonious governing equations from data."><a href="https://pysindy.readthedocs.io/en/stable/examples/2_introduction_to_sindy/example.html">SINDy</a></td><td></td></tr><tr><td>11</td><td>Jan 22</td><td>Thu</td><td>Exercise</td><td class="topic" data-link="https://pysindy.readthedocs.io/en/stable/examples/2_introduction_to_sindy/example.html" data-tip="Sparse Identification of Nonlinear Dynamics: discovers parsimonious governing equations from data."><a href="https://pysindy.readthedocs.io/en/stable/examples/2_introduction_to_sindy/example.html">SINDy</a></td><td></td></tr><tr><td>12</td><td>Jan 27</td><td>Tue</td><td>Theory</td><td class="topic" data-link="https://networkx.org/" data-tip="Network analysis: graph-based models of connectivity, centrality, motifs, and dynamics."><a href="https://networkx.org/">Network</a></td><td></td></tr><tr><td>12</td><td>Jan 29</td><td>Thu</td><td>Exercise</td><td class="topic" data-link="https://networkx.org/" data-tip="Network analysis: graph-based models of connectivity, centrality, motifs, and dynamics."><a href="https://networkx.org/">Network</a></td><td></td></tr><tr><td>13</td><td>Feb 3</td><td>Tue</td><td>Theory</td><td class="topic" data-link="https://compneuro.neuromatch.io/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial2.html?highlight=hidden+markov" data-tip="Hidden Markov Models: discrete latent states with probabilistic transitions and emissions."><a href="https://compneuro.neuromatch.io/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial2.html?highlight=hidden+markov">HMM</a></td><td></td></tr><tr><td>13</td><td>Feb 5</td><td>Thu</td><td>Exercise</td><td class="topic" data-link="https://compneuro.neuromatch.io/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial2.html?highlight=hidden+markov" data-tip="Hidden Markov Models: discrete latent states with probabilistic transitions and emissions."><a href="https://compneuro.neuromatch.io/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial2.html?highlight=hidden+markov">HMM</a></td><td></td></tr>
+	  </tbody></table>
+	  <div id="tooltip" class="tooltip hidden"></div>
+	</div>
+  </div>
+  <script>/* <![CDATA[ */ (function () {
+    // ---------- tooltip & row reading (unchanged, but robust) ----------
+    const tip = document.getElementById('tooltip');
+    function showTip(e, text) {
+        if (!text || !tip) return;
+        tip.textContent = text;
+        tip.classList.remove('hidden');
+        const pad = 10;
+        const x = e.clientX + pad;
+        const y = e.clientY + pad + window.scrollY;
+        Object.assign(tip.style, { left: x + 'px', top: y + 'px' });
+    }
+    function hideTip() { tip && tip.classList.add('hidden'); }
+    document.querySelectorAll('.topic').forEach(cell => {
+        const txt = cell.dataset.tip || '';
+        cell.addEventListener('mousemove', (e) => showTip(e, txt));
+        cell.addEventListener('mouseleave', hideTip);
+    });
+
+    function rowInfo(tr) {
+        const tds = tr.querySelectorAll('td');
+        const topicCell = tr.querySelector('.topic');
+        const topicText = (topicCell?.querySelector('a')?.textContent ?? topicCell?.textContent ?? '').trim();
+        const tip = topicCell?.dataset?.tip || '';
+        return {
+            week: tds[0]?.textContent?.trim() || '',
+            date: tds[1]?.textContent?.trim() || '',   // e.g., "Oct 16"
+            day: tds[2]?.textContent?.trim() || '',   // "Tue" / "Thu"
+            type: tds[3]?.textContent?.trim() || '',
+            topic: topicText,
+            presenter: tds[5]?.textContent?.trim() || '',
+            tip
+        };
+    }
+    function allTopicRows() {
+        return Array.from(document.querySelectorAll('tbody tr'))
+            .filter(tr => tr.querySelector('.topic'))
+            .map(rowInfo);
+    }
+
+    // ---------- CSV (unchanged) ----------
+    function toCSV(rows) {
+        const esc = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
+        const header = ['Week', 'Date', 'Day', 'Type', 'Topic', 'Presenter'];
+        const lines = [header.map(esc).join(',')];
+        for (const r of rows || []) {
+            lines.push([r.week, r.date, r.day, r.type, r.topic, r.presenter].map(esc).join(','));
+        }
+        return '\uFEFF' + lines.join('\r\n'); // BOM + CRLF for Excel
+    }
+
+    // ---------- iCalendar helpers ----------
+    const MONTHS = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+
+    // Winter semester year inference: Aug–Dec = current year, Jan–Jul = next year
+    function inferYear(monthIndex) {
+        const y = new Date().getFullYear();
+        return monthIndex >= 7 ? y : y + 1;
+    }
+
+    function parseMonthDay(md) {
+        // "Oct 16" -> Date with inferred year
+        const [mStr, dStr] = String(md).split(/\s+/);
+        const m = MONTHS[mStr?.toLowerCase()?.slice(0, 3)];
+        const d = parseInt(dStr, 10);
+        if (m == null || Number.isNaN(d)) return null;
+        const year = inferYear(m);
+        return new Date(year, m, d);
+    }
+
+    // YYYYMMDDTHHMMSS (floating local time – no Z, no TZID)
+    function fmtLocalDateTime(d) {
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        const hh = String(d.getHours()).padStart(2, '0');
+        const mm = String(d.getMinutes()).padStart(2, '0');
+        const ss = String(d.getSeconds()).padStart(2, '0');
+        return `${y}${m}${day}T${hh}${mm}${ss}`;
+    }
+
+    function fmtUTCStamp(now = new Date()) {
+        const y = now.getUTCFullYear();
+        const m = String(now.getUTCMonth() + 1).padStart(2, '0');
+        const d = String(now.getUTCDate()).padStart(2, '0');
+        const hh = String(now.getUTCHours()).padStart(2, '0');
+        const mm = String(now.getUTCMinutes()).padStart(2, '0');
+        const ss = String(now.getUTCSeconds()).padStart(2, '0');
+        return `${y}${m}${d}T${hh}${mm}${ss}Z`;
+    }
+
+    function icsEscape(s) {
+        return String(s ?? '')
+            .replace(/\\/g, '\\\\')
+            .replace(/;/g, '\\;')
+            .replace(/,/g, '\\,')
+            .replace(/\r?\n/g, '\\n');
+    }
+
+    function foldLines(ics) {
+        return ics.split('\n').map(line => {
+            const chunks = [];
+            let i = 0;
+            while (i < line.length) {
+                chunks.push(line.slice(i, i + 74));
+                i += 74;
+            }
+            return chunks.map((c, idx) => (idx === 0 ? c : ' ' + c)).join('\n');
+        }).join('\n');
+    }
+
+    // ---------- Build 3 events/week (Tue Theory; Thu Exercise + Tutorial) ----------
+    function addEvent(lines, dtstamp, startDate, startHH, startMM, durationMinutes, type, topic, extraDesc, location, weekKey) {
+        if (!startDate || !topic) return;
+        const start = new Date(startDate);
+        start.setHours(startHH, startMM, 0, 0);
+        const end = new Date(start.getTime() + durationMinutes * 60000);
+
+        const dtStart = fmtLocalDateTime(start);
+        const dtEnd = fmtLocalDateTime(end);
+
+        const summary = icsEscape(`NeuroPy: ${type} ${topic}`);
+        const desc = icsEscape(extraDesc || '');
+        const loc = icsEscape(location || '');
+        const uid = icsEscape(`${weekKey}-${dtStart}-${type}-${topic}@neurpy.local`);
+
+        lines.push(
+            'BEGIN:VEVENT',
+            `DTSTAMP:${dtstamp}`,                 // UTC stamp is fine here
+            `UID:${uid}`,
+            `DTSTART:${dtStart}`,                // <-- floating local time
+            `DTEND:${dtEnd}`,                    // <-- floating local time
+            `SUMMARY:${summary}`,
+            `DESCRIPTION:${desc}`,
+            `LOCATION:${loc}`,
+            'END:VEVENT'
+        );
+    }
+
+    function toICS(rows) {
+        // group rows by Week
+        const byWeek = new Map();
+        for (const r of rows || []) {
+            const wk = r.week;
+            if (!byWeek.has(wk)) byWeek.set(wk, []);
+            byWeek.get(wk).push(r);
+        }
+        const weekKeys = Array.from(byWeek.keys()).sort((a, b) => Number(a) - Number(b));
+
+        // derive week structures
+        const weeks = [];
+        for (const wk of weekKeys) {
+            const rowsW = byWeek.get(wk);
+            const tue = rowsW.find(r => r.day.toLowerCase().startsWith('tu'));
+            const thu = rowsW.find(r => r.day.toLowerCase().startsWith('th'));
+            const topic = (tue?.topic || thu?.topic || '').trim();
+            weeks.push({ week: wk, tue, thu, topic });
+        }
+
+        const dtstamp = fmtUTCStamp();
+        const lines = [
+            'BEGIN:VCALENDAR',
+            'PRODID:-//NeuroPySeminar//Schedule Export//EN',
+            'VERSION:2.0',
+            'CALSCALE:GREGORIAN',
+            'METHOD:PUBLISH'
+        ];
+
+        for (let i = 0; i < weeks.length; i++) {
+            const curr = weeks[i];
+            const prev = i > 0 ? weeks[i - 1] : null;
+
+            const tueDate = curr.tue ? parseMonthDay(curr.tue.date) : null;
+            const thuDate = curr.thu ? parseMonthDay(curr.thu.date) : null;
+
+            const thisTopic = curr.topic;
+            const prevTopic = prev?.topic || '';
+
+            // Tue 15:45–16:45 — Theory (this week's topic)
+            if (thisTopic) {
+                addEvent(
+                    lines, dtstamp, tueDate, 15, 45, 60,
+                    'Theory', thisTopic,
+                    `Week ${curr.week}\nTheory session`,
+                    'Hybrid; Room TBD',
+                    curr.week
+                );
+            }
+
+            // Thu 14:30–15:30 — Exercise (previous week's topic) — skip if no previous topic
+            if (prevTopic) {
+                addEvent(
+                    lines, dtstamp, thuDate, 14, 30, 60,
+                    'Exercise', prevTopic,
+                    `Week ${curr.week}\nShort exercise presentations for previous topic`,
+                    'In-person; D00.03',
+                    curr.week
+                );
+            }
+
+            // Thu 15:30–16:30 — Tutorial (this week's topic)
+            if (thisTopic) {
+                addEvent(
+                    lines, dtstamp, thuDate, 15, 30, 60,
+                    'Tutorial', thisTopic,
+                    `Week ${curr.week}\nMain exercise tutorial`,
+                    'In-person; D00.03',
+                    curr.week
+                );
+            }
+        }
+
+        const raw = lines.concat('END:VCALENDAR').join('\r\n');
+        return foldLines(raw) + '\r\n';
+    }
+
+    // ---------- download + buttons ----------
+    function download(filename, text, mime) {
+        const blob = new Blob([text], { type: mime || 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+    }
+
+    function onExportCSV() {
+        try {
+            const rows = allTopicRows();
+            if (!rows.length) console.error('CSV export: no rows found.');
+            download('neurpy2025-semester_schedule.csv', toCSV(rows), 'text/csv;charset=utf-8');
+        } catch (e) { console.error('CSV export failed:', e); }
+    }
+    function onExportICS() {
+        try {
+            const rows = allTopicRows();
+            if (!rows.length) console.error('ICS export: no rows found.');
+            download('neurpy2025-semester_schedule.ics', toICS(rows), 'text/calendar;charset=utf-8');
+        } catch (e) { console.error('ICS export failed:', e); }
+    }
+
+    function attach() {
+        const csvBtn = document.getElementById('exportCsv');
+        if (csvBtn) {
+            if (!csvBtn.getAttribute('type')) csvBtn.setAttribute('type', 'button');
+            csvBtn.removeEventListener('click', onExportCSV);
+            csvBtn.addEventListener('click', onExportCSV);
+        } else {
+            console.error('#exportCsv not found');
+        }
+
+        // Create the ICS button if missing
+        let icsBtn = document.getElementById('exportIcs');
+        if (!icsBtn) {
+            icsBtn = document.createElement('button');
+            icsBtn.id = 'exportIcs';
+            icsBtn.className = 'btn';
+            icsBtn.type = 'button';
+            icsBtn.textContent = 'Export iCal (.ics)';
+            const toolbar = document.querySelector('.toolbar') || document.body;
+            toolbar.appendChild(icsBtn);
+        }
+        icsBtn.removeEventListener('click', onExportICS);
+        icsBtn.addEventListener('click', onExportICS);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', attach);
+    } else {
+        attach();
+    }
+}());
+ /* ]]> */</script>
+</body>
+</html>

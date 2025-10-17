@@ -38,3 +38,9 @@ nav:
   - Announcements:
       - index: announcements/index.md
       - Apply Flyer: announcements/apply-flyer.html
+
+# Added by script: Schedule tab
+  - Schedule:
+      - index: schedule/index.md
+      - Semester Schedule: schedule/SemesterSchedule.html
+      - Weekly Schedule: schedule/WeeklySchedule.html
