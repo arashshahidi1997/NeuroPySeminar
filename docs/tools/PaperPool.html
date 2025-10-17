@@ -228,7 +228,7 @@
     <div class="wrap">
       <h1>Drag times into your availability categories</h1>
       <div class="sub">When you click <b>Save & Email</b>, a neatly formatted table is placed into an email addressed to
-        <b>shahidi.arash@gmail.com</b>.</div>
+        <b>neuropy.seminar@gmail.com</b>.</div>
       <div class="controls">
         <input id="name" type="text" placeholder="Your name (for subject)" />
         <input id="fromEmail" type="email" placeholder="Your email (optional)" />
@@ -390,7 +390,7 @@
       const intro = `Hello,\n\nHere are my availability categories for course scheduling:${from ? `\nFrom: ${from}` : ''}\n\n`;
       const outro = `\n\nBest regards${name ? ', ' + name : ''}`;
       const body = intro + table + outro;
-      const href = `mailto:shahidi.arash@gmail.com?subject=${encodeURIComponent(subject)}&body=${mailtoBody(body)}`;
+      const href = `mailto:neuropy.seminar@gmail.com?subject=${encodeURIComponent(subject)}&body=${mailtoBody(body)}`;
       return href;
     }
 

@@ -1,5 +1,5 @@
 # 🧠 NeuroPy Seminar Registration
 
-You can register directly using the form below or email **shahidi.arash@gmail.com**.
+You can register directly using the form below or email **neuropy.seminar@gmail.com**.
 
 [Open the registration form →](register.html)
