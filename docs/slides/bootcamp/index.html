@@ -63,6 +63,67 @@ Sirota Lab Meeting — Progressive, reproducible-workflow bootcamp
         
 
 ---
+<h3>🧰 Setup Conda (Shared vs Personal)</h3>
+
+<div class="tabs" id="conda-tabs-1">
+  <!-- radios (unique group name) -->
+  <input type="radio" name="conda-tabs-1" id="conda-have-1" checked>
+  <label for="conda-have-1" aria-selected="true">I already have Conda</label>
+
+  <input type="radio" name="conda-tabs-1" id="conda-none-1">
+  <label for="conda-none-1">I don't have Conda</label>
+
+  <div class="panels">
+    <div class="tab-panel tab-have">
+      <p>Don’t re-initialize — just temporarily source the shared one when you need it:</p>
+      <pre><code class="language-bash" data-trim>
+# Use the shared Conda installation for this session
+source /storage/share/python/environments/Anaconda3/etc/profile.d/conda.sh
+conda activate base
+      </code></pre>
+
+      <blockquote>
+        💡 This doesn’t overwrite your personal Conda.<br>
+        To return to your own environment, just:
+        <pre><code class="language-bash" data-trim>
+source ~/.bashrc
+        </code></pre>
+      </blockquote>
+    </div>
+
+    <div class="tab-panel tab-none">
+      <p>Initialize your shell using the shared Conda:</p>
+      <pre><code class="language-bash" data-trim>
+/storage/share/python/environments/Anaconda3/bin/conda init bash
+source ~/.bashrc
+      </code></pre>
+      <p>This will set up Conda automatically every time you open a new shell.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+/* robust per-instance tab logic (does not rely on element order elsewhere) */
+#conda-tabs-1 input#conda-have-1:checked ~ label[for="conda-have-1"] { background: rgba(255,255,255,.06); }
+#conda-tabs-1 input#conda-none-1:checked ~ label[for="conda-none-1"] { background: rgba(255,255,255,.06); }
+
+#conda-tabs-1 input#conda-have-1:checked ~ .panels .tab-have { display: block; }
+#conda-tabs-1 input#conda-none-1:checked ~ .panels .tab-none { display: block; }
+
+/* default hidden; shown by the rules above */
+#conda-tabs-1 .tab-panel { display: none; }
+</style>
+
+<hr>
+
+<strong>Summary:</strong>
+<ul>
+  <li>✅ Existing Conda users → just <code>source</code> the shared <code>conda.sh</code> when needed.</li>
+  <li>🆕 No Conda yet → run <code>conda init</code> once with the shared installation.</li>
+</ul>
+
+
+---
 
 ## **A. BIDS – Standardized Data Organization**
 
