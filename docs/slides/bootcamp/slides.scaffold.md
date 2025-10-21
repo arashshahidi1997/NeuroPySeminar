@@ -20,57 +20,10 @@ Sirota Lab Meeting — Progressive, reproducible-workflow bootcamp
     - **Snakemake**: automation
         
     - **Integration**: provenance & sharing
-        
----
-### 🧰 **Setup Conda (Shared vs Personal)**
 
-#### 🟢 **If you already have your own Conda (If not > next slide)**
-
-Don’t re-initialize — just temporarily source the shared one when you need it:
-
-```bash
-# Use the shared Conda installation for this session
-
-source /storage/share/python/environments/Anaconda3/etc/profile.d/conda.sh
-
-conda activate cogpy
-```
-
-💡 This doesn’t overwrite your personal Conda.
-
-To return to your own environment, just:
-
-```bash
-source ~/.bashrc
-```
-
-(or however you normally load your personal Conda).
 
 ---
 
-#### ⚙️ **If you don’t have Conda at all**
-
-Initialize your shell using the shared Conda:
-
-```bash
-
-/storage/share/python/environments/Anaconda3/bin/conda init bash
-
-source ~/.bashrc
-
-```
-
-> This will set up Conda automatically every time you open a new shell.
-
----
-
-**Summary:**
-
-* ✅ Existing Conda users → just `source` the shared `conda.sh` when needed.
-
-* 🆕 No Conda yet → `conda init` with the shared installation once.
-
----
 ## **A. BIDS – Standardized Data Organization**
 
 ### 🎯 **Goal**
