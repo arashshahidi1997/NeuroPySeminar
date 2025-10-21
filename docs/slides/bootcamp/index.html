@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css" id="theme" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-copycode@1.3.2/plugin/copycode/copycode.css" />
   <style>
     .footnote{position:absolute;bottom:10px;right:20px;font-size:.55em;opacity:.7}
     .reveal h1,.reveal h2{letter-spacing:.5px}
@@ -22,119 +23,7 @@
              data-separator-notes="^Note:"
              data-charset="utf-8">
       <textarea data-template>
-# 🧩 Lab Reproducible Workflow Tutorial
-*(BIDS → DataLad → Snakemake → Integration & FAIR)*  
-<small>Sirota Lab Meeting — Progressive, reproducible-workflow bootcamp</small>
-
----
-
-## A. BIDS — Standardized Data Organization
-**Goal:** Learn BIDS & immediately apply it.
-
-**Theory**
-- Why BIDS; structure & metadata
-- `sub-*/ses-*`, `dataset_description.json`, sidecars
-
-**Practice**
-- Convert example dataset to BIDS
-- Validate with BIDS Validator
-- Add metadata (`TaskName`, `Manufacturer`, …)
-
-Note:
-Talk through motivation; show folder tree; link to validator.
-
---
-
-### BIDS Folder Skeleton
-```text
-project/
-└─ sub-01/
-   └─ anat/
-      ├─ sub-01_T1w.nii.gz
-      └─ sub-01_T1w.json
-dataset_description.json
-
----
-
-## B. DataLad — Version Control for Data
-
-**Goal:** manage, track, share datasets.
-
-**Concepts**
-
-- Git + git-annex, datasets, subdatasets, RIA, provenance
-    
-
-**Practice**
-
-```bash
-datalad create my_dataset
-echo "hello" > my_dataset/hello.txt
-datalad save -m "add hello"
-```
-
-Note:  
-Explain `datalad create`, `save`, `get`, `push`.
-
---
-
-### Add as subdataset & push
-
-```bash
-datalad create -d . my_dataset
-datalad save -m "added dataset"
-datalad push --to origin
-```
-
----
-
-## C. Snakemake — Reproducible Pipelines
-
-**Goal:** define & run pipelines on BIDS data.
-
-**Practice**
-
-```python
-# Snakefile
-rule all:
-    input: "derivatives/dummy-png/out.png"
-
-rule calc:
-    output: "derivatives/dummy-py/out.txt"
-    shell: "python code/calc.py > {output}"
-
-rule plot:
-    input: "derivatives/dummy-py/out.txt"
-    output: "derivatives/dummy-png/out.png"
-    shell: "python code/plot.py {input} {output}"
-```
-
-Note:  
-Then run `snakemake --cores 2`; show DAG & report.
-
---
-
-### Visualize & Report
-
-```bash
-snakemake --dag | dot -Tpng > dag.png
-snakemake --report report.html
-```
-
----
-
-## D. Integration & FAIR
-
-- Reproducibility • Adaptability • Transparency
-    
-- Package the pipeline; run with provenance
-    
-
-```bash
-datalad run "snakemake --cores 2"
-datalad save -m "run workflow with provenance"
-datalad push
-```
+{{SLIDES_MD}}
       </textarea>
     </section>
   </div></div>
@@ -142,16 +31,23 @@ datalad push
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js-copycode@1.3.2/plugin/copycode/copycode.js"></script>
   <script>
     Reveal.initialize({
       hash: true,
       slideNumber: true,
       navigationMode: 'linear',
-      plugins: [ RevealMarkdown, RevealNotes, RevealHighlight ],
       width: 1280, height: 720, margin: 0.04,
       pdfSeparateFragments: false, pdfMaxPagesPerSlide: 1,
-      transition: 'slide', backgroundTransition: 'fade'
+      transition: 'slide', backgroundTransition: 'fade',
+      copycode: {               // optional: nice GitHub-ish behavior
+        button: "hover",        // show button on hover
+        display: "icons",       // use icons instead of text
+        timeout: 1200
+      },
+      plugins: [ RevealMarkdown, RevealNotes, RevealHighlight, CopyCode ]
     });
   </script>
 </body>
 </html>
+
