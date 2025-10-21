@@ -2,24 +2,6 @@
 
 _(BIDS → DataLad → Snakemake → Integration & FAIR)_  
 Sirota Lab Meeting — Progressive, reproducible-workflow bootcamp
-
----
-
-## Why Reproducible Workflows?
-
-- Increasing complexity of neuroimaging analysis
-    
-- Challenges: sharing, version drift, reruns
-    
-- Solution: FAIR + modular workflow
-    
-    - **BIDS**: structure
-        
-    - **DataLad**: control
-        
-    - **Snakemake**: automation
-        
-    - **Integration**: provenance & sharing
         
 ---
 ### 🧰 **Setup Conda (Shared vs Personal)**
@@ -113,6 +95,12 @@ cookiecutter /storage2/arash/codes/Tools/cookiecutter/cookiecutter-bids-extended
 
 Learn about BIDS and immediately apply it by BIDS-ifying a dataset.
 
+| Title                                       | Speaker  | Year | Occasion                                                                | Location | Video                                                      | Slides                        |
+| ------------------------------------------- | -------- | ---- | ----------------------------------------------------------------------- | -------- | ---------------------------------------------------------- | ----------------------------- |
+| BIDS: underlying data management principles | Remi Gau | 2022 | Open Research at the Wellcome Center for Integrative Neuroimaging (WIN) | Online   | [link](https://vimeo.com/showcase/7645853/video/668642973) | [link](https://osf.io/h6gsr/) |
+
+[BEP 032: Microelectrode electrophysiology](https://bids.neuroimaging.io/extensions/beps/bep_032.html#bep-032-microelectrode-electrophysiology)
+
 ---
 
 ### 🧠 **Theory**
@@ -127,13 +115,12 @@ Learn about BIDS and immediately apply it by BIDS-ifying a dataset.
         
     - sidecar JSONs
         
-    - modality-specific folders (`anat`, `func`, `dwi`, etc.)
+    - modality-specific folders (`ecephys`, `motion`, `anat`, `ieeg`, etc.)
         
 - Emphasize reproducibility and compatibility with open neuroimaging tools.
     
 
 ---
-
 ### 💻 **Practice**
 
 - Each participant:
@@ -143,13 +130,6 @@ Learn about BIDS and immediately apply it by BIDS-ifying a dataset.
     - Converts it into **BIDS format**:
         
         - Create folder structure and minimal JSON sidecars.
-            
-        - Validate using a **BIDS Validator**.
-            
-    - Add metadata fields such as `TaskName`, `Manufacturer`, etc.
-        
-
-**Note:** Talk through motivation; show folder tree; link to validator.
 
 ---
 
@@ -158,28 +138,14 @@ Learn about BIDS and immediately apply it by BIDS-ifying a dataset.
 ```text
 project/
 └─ sub-01/
-   └─ anat/
-      ├─ sub-01_T1w.nii.gz
-      └─ sub-01_T1w.json
+   └─ ses-01/
+      ├─ motion/
+      └─ ecephys/
+        ├─ sub-01_ses-01_ecephys.lfp
+        └─ sub-01_ses-01_ecephys.json
+        
 dataset_description.json
 ```
-
----
-
-## 🧩 Your Turn — BIDS
-
-> 💡 **Hands-on Practice**
-
-- Download a small sample dataset (or use an OpenNeuro example).
-    
-- Organize it into BIDS format (`sub-01/anat/...`).
-    
-- Run the **BIDS Validator**: [https://bids-standard.github.io/bids-validator/](https://bids-standard.github.io/bids-validator/)
-    
-- Fix any filename or metadata issues you encounter.
-    
-
-🕐 _Take 10 minutes to complete these steps._
 
 ---
 
@@ -188,6 +154,7 @@ dataset_description.json
 ### 🎯 **Goal**
 
 Learn how to use DataLad to manage datasets, track changes, and share data under the shared lab repository.
+
 
 ---
 
@@ -224,6 +191,51 @@ datalad clone git@server:/path/to/slab
 datalad create -d . my_dataset
 datalad save -m "added dataset"
 ```
+
+
+---
+
+## 🧩 Your Turn — BIDS
+
+> 💡 **Hands-on Practice**
+
+- Download a small sample dataset (or use an OpenNeuro example).
+
+```bash
+mkdir resources
+# datalad install -d . -s ///openneuro/<dataset_id> <shortname>
+datalad install -d . -s ///openneuro/ds004598 data/ds-lfplintrack
+```
+
+- Organize it into BIDS format (`sub-<subject>/ses-<session>/<modality>/sub-<sub>_ses-<ses>_<modality>.<extension>`).
+
+🕐 _Take 5 minutes to complete these steps._
+
+---
+# OpenNeuro Datasets
+
+| ID                                                                 | Species           | Modality                    | Type   | Notes                                                        |
+| ------------------------------------------------------------------ | ----------------- | --------------------------- | ------ | ------------------------------------------------------------ |
+| [ds003463](https://openneuro.org/datasets/ds003463/versions/1.0.2) | Mouse & Rat       | MRI (Mn-enhanced)           | Animal | In vivo MRI for 5×FAD mice and TgF344-AD rats.               |
+| [ds003325](https://openneuro.org/datasets/ds003325/versions/1.0.0) | Mouse             | MRI (T1w)                   | Animal | TDP-43 knock-in mouse model of ALS-FTD.                      |
+| [ds006746](https://openneuro.org/datasets/ds006746)                | Mouse             | MRI (Mn2+ enhanced)         | Animal | 3D RARE Mn(II)-enhanced MRI, 24 mice (2 rearing conditions). |
+| [ds006670](https://openneuro.org/datasets/ds006670)                | Mouse             | MRI (T1w, T2w)              | Animal | Structural adulthood MRI in C57BL/6J mice.                   |
+| [ds004913](https://openneuro.org/datasets/ds004913/versions/1.0.0) | Rat               | fMRI + Optogenetics         | Animal | Optogenetic DBS fMRI in Parkinsonian rats.                   |
+| [ds005093](https://openneuro.org/datasets/ds005093/versions/1.0.0) | Non-human Primate | Imaging (PET/MRI)           | Animal | NHP study of microglia activation (TBS course).              |
+| [ds000241](https://openneuro.org/datasets/ds000241/versions/00002) | Multiple species  | Imaging (various)           | Animal | “Animal Kingdom 6 Species” comparative dataset.              |
+| [ds004161](https://openneuro.org/datasets/ds004161)                | Sheep             | MRI / Imaging               | Animal | Turone Sheep Chronic Stress (TSCS) study.                    |
+| [ds004598](https://openneuro.org/datasets/ds004598/versions/1.0.0) | Rat               | LFP (electrophysiology)     | Animal | LFP during linear-track task in TgF344-AD rats.              |
+| [ds006269](https://openneuro.org/datasets/ds006269)                | Rat               | EEG                         | Animal | 6-hour tethered EEG recordings in Syngap1 rats.              |
+| [ds006366](https://openneuro.org/datasets/ds006366/versions/1.0.1) | Mouse             | EEG / Sleep                 | Animal | Mouse Sleep Staging Validation (EEG).                        |
+| [ds005688](https://openneuro.org/datasets/ds005688)                | Animal            | Electrophysiology / Optical | Animal | visStim dataset – non-MRI animal neurophysiology.            |
+| [ds004509](https://openneuro.org/datasets/ds004509/versions/1.0.0) | Rat               | Electrophysiology / Optical | Animal | Visual-deprivation remapping in rats (non-MRI).              |
+| [ds005700](https://openneuro.org/datasets/ds005700/versions/1.0.0) | Human             | fMRI                        | Human  | NeuroEmo Emotion Recognition fMRI dataset (~7 GB BIDS).      |
+| [ds005126](https://openneuro.org/datasets/ds005126/versions/1.0.0) | Human             | fMRI                        | Human  | ColorSimilarity fMRI study (~36 GB).                         |
+| [ds005880](https://openneuro.org/datasets/ds005880/versions/1.0.2) | Human             | fMRI                        | Human  | “Diminished Seventh Chord” fMRI study.                       |
+| [ds004517](https://openneuro.org/datasets/ds004517/versions/1.0.0) | Human             | EEG                         | Human  | EEG dataset for semantic decoding of imagined animals.       |
+| [ds004514](https://openneuro.org/datasets/ds004514/versions/1.1.1) | Human             | EEG + fNIRS                 | Human  | Simultaneous EEG/fNIRS recordings.                           |
+
+
 
 ---
 
@@ -322,6 +334,8 @@ datalad push --to origin
 ### 🎯 **Goal**
 
 Learn how to define and execute reproducible pipelines operating on BIDS datasets.
+
+Snakemake tutorial slides: https://slides.com/johanneskoester/snakemake-tutorial
 
 ---
 
@@ -568,6 +582,23 @@ datalad push --to ria-storage
     
 - **Reusable**: Metadata + provenance (Snakemake + DataLad)
     
+
+---
+## Why Reproducible Workflows?
+
+- Increasing complexity of neuroimaging analysis
+    
+- Challenges: sharing, version drift, reruns
+    
+- Solution: FAIR + modular workflow
+    
+    - **BIDS**: structure
+        
+    - **DataLad**: control
+        
+    - **Snakemake**: automation
+        
+    - **Integration**: provenance & sharing
 
 ---
 
