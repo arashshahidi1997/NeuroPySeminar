@@ -2,8 +2,10 @@
 
 _(BIDS → DataLad → Snakemake → Integration & FAIR)_  
 Sirota Lab Meeting — Progressive, reproducible-workflow bootcamp
-        
+
+
 ---
+
 ### 🧰 **Setup Conda (Shared vs Personal)**
 
 #### 🟢 **If you already have your own Conda (If not > next slide)**
@@ -27,6 +29,7 @@ source ~/.bashrc
 ```
 
 (or however you normally load your personal Conda).
+
 
 ---
 
