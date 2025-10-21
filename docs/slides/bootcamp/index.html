@@ -3,14 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <title>Sirota Lab — Progressive, Reproducible Workflow Bootcamp</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <!-- reveal.js (pin to v5) -->
+  <meta name="viewport" content="width=device-width,initial-scale=1" />  <!-- reveal.js (pin to v5) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css" id="theme" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css" />
-
-  <style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css" />  <style>
     .footnote{position:absolute;bottom:10px;right:20px;font-size:.55em;opacity:.7}
     .reveal h1,.reveal h2{letter-spacing:.5px}
     .reveal section img{border-radius:8px}
@@ -20,14 +16,128 @@
 <body>
   <div class="reveal"><div class="slides">
     <!-- Load content from slides.md -->
-    <section data-markdown="slides.md"
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^Note:" data-charset="utf-8">
+  <textarea data-template>
              data-separator="^\n---\n$"
              data-separator-vertical="^\n--\n$"
              data-separator-notes="^Note:"
-             data-charset="utf-8"></section>
-  </div></div>
+  
+</section>
+  </div></div># 🧩 Lab Reproducible Workflow Tutorial
+*(BIDS → DataLad → Snakemake → Integration & FAIR)*  
+<small>Sirota Lab Meeting — Progressive, reproducible-workflow bootcamp</small>
 
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+---
+
+## A. BIDS — Standardized Data Organization
+**Goal:** Learn BIDS & immediately apply it.
+
+**Theory**
+- Why BIDS; structure & metadata
+- `sub-*/ses-*`, `dataset_description.json`, sidecars
+
+**Practice**
+- Convert example dataset to BIDS
+- Validate with BIDS Validator
+- Add metadata (`TaskName`, `Manufacturer`, …)
+
+Note:
+Talk through motivation; show folder tree; link to validator.
+
+--
+
+### BIDS Folder Skeleton
+```text
+project/
+└─ sub-01/
+   └─ anat/
+      ├─ sub-01_T1w.nii.gz
+      └─ sub-01_T1w.json
+dataset_description.json
+
+---
+
+## B. DataLad — Version Control for Data
+
+**Goal:** manage, track, share datasets.
+
+**Concepts**
+
+- Git + git-annex, datasets, subdatasets, RIA, provenance
+    
+
+**Practice**
+
+```bash
+datalad create my_dataset
+echo "hello" > my_dataset/hello.txt
+datalad save -m "add hello"
+```
+
+Note:  
+Explain `datalad create`, `save`, `get`, `push`.
+
+--
+
+### Add as subdataset & push
+
+```bash
+datalad create -d . my_dataset
+datalad save -m "added dataset"
+datalad push --to origin
+```
+
+---
+
+## C. Snakemake — Reproducible Pipelines
+
+**Goal:** define & run pipelines on BIDS data.
+
+**Practice**
+
+```python
+# Snakefile
+rule all:
+    input: "derivatives/dummy-png/out.png"
+
+rule calc:
+    output: "derivatives/dummy-py/out.txt"
+    shell: "python code/calc.py > {output}"
+
+rule plot:
+    input: "derivatives/dummy-py/out.txt"
+    output: "derivatives/dummy-png/out.png"
+    shell: "python code/plot.py {input} {output}"
+```
+
+Note:  
+Then run `snakemake --cores 2`; show DAG & report.
+
+--
+
+### Visualize & Report
+
+```bash
+snakemake --dag | dot -Tpng > dag.png
+snakemake --report report.html
+```
+
+---
+
+## D. Integration & FAIR
+
+- Reproducibility • Adaptability • Transparency
+    
+- Package the pipeline; run with provenance
+    
+
+```bash
+datalad run "snakemake --cores 2"
+datalad save -m "run workflow with provenance"
+datalad push
+```
+
+  </textarea>  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
