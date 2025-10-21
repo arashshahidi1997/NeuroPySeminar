@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <title>Sirota Lab — Progressive, Reproducible Workflow Bootcamp</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />  <!-- reveal.js (pin to v5) -->
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css" id="theme" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css" />  <style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css" />
+  <style>
     .footnote{position:absolute;bottom:10px;right:20px;font-size:.55em;opacity:.7}
     .reveal h1,.reveal h2{letter-spacing:.5px}
     .reveal section img{border-radius:8px}
@@ -15,15 +16,13 @@
 </head>
 <body>
   <div class="reveal"><div class="slides">
-    <!-- Load content from slides.md -->
-<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^Note:" data-charset="utf-8">
-  <textarea data-template>
+    <section data-markdown
              data-separator="^\n---\n$"
              data-separator-vertical="^\n--\n$"
              data-separator-notes="^Note:"
-  
-</section>
-  </div></div># 🧩 Lab Reproducible Workflow Tutorial
+             data-charset="utf-8">
+      <textarea data-template>
+# 🧩 Lab Reproducible Workflow Tutorial
 *(BIDS → DataLad → Snakemake → Integration & FAIR)*  
 <small>Sirota Lab Meeting — Progressive, reproducible-workflow bootcamp</small>
 
@@ -136,8 +135,10 @@ datalad run "snakemake --cores 2"
 datalad save -m "run workflow with provenance"
 datalad push
 ```
-
-  </textarea>  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+      </textarea>
+    </section>
+  </div></div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
