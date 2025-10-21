@@ -23,9 +23,10 @@
              data-separator-notes="^Note:"
              data-charset="utf-8">
       <textarea data-template>
+
 # 🧩 Lab Reproducible Workflow Tutorial
 
-_(BIDS → DataLad → Snakemake → Integration {{SLIDES_MD}} FAIR)_  
+_(BIDS → DataLad → Snakemake → Integration & FAIR)_  
 Sirota Lab Meeting — Progressive, reproducible-workflow bootcamp
 
 ---
@@ -44,18 +45,18 @@ Sirota Lab Meeting — Progressive, reproducible-workflow bootcamp
         
     - **Snakemake**: automation
         
-    - **Integration**: provenance {{SLIDES_MD}} sharing
+    - **Integration**: provenance & sharing
         
 
 ---
 
 ## A. BIDS — Standardized Data Organization
 
-**Goal:** Learn BIDS {{SLIDES_MD}} immediately apply it.
+**Goal:** Learn BIDS & immediately apply it.
 
 **Theory**
 
-- Why BIDS; structure {{SLIDES_MD}} metadata
+- Why BIDS; structure & metadata
     
 - `sub-*/ses-*`, `dataset_description.json`, sidecars
     
@@ -126,7 +127,7 @@ Explain `datalad create`, `save`, `get`, `push`.
 
 --
 
-### Add as subdataset {{SLIDES_MD}} push
+### Add as subdataset & push
 
 ```bash
 datalad create -d . my_dataset
@@ -161,7 +162,7 @@ datalad push --to origin
 
 ## C. Snakemake — Reproducible Pipelines
 
-**Goal:** define {{SLIDES_MD}} run pipelines on BIDS data.
+**Goal:** define & run pipelines on BIDS data.
 
 **Practice**
 
@@ -181,11 +182,11 @@ rule plot:
 ```
 
 Note:  
-Then run `snakemake --cores 2`; show DAG {{SLIDES_MD}} report.
+Then run `snakemake --cores 2`; show DAG & report.
 
 --
 
-### Visualize {{SLIDES_MD}} Report
+### Visualize & Report
 
 ```bash
 snakemake --dag | dot -Tpng > dag.png
@@ -215,7 +216,7 @@ snakemake --report report.html
 
 ---
 
-## D. Integration {{SLIDES_MD}} FAIR
+## D. Integration & FAIR
 
 - Reproducibility • Adaptability • Transparency
     
@@ -268,7 +269,7 @@ datalad push
 
 ---
 
-✅ _End of Tutorial — Discussion {{SLIDES_MD}} Q{{SLIDES_MD}}A_
+✅ _End of Tutorial — Discussion & Q&A_
 
 - What worked smoothly?
     
