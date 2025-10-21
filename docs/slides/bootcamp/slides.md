@@ -1,255 +1,263 @@
 # 🧩 Lab Reproducible Workflow Tutorial
 
-_(BIDS → DataLad → Snakemake → Integration & FAIR)_  
-Sirota Lab Meeting — Progressive, reproducible-workflow bootcamp
+_(BIDS → DataLad → Snakemake → Integration & FAIR)_
 
 ---
 
-## Why Reproducible Workflows?
+## **A. BIDS – Standardized Data Organization**
 
-- Increasing complexity of neuroimaging analysis
+### 🎯 **Goal**
+
+Learn about BIDS and immediately apply it by BIDS-ifying a dataset.
+
+### 🧠 **Theory**
+
+- Introduce the **BIDS standard**: motivation, structure, metadata files.
     
-- Challenges: sharing, version drift, reruns
+- Explain key elements:
     
-- Solution: FAIR + modular workflow
+    - `sub-*/ses-*` hierarchy
+        
+    - `dataset_description.json`
+        
+    - sidecar JSONs
+        
+    - modality-specific folders (anat, func, etc.)
+        
+- Emphasize reproducibility and compatibility with open neuroimaging tools.
     
-    - **BIDS**: structure
+
+### 💻 **Practice**
+
+- Each participant:
+    
+    - Uses **their own dataset** or a **provided demo dataset**.
         
-    - **DataLad**: control
+    - Converts it into **BIDS format**:
         
-    - **Snakemake**: automation
-        
-    - **Integration**: provenance & sharing
+        - Create folder structure and minimal JSON sidecars.
+            
+        - Validate using a **BIDS Validator**.
+            
+    - Add metadata fields such as `TaskName`, `Manufacturer`, etc.
         
 
 ---
 
-## A. BIDS — Standardized Data Organization
+## **B. DataLad – Version Control for Data and Collaboration**
 
-**Goal:** Learn BIDS & immediately apply it.
+### 🎯 **Goal**
 
-**Theory**
+Learn how to use DataLad to manage datasets, track changes, and share data under the shared lab repository.
 
-- Why BIDS; structure & metadata
+### 🧠 **Theory**
+
+- Introduce **DataLad concepts**:
     
-- `sub-*/ses-*`, `dataset_description.json`, sidecars
-    
-
-**Practice**
-
-- Convert example dataset to BIDS
-    
-- Validate with BIDS Validator
-    
-- Add metadata (`TaskName`, `Manufacturer`, …)
-    
-
-Note:  
-Talk through motivation; show folder tree; link to validator.
-
---
-
-### BIDS Folder Skeleton
-
-```text
-project/
-└─ sub-01/
-   └─ anat/
-      ├─ sub-01_T1w.nii.gz
-      └─ sub-01_T1w.json
-dataset_description.json
-```
-
----
-
-## 🧩 Your Turn — BIDS
-
-> 💡 **Hands-on Practice**
-
-- Download a small sample dataset (or use OpenNeuro example).
-    
-- Organize it into BIDS format (`sub-01/anat/...`).
-    
-- Run the [BIDS Validator](https://bids-standard.github.io/bids-validator/).
-    
-- Fix any filename or metadata issues you encounter.
+    - Git + git-annex integration
+        
+    - **datasets**, **subdatasets**, **remote storage (RIAs)**
+        
+    - Provenance tracking and reproducibility
+        
+- Discuss **collaborative structure** of the **lab repository (`slab`)**.
     
 
-🕐 _Take 10 minutes to complete these steps._
+### 💻 **Practice**
 
----
-
-## B. DataLad — Version Control for Data
-
-**Goal:** manage, track, share datasets.
-
-**Concepts**
-
-- Git + git-annex, datasets, subdatasets, RIA, provenance
+1. **Clone the lab repository**
+    
+    ```bash
+    datalad clone git@server:/path/to/slab
+    ```
+    
+2. **Add your dataset** as a **subdataset**:
+    
+    ```bash
+    datalad create -d . my_dataset
+    datalad save -m "added dataset"
+    ```
+    
+3. **Push your subdataset**:
+    
+    - Option A: use your **own RIA store** on the lab server (local filesystem)
+        
+    - Option B: push directly to the **lab RIA store** (shared bare repo)
+        
+    
+    ```bash
+    datalad push --to origin
+    ```
+    
+4. **Annotate with metadata** (from BIDS practice)
+    
+    ```bash
+    datalad metadata --set <key>=<value>
+    datalad save -m "added metadata"
+    ```
+    
+5. **Sync and verify** updates:
+    
+    ```bash
+    datalad update --merge
+    ```
+    
+    Everyone can now see that multiple subdatasets have been added by others.
     
 
-**Practice**
+**🎁 Bonus:**  
+Use DataLad to fetch a paper from the shared **lab paperpool**:
 
 ```bash
-datalad create my_dataset
-echo "hello" > my_dataset/hello.txt
-datalad save -m "add hello"
-```
-
-Note:  
-Explain `datalad create`, `save`, `get`, `push`.
-
---
-
-### Add as subdataset & push
-
-```bash
-datalad create -d . my_dataset
-datalad save -m "added dataset"
-datalad push --to origin
+datalad get slab/papers/example.pdf
 ```
 
 ---
 
-## 🧩 Your Turn — DataLad
+## **C. Snakemake – Workflow Management and Automation**
 
-> 💡 **Hands-on Practice**
+### 🎯 **Goal**
 
-- Run `datalad create test_ds`.
+Learn how to define and execute reproducible pipelines operating on BIDS datasets.
+
+### 🧠 **Theory**
+
+- What is a **Snakefile**?
     
-- Add and save a small file (`echo "test" > file.txt`).
+- Rules, inputs, outputs, and wildcards.
     
-- Explore commands:
+- Workflow visualization (DAGs) and reports.
     
-    - `datalad status`
+- Integration with version control and DataLad.
+    
+
+### 💻 **Practice**
+
+1. Create a **Snakefile** that includes:
+    
+    - One **MATLAB script** (dummy computation).
         
-    - `datalad get`
+    - Two **Python scripts**:
         
-    - `datalad push`
-        
-- Inspect `.git/annex` to see how large files are tracked.
+        - `calc.py` → performs a dummy computation.
+            
+        - `plot.py` → generates a PNG output.
+            
+2. Define outputs under `derivatives/`:
     
-
-🕐 _5 minutes — experiment and share one useful command!_
-
----
-
-## C. Snakemake — Reproducible Pipelines
-
-**Goal:** define & run pipelines on BIDS data.
-
-**Practice**
-
-```python
-# Snakefile
-rule all:
-    input: "derivatives/dummy-png/out.png"
-
-rule calc:
-    output: "derivatives/dummy-py/out.txt"
-    shell: "python code/calc.py > {output}"
-
-rule plot:
-    input: "derivatives/dummy-py/out.txt"
-    output: "derivatives/dummy-png/out.png"
-    shell: "python code/plot.py {input} {output}"
-```
-
-Note:  
-Then run `snakemake --cores 2`; show DAG & report.
-
---
-
-### Visualize & Report
-
-```bash
-snakemake --dag | dot -Tpng > dag.png
-snakemake --report report.html
-```
-
----
-
-## 🧩 Your Turn — Snakemake
-
-> 💡 **Hands-on Practice**
-
-- Copy or create the sample `Snakefile`.
+    ```
+    derivatives/
+    ├── dummy-mat/
+    ├── dummy-py/
+    └── dummy-png/
+    ```
     
-- Run the workflow:
+3. Execute the pipeline:
     
     ```bash
     snakemake --cores 2
     ```
     
-- Add a new rule that writes today’s date to a file.
+4. Visualize workflow:
     
-- Generate a DAG image and open the `report.html`.
+    ```bash
+    snakemake --dag | dot -Tpng > dag.png
+    ```
     
-
-🕐 _10 minutes — make your workflow produce something new!_
+5. **Bonus:** Generate a Snakemake report:
+    
+    ```bash
+    snakemake --report report.html
+    ```
+    
 
 ---
 
-## D. Integration & FAIR
+## **D. Integration, FAIR Principles & Sustainability**
 
-- Reproducibility • Adaptability • Transparency
+### 🎯 **Goal**
+
+Combine all tools under FAIR principles — make workflows reproducible, adaptable, and transparent.
+
+### 🧠 **Theory**
+
+- Summarize:
     
-- Package the pipeline; run with provenance
+    - **Reproducibility** – “same results anytime.”
+        
+    - **Adaptability** – modular pipelines and reusable code.
+        
+    - **Transparency** – open sharing and provenance tracking.
+        
+- Reference: _Snakemake “Rolling Paper”_ (FAIR workflow concepts).
     
 
-```bash
-datalad run "snakemake --cores 2"
-datalad save -m "run workflow with provenance"
-datalad push
-```
+### 💻 **Practice**
 
----
-
-## 🧩 Your Turn — Integration
-
-> 💡 **Hands-on Practice**
-
-- Clone or create a DataLad dataset.
+1. **Make your Snakemake pipeline a CLI tool**:
     
-- Add your `Snakefile` to the project.
+    - Add a `code/` folder.
+        
+    - Move Snakefile and scripts inside.
+        
+    - Create a `pyproject.toml` with an **entry point** to run from command line.
+        
+    - Install into environment (`conda activate labpy`).
+        
     
-- Run your workflow with provenance tracking:
+    ```bash
+    pip install -e .
+    ```
+    
+2. **Run the workflow with provenance tracking**:
     
     ```bash
     datalad run "snakemake --cores 2"
     ```
     
-- View recorded provenance:
+3. **Save and push results**:
     
     ```bash
-    datalad run-record show
+    datalad save -m "run workflow with provenance"
+    datalad push
     ```
     
+4. **Promote your package** into a **DataLad subdataset**:
+    
+    ```bash
+    datalad create -d slab/packages mytool
+    datalad save -m "added CLI tool package"
+    ```
+    
+5. **Write documentation** for your tool under `docs/` (can later integrate with MkDocs).
+    
+6. **Push to shared RIA store**:
+    
+    ```bash
+    datalad push --to ria-storage
+    ```
+    
+7. Perform all steps on a **feature branch** to protect the main `slab` repository.
+    
 
-🕐 _5–10 minutes — confirm your provenance record works._
+**🎁 Bonus:**
+
+- Inspect your Snakemake log (`snakemake.log` or `.snakemake/log/`).
+    
+- Email the generated HTML report to **Anton Sirota** directly from the terminal.  
+    _(Yes, emailing an HTML file is possible; just ensure it’s attached or converted to PDF before sending.)_
+    
 
 ---
 
-### FAIR Checklist
+## 🧾 Summary Workflow Overview
 
-- **Findable**: DOI / registered repository
+1. **BIDSify** → make your dataset structured.
     
-- **Accessible**: DataLad + open protocols
+2. **DataLad** → track and share it reproducibly.
     
-- **Interoperable**: BIDS format
+3. **Snakemake** → define and execute workflows.
     
-- **Reusable**: Metadata + provenance (Snakemake + DataLad)
-    
-
----
-
-✅ _End of Tutorial — Discussion & Q&A_
-
-- What worked smoothly?
-    
-- What would help you apply this to your own data?
-    
-- How can we support reproducibility in the lab’s shared workflows?
+4. **Integrate + FAIR** → make it reusable, transparent, and versioned.
     
 
----
