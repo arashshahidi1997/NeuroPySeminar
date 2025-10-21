@@ -62,34 +62,36 @@ clone the BIDS project scaffold:
 cookiecutter /storage2/arash/codes/Tools/cookiecutter/cookiecutter-bids-extended
 ```
 
-> [!cookicutter output]-
-> ```bash
-> Copy code
-> ? project_slug [tutorial-bids]: myproj
-> Output:
-> 
-> arduino
-> Copy code
-> myproj/
-> ├── raw/
-> ├── sourcedata/
-> ├── derivatives/
-> ├── code/
-> ├── docs/
-> ├── logs/
-> ├── workflow/
-> │   ├── scripts/
-> │   │   ├── python-script.py
-> │   │   └── matlab-script.m
-> │   ├── notebooks/
-> │   ├── report/
-> │   └── Snakefile
-> ├── config/
-> │   └── config.yaml
-> ├── results/
-> ├── dataset_description.json
-> └── README.md
-> ```
+---
+
+cookicutter output
+```bash
+Copy code
+? project_slug [tutorial-bids]: myproj
+Output:
+
+arduino
+Copy code
+myproj/
+├── raw/
+├── sourcedata/
+├── derivatives/
+├── code/
+├── docs/
+├── logs/
+├── workflow/
+│   ├── scripts/
+│   │   ├── python-script.py
+│   │   └── matlab-script.m
+│   ├── notebooks/
+│   ├── report/
+│   └── Snakefile
+├── config/
+│   └── config.yaml
+├── results/
+├── dataset_description.json
+└── README.md
+```
 
 ---
 ## **A. BIDS – Standardized Data Organization**

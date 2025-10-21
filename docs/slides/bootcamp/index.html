@@ -14,7 +14,7 @@
     .reveal section img{border-radius:8px}
     .reveal pre code{font-size:.9em}
     .reveal {
-      font-size: 16px; /* default is ~32px */
+      font-size: 24px; /* default is ~32px */
     }
   </style>
 </head>
@@ -91,34 +91,36 @@ clone the BIDS project scaffold:
 cookiecutter /storage2/arash/codes/Tools/cookiecutter/cookiecutter-bids-extended
 ```
 
-> [!cookicutter output]-
-> ```bash
-> Copy code
-> ? project_slug [tutorial-bids]: myproj
-> Output:
-> 
-> arduino
-> Copy code
-> myproj/
-> ├── raw/
-> ├── sourcedata/
-> ├── derivatives/
-> ├── code/
-> ├── docs/
-> ├── logs/
-> ├── workflow/
-> │   ├── scripts/
-> │   │   ├── python-script.py
-> │   │   └── matlab-script.m
-> │   ├── notebooks/
-> │   ├── report/
-> │   └── Snakefile
-> ├── config/
-> │   └── config.yaml
-> ├── results/
-> ├── dataset_description.json
-> └── README.md
-> ```
+---
+
+cookicutter output
+```bash
+Copy code
+? project_slug [tutorial-bids]: myproj
+Output:
+
+arduino
+Copy code
+myproj/
+├── raw/
+├── sourcedata/
+├── derivatives/
+├── code/
+├── docs/
+├── logs/
+├── workflow/
+│   ├── scripts/
+│   │   ├── python-script.py
+│   │   └── matlab-script.m
+│   ├── notebooks/
+│   ├── report/
+│   └── Snakefile
+├── config/
+│   └── config.yaml
+├── results/
+├── dataset_description.json
+└── README.md
+```
 
 ---
 ## **A. BIDS – Standardized Data Organization**
