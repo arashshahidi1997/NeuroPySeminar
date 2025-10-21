@@ -94,6 +94,7 @@ myproj/
 ```
 
 ---
+
 ## **A. BIDS – Standardized Data Organization**
 
 ### 🎯 **Goal**
@@ -126,6 +127,7 @@ Learn about BIDS and immediately apply it by BIDS-ifying a dataset.
     
 
 ---
+
 ### 💻 **Practice**
 
 - Each participant:
@@ -178,45 +180,45 @@ Learn how to use DataLad to manage datasets, track changes, and share data under
 
 ---
 
-### 💻 **Practice**
+### 🧩 Your Turn
 
-1. **Clone the lab repository**
-    
+1. **Add your dataset** as a **subdataset**:
 
 ```bash
-datalad clone git@server:/path/to/slab
+# Initialize superdataset with text2git configuration
+datalad create -c text2git -f .
+
+# Make 'raw' a subdataset (force, link to current dataset)
+datalad create -d . --force raw
+
+# Save subdataset registration
+datalad save -m "Promote raw/ to subdataset"
 ```
 
 ---
-
-2. **Add your dataset** as a **subdataset**:
-    
-
-```bash
-datalad create -d . my_dataset
-datalad save -m "added dataset"
-```
-
-
----
-
-## 🧩 Your Turn — BIDS
 
 > 💡 **Hands-on Practice**
 
 - Download a small sample dataset (or use an OpenNeuro example).
 
 ```bash
-mkdir resources
-# datalad install -d . -s ///openneuro/<dataset_id> <shortname>
-datalad install -d . -s ///openneuro/ds004598 data/ds-lfplintrack
+ mkdir resources
+ # datalad install -d . -s ///openneuro/<dataset_id> <shortname>
+ datalad install -d . -s ///openneuro/ds004598 resources/ds-lfplintrack
 ```
 
-- Organize it into BIDS format (`sub-<subject>/ses-<session>/<modality>/sub-<sub>_ses-<ses>_<modality>.<extension>`).
-
-🕐 _Take 5 minutes to complete these steps._
 
 ---
+
+3. **Verify structure**
+```bash
+datalad subdatasets
+```
+subdataset(ok): raw (dataset)
+subdataset(ok): resources/ds-lfplintrack (dataset)
+
+---
+
 # OpenNeuro Datasets
 
 | ID                                                                 | Species           | Modality                    | Type   | Notes                                                        |
@@ -240,73 +242,6 @@ datalad install -d . -s ///openneuro/ds004598 data/ds-lfplintrack
 | [ds004517](https://openneuro.org/datasets/ds004517/versions/1.0.0) | Human             | EEG                         | Human  | EEG dataset for semantic decoding of imagined animals.       |
 | [ds004514](https://openneuro.org/datasets/ds004514/versions/1.1.1) | Human             | EEG + fNIRS                 | Human  | Simultaneous EEG/fNIRS recordings.                           |
 
-
-
----
-
-3. **Push your subdataset**:
-    
-
-- Option A: use your **own RIA store** on the lab server (local filesystem)
-    
-- Option B: push directly to the **lab RIA store** (shared bare repo)
-    
-
-```bash
-datalad push --to origin
-```
-
----
-
-4. **Annotate with metadata** (from BIDS practice)
-    
-
-```bash
-datalad metadata --set <key>=<value>
-datalad save -m "added metadata"
-```
-
----
-
-5. **Sync and verify** updates:
-    
-
-```bash
-datalad update --merge
-```
-
-Everyone can now see that multiple subdatasets have been added by others.
-
----
-
-**🎁 Bonus:**  
-Use DataLad to fetch a paper from the shared **lab paperpool**:
-
-```bash
-datalad get slab/papers/example.pdf
-```
-
----
-
-**Concept Recap Commands**
-
-```bash
-datalad create my_dataset
-echo "hello" > my_dataset/hello.txt
-datalad save -m "add hello"
-# explain: datalad create, save, get, push
-```
-
----
-
-### Add as subdataset & push (alt minimal example)
-
-```bash
-datalad create -d . my_dataset
-datalad save -m "added dataset"
-datalad push --to origin
-```
-
 ---
 
 ## 🧩 Your Turn — DataLad
@@ -316,18 +251,12 @@ datalad push --to origin
 - Run `datalad create test_ds`.
     
 - Add and save a small file (`echo "test" > file.txt`).
-    
-- Explore commands:
-    
-    - `datalad status`
-        
+    - `datalad status`    
+    - `datalad save -m "<message>"`
+
     - `datalad get`
         
-    - `datalad push`
-        
 - Inspect `.git/annex` to see how large files are tracked.
-    
-- (If access) clone `slab` and add a subdataset on a **feature branch**.
     
 
 🕐 _5 minutes — experiment and share one useful command!_
@@ -374,7 +303,6 @@ Snakemake tutorial slides: https://slides.com/johanneskoester/snakemake-tutorial
 
 2. Define outputs under `derivatives/`:
     
-
 ```
 derivatives/
 ├── dummy-mat/
