@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Sirota Lab — Progressive, Reproducible Workflow Bootcamp</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- reveal.js (pin to v5) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css" id="theme" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css" />
+
+  <style>
+    .footnote{position:absolute;bottom:10px;right:20px;font-size:.55em;opacity:.7}
+    .reveal h1,.reveal h2{letter-spacing:.5px}
+    .reveal section img{border-radius:8px}
+    .reveal pre code{font-size:.9em}
+  </style>
+</head>
+<body>
+  <div class="reveal"><div class="slides">
+    <!-- Load content from slides.md -->
+    <section data-markdown="slides.md"
+             data-separator="^\n---\n$"
+             data-separator-vertical="^\n--\n$"
+             data-separator-notes="^Note:"
+             data-charset="utf-8"></section>
+  </div></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      navigationMode: 'linear',
+      plugins: [ RevealMarkdown, RevealNotes, RevealHighlight ],
+      width: 1280, height: 720, margin: 0.04,
+      pdfSeparateFragments: false, pdfMaxPagesPerSlide: 1,
+      transition: 'slide', backgroundTransition: 'fade'
+    });
+  </script>
+</body>
+</html>
