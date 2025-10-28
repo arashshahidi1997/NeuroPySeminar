@@ -27,563 +27,586 @@
              data-charset="utf-8">
       <textarea data-template>
 
-# 🧩 Lab Reproducible Workflow Tutorial
 
-_(BIDS → DataLad → Snakemake → Integration & FAIR)_  
-Sirota Lab Meeting — Progressive, reproducible-workflow bootcamp
-
+# Bootcamp II
+### *Snakebids*
 
 ---
 
-### 🧰 **Setup Conda (Shared vs Personal)**
+## Tutorial Overview
 
-#### 🟢 **If you already have your own Conda (If not > next slide)**
+1. VSCode SSH Workspace
+2. Terminal Setup
+3. explore `sirocampus` and install `ds-bidsmini`
+4. Part I: Snakemake
+5. Part II: Snakebids
 
-Don’t re-initialize — just temporarily source the shared one when you need it:
+---
+
+## 1. VSCode SSH Workspace
+
+---
+
+### 1.0 Open VSCode
+
+Press
+
+```
+Ctrl + Shift + P
+```
+
+A command box will appear.
+
+---
+
+### 1.1 Connect via Remote-SSH
+
+Type and select:
+
+```
+Remote-SSH: Connect to Host...
+```
+
+Enter your host: beta
+
+If no hosts are being shown then type:
+```bash
+<user>@beta
+```
+
+Enter your **password** when prompted.
+
+---
+
+### 1.2 Create a tutorial folder
+
+Open VSCode terminal
 
 ```bash
-# Use the shared Conda installation for this session
+Ctrl + J
+```
 
-source /storage/share/python/environments/Anaconda3/etc/profile.d/conda.sh
+In the VSCode terminal, run:
 
+```bash
+# I have mine under
+snakebidsdir="/storage2/arash/tutorials/snakebids"
+
+snakebidsdir="/path/to/.../tutorials/snakebids"
+
+mkdir -p $snakebidsdir
+
+# change dir
+cd $snakebidsdir
+```
+
+copy the absolute path to `snakebids` directory (without quotation marks)
+
+---
+
+### 1.3 VSCode: Open Folder
+
+Select:
+
+```
+Open Folder
+```
+
+By default, `/home/<user>` will appear. Replace it by pasting the absolute path of the `snakebids` folder.
+
+When prompted, select:
+
+> ✅ Yes, I trust the authors
+
+---
+
+### 1.4 VSCode: panels
+toggle File explorer
+```
+Ctrl + B
+```
+toggle terminal
+```
+Ctrl + J
+```
+
+---
+
+## 2. Terminal Setup
+
+---
+
+### 2. Terminal Setup
+
+UMASK for contirbution (optional)
+
+```bash
+# set umask so that new file creation preserves group permissions
+echo 'umask 0002' >> ~/.bashrc
+```
+
+***Warning***: it means under shared folders others can modify files created by you if the group permissions allow it.
+
+---
+
+### 2.1 make an alias 
+
+```bash
+# --- Create ~/.bash_aliases ---
+cat <<'EOT' > ~/.bash_aliases
+export riastoreshared=/storage/share/git/ria-store
+EOT
+```
+
+---
+
+### 2.2 More Setup
+
+If you don't already have the following in `bashrc`, add it by running:
+```bash
+# --- Append to ~/.bashrc ---
+cat <<'EOT' >> ~/.bashrc
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+EOT
+```
+
+---
+
+### 2.3 add `conda-shared` alias
+
+```bash
+# Shared conda
+cat <<'EOT' >> ~/.bashrc
+alias conda-shared='source /storage/share/python/environments/Anaconda3/etc/profile.d/conda.sh && echo "→ Using shared Conda"'
+EOT
+```
+
+---
+
+### 2.4 Setup finished: resource bashrc and activate the `cogpy` environment
+```bash
+# --- Reload bash configuration ---
+source ~/.bashrc
+```
+
+```bash
+conda-shared
 conda activate cogpy
 ```
 
-💡 This doesn’t overwrite your personal Conda.
+have a look at available conda environments
+```bash
+conda env list
+```
 
-To return to your own environment, just:
+
+---
+
+## 3.  `sirocampus`
+
+---
+
+### 3.0 Clone `sirocampus`
 
 ```bash
-source ~/.bashrc
+# navigate to your base folder
+cd /storage<storage-number>/<name>/
+# mine is: /storage2/arash
 ```
 
-(or however you normally load your personal Conda).
-
-
----
-
-#### ⚙️ **If you don’t have Conda at all**
-
-Initialize your shell using the shared Conda:
+install the `sirocampus`:
 
 ```bash
-
-/storage/share/python/environments/Anaconda3/bin/conda init bash
-
-source ~/.bashrc
-
-```
-
-> This will set up Conda automatically every time you open a new shell.
-
----
-
-**Summary:**
-
-* ✅ Existing Conda users → just `source` the shared `conda.sh` when needed.
-
-* 🆕 No Conda yet → `conda init` with the shared installation once.
-
-**Next**:
-
-clone the BIDS project scaffold:
-```
-cookiecutter /storage2/arash/codes/Tools/cookiecutter/cookiecutter-bids-extended
+datalad install -s "ria+file://$riastoreshared#~sirocampus" sirocampus
 ```
 
 ---
 
-cookicutter output
+### 3.1 `sirocampus` tree
+
+run:
 ```bash
-Copy code
-? project_slug [tutorial-bids]: myproj
-Output:
+tree -L 3 sirocampus
+```
 
-arduino
-Copy code
-myproj/
-├── raw/
-├── sourcedata/
-├── derivatives/
-├── code/
-├── docs/
-├── logs/
-├── workflow/
-│   ├── scripts/
-│   │   ├── python-script.py
-│   │   └── matlab-script.m
-│   ├── notebooks/
-│   ├── report/
-│   └── Snakefile
-├── config/
-│   └── config.yaml
-├── results/
-├── dataset_description.json
-└── README.md
+output:
+```bash
+```bash
+sirocampus (the sirotalab super repository)
+├── bib 
+│   └── ...
+├── data
+│   └── ...
+├── docs
+│   └── ...
+└── code
+    └── ...
 ```
 
 ---
 
-## **A. BIDS – Standardized Data Organization**
-
-### 🎯 **Goal**
-
-Learn about BIDS and immediately apply it by BIDS-ifying a dataset.
-
-| Title                                       | Speaker  | Year | Occasion                                                                | Location | Video                                                      | Slides                        |
-| ------------------------------------------- | -------- | ---- | ----------------------------------------------------------------------- | -------- | ---------------------------------------------------------- | ----------------------------- |
-| BIDS: underlying data management principles | Remi Gau | 2022 | Open Research at the Wellcome Center for Integrative Neuroimaging (WIN) | Online   | [link](https://vimeo.com/showcase/7645853/video/668642973) | [link](https://osf.io/h6gsr/) |
-
-[BEP 032: Microelectrode electrophysiology](https://bids.neuroimaging.io/extensions/beps/bep_032.html#bep-032-microelectrode-electrophysiology)
-
----
-
-### 🧠 **Theory**
-
-- Introduce the **BIDS standard**: motivation, structure, metadata files.
-    
-- Explain key elements:
-    
-    - `sub-*/ses-*` hierarchy
-        
-    - `dataset_description.json`
-        
-    - sidecar JSONs
-        
-    - modality-specific folders (`ecephys`, `motion`, `anat`, `ieeg`, etc.)
-        
-- Emphasize reproducibility and compatibility with open neuroimaging tools.
-    
-
----
-
-### 💻 **Practice**
-
-- Each participant:
-    
-    - Uses **their own dataset** or a **provided demo dataset**.
-        
-    - Converts it into **BIDS format**:
-        
-        - Create folder structure and minimal JSON sidecars.
-
----
-
-### BIDS Folder Skeleton
-
-```text
-project/
-└─ sub-01/
-   └─ ses-01/
-      ├─ motion/
-      └─ ecephys/
-        ├─ sub-01_ses-01_ecephys.lfp
-        └─ sub-01_ses-01_ecephys.json
-        
-dataset_description.json
-```
-
----
-
-## **B. DataLad – Version Control for Data and Collaboration**
-
-### 🎯 **Goal**
-
-Learn how to use DataLad to manage datasets, track changes, and share data under the shared lab repository.
-
-
----
-
-### 🧠 **Theory**
-
-- Introduce **DataLad concepts**:
-    
-    - Git + git-annex integration
-        
-    - **datasets**, **subdatasets**, **remote storage (RIAs)**
-        
-    - Provenance tracking and reproducibility
-        
-- Discuss **collaborative structure** of the **lab repository (`slab`)**.
-    
-
----
-
-### 🧩 Your Turn
-
-1. **Add your dataset** as a **subdataset**:
+### 3.1 `sirocampus` tree
 
 ```bash
-# Initialize superdataset with text2git configuration
-datalad create -c text2git -f .
+```bash
+sirocampus
+├── bib (lab paper pool > linked with Zotero)
+│   ├── metadata
+│   └── pdfs
+├── data
+│   └── ...
+├── docs
+│   └── ...
+└── code
+    └── ...
+```
 
-# Make 'raw' a subdataset (force, link to current dataset)
-datalad create -d . --force raw
-
-# Save subdataset registration
-datalad save -m "Promote raw/ to subdataset"
+run:
+```bash
+cd sirocampus
+datalad get -n bib
 ```
 
 ---
 
-> 💡 **Hands-on Practice**
+### 3.2 `sirocampus:bib`
 
-- Download a small sample dataset (or use an OpenNeuro example).
+run:
+```bash
+ls -l bib/pdfs/
+```
+
+to download a paper, run:
+```bash
+datalad get bib/pdfs/<paper name>
+```
+
+---
+
+### 3.3 `sirocampus:data`
 
 ```bash
- mkdir resources
- # datalad install -d . -s ///openneuro/<dataset_id> <shortname>
- datalad install -d . -s ///openneuro/ds004598 resources/ds-lfplintrack
-```
-
-
----
-
-3. **Verify structure**
-```bash
-datalad subdatasets
-```
-subdataset(ok): raw (dataset)
-subdataset(ok): resources/ds-lfplintrack (dataset)
-
----
-
-# OpenNeuro Datasets
-
-| ID                                                                 | Species           | Modality                    | Type   | Notes                                                        |
-| ------------------------------------------------------------------ | ----------------- | --------------------------- | ------ | ------------------------------------------------------------ |
-| [ds003463](https://openneuro.org/datasets/ds003463/versions/1.0.2) | Mouse & Rat       | MRI (Mn-enhanced)           | Animal | In vivo MRI for 5×FAD mice and TgF344-AD rats.               |
-| [ds003325](https://openneuro.org/datasets/ds003325/versions/1.0.0) | Mouse             | MRI (T1w)                   | Animal | TDP-43 knock-in mouse model of ALS-FTD.                      |
-| [ds006746](https://openneuro.org/datasets/ds006746)                | Mouse             | MRI (Mn2+ enhanced)         | Animal | 3D RARE Mn(II)-enhanced MRI, 24 mice (2 rearing conditions). |
-| [ds006670](https://openneuro.org/datasets/ds006670)                | Mouse             | MRI (T1w, T2w)              | Animal | Structural adulthood MRI in C57BL/6J mice.                   |
-| [ds004913](https://openneuro.org/datasets/ds004913/versions/1.0.0) | Rat               | fMRI + Optogenetics         | Animal | Optogenetic DBS fMRI in Parkinsonian rats.                   |
-| [ds005093](https://openneuro.org/datasets/ds005093/versions/1.0.0) | Non-human Primate | Imaging (PET/MRI)           | Animal | NHP study of microglia activation (TBS course).              |
-| [ds000241](https://openneuro.org/datasets/ds000241/versions/00002) | Multiple species  | Imaging (various)           | Animal | “Animal Kingdom 6 Species” comparative dataset.              |
-| [ds004161](https://openneuro.org/datasets/ds004161)                | Sheep             | MRI / Imaging               | Animal | Turone Sheep Chronic Stress (TSCS) study.                    |
-| [ds004598](https://openneuro.org/datasets/ds004598/versions/1.0.0) | Rat               | LFP (electrophysiology)     | Animal | LFP during linear-track task in TgF344-AD rats.              |
-| [ds006269](https://openneuro.org/datasets/ds006269)                | Rat               | EEG                         | Animal | 6-hour tethered EEG recordings in Syngap1 rats.              |
-| [ds006366](https://openneuro.org/datasets/ds006366/versions/1.0.1) | Mouse             | EEG / Sleep                 | Animal | Mouse Sleep Staging Validation (EEG).                        |
-| [ds005688](https://openneuro.org/datasets/ds005688)                | Animal            | Electrophysiology / Optical | Animal | visStim dataset – non-MRI animal neurophysiology.            |
-| [ds004509](https://openneuro.org/datasets/ds004509/versions/1.0.0) | Rat               | Electrophysiology / Optical | Animal | Visual-deprivation remapping in rats (non-MRI).              |
-| [ds005700](https://openneuro.org/datasets/ds005700/versions/1.0.0) | Human             | fMRI                        | Human  | NeuroEmo Emotion Recognition fMRI dataset (~7 GB BIDS).      |
-| [ds005126](https://openneuro.org/datasets/ds005126/versions/1.0.0) | Human             | fMRI                        | Human  | ColorSimilarity fMRI study (~36 GB).                         |
-| [ds005880](https://openneuro.org/datasets/ds005880/versions/1.0.2) | Human             | fMRI                        | Human  | “Diminished Seventh Chord” fMRI study.                       |
-| [ds004517](https://openneuro.org/datasets/ds004517/versions/1.0.0) | Human             | EEG                         | Human  | EEG dataset for semantic decoding of imagined animals.       |
-| [ds004514](https://openneuro.org/datasets/ds004514/versions/1.1.1) | Human             | EEG + fNIRS                 | Human  | Simultaneous EEG/fNIRS recordings.                           |
-
----
-
-## 🧩 Your Turn — DataLad
-
-> 💡 **Hands-on Practice**
-
-- Run `datalad create test_ds`.
-    
-- Add and save a small file (`echo "test" > file.txt`).
-    - `datalad status`    
-    - `datalad save -m "<message>"`
-
-    - `datalad get`
-        
-- Inspect `.git/annex` to see how large files are tracked.
-    
-
-🕐 _5 minutes — experiment and share one useful command!_
-
----
-
-## **C. Snakemake – Workflow Management and Automation**
-
-### 🎯 **Goal**
-
-Learn how to define and execute reproducible pipelines operating on BIDS datasets.
-
-Snakemake tutorial slides: https://slides.com/johanneskoester/snakemake-tutorial
-
----
-
-### 🧠 **Theory**
-
-- What is a **Snakefile**?
-    
-- Rules, inputs, outputs, and wildcards.
-    
-- Workflow visualization (DAGs) and reports.
-    
-- Integration with version control and DataLad.
-    
-
----
-
-### 💻 **Practice**
-
-1. Create a **Snakefile** that includes:
-    
-    - One **MATLAB script** (dummy computation).
-        
-    - Two **Python scripts**:
-        
-        - `calc.py` → performs a dummy computation.
-            
-        - `plot.py` → generates a PNG output.
-            
-
----
-
-2. Define outputs under `derivatives/`:
-    
-```
-derivatives/
-├── dummy-mat/
-├── dummy-py/
-└── dummy-png/
+sirocampus (the sirotalab super repository)
+├── bib (lab paper pool > linked with Zotero)
+├── data (datalad superdataset containing all sirota lab datasets)
+│   ├── ds-bidsmini
+│   ├── ds-msol
+│   ├── ds-gecog
+│   ├── ds-pixecog
+│   └── ... 
+├── docs
+│   └── ...
+└── code
+    └── ...
 ```
 
 ---
 
-3. Execute the pipeline:
-    
+### 3.3 `sirocampus:data`
 
 ```bash
-snakemake --cores 2
+sirocampus (the sirotalab super repository)
+├── bib (lab paper pool > linked with Zotero)
+├── data (datalad superdataset containing all sirota lab datasets)
+│   ├── ds-bidsmini
+│   ├── ds-msol
+│   ├── ds-gecog
+│   ├── ds-pixecog
+│   └── ... To be added by you 🎨! 
+├── docs
+│   └── ...
+└── code
+    └── ...
 ```
 
 ---
 
-4. Visualize workflow:
-    
+### 3.4 `sirocampus:docs` 
+
+Diataxis framework: https://diataxis.fr/
+
+two axes:
+cognition -> action
+acquisition -> application
+
+widely adopted by tools for documentation (e.g. pytest, ...)
+
+---
+
+### 3.4 `sirocampus:docs` 
 
 ```bash
-snakemake --dag | dot -Tpng > dag.png
+```bash
+sirocampus (the sirotalab super repository)
+├── bib 
+├── data
+├── docs (lab documents based on Diataxis framework)
+│   ├── logs
+│   ├── how-to
+│   ├── reference
+│   ├── tutorials > snakebids.md
+│   └── explanation
+└── code
+    └── ...
 ```
 
----
+### 3.4 `sirocampus:docs` lab wiki 
 
-5. **Bonus:** Generate a Snakemake report:
-    
+easy contribution to lab wiki
 
 ```bash
-snakemake --report report.html
+```bash
+sirocampus (the sirotalab super repository)
+├── bib 
+├── data
+├── docs (lab documents based on Diataxis framework)
+│   ├── wiki (markdown version of all lab dokuwiki files)
+│   ├── logs
+│   ├── how-to
+│   ├── reference
+│   ├── tutorials > snakebids.md
+│   └── explanation
+└── code
+    └── ...
+```
+
+automatic conversion between dokuwiki and markdown formats.
+
+---
+
+### 3.5 `sirocampus:code`
+
+```bash
+```bash
+sirocampus (the sirotalab super repository)
+├── bib 
+├── data
+├── docs
+└── code (sirota lab code)
+    ├── lib (library of third-party tools)
+    ├── cogpy (ecog package)
+    ├── labbox (lab MATLAB toolbox)
+    └── labpy (lab Python package)
 ```
 
 ---
 
-**Minimal Example Snakefile**
+### 3.6 `sirocampus` tree
 
-```python
-# Snakefile
+```bash
+```bash
+sirocampus (the sirotalab super repository)
+├── bib (lab paper pool > linked with Zotero)
+├── data (datalad superdataset containing all sirota lab datasets)
+│   ├── ds-bidsmini
+│   ├── ds-msol
+│   ├── ds-gecog
+│   ├── ds-pixecog
+│   └── ... To be added by you 🎨! 
+├── docs (lab documents based on Diataxis framework)
+│   ├── logs
+│   ├── how-to
+│   ├── reference
+│   ├── tutorials
+│   └── explanation
+└── code (sirota lab code)
+    ├── lib (library of third-party tools)
+    ├── cogpy (ecog package)
+    ├── labbox (lab MATLAB toolbox)
+    └── labpy (lab Python package)
+```
+
+
+---
+
+## 4.  `snakemake`
+
+---
+
+### 4.0 create a mini bids
+
+Create a **tiny BIDS-style dataset** with:
+
+- 2 subjects: `sub-01`, `sub-02`
+    
+- 2 sessions per subject: `ses-01`, `ses-02`
+    
+- Small dummy motion CSV files in each session directory
+    
+
+---
+
+# 📁 Desired Structure
+
+```
+sub-01/
+  ses-01/
+    motion/
+      sub-01_ses-01_motion.csv
+  ses-02/
+    motion/
+      sub-01_ses-02_motion.csv
+sub-02/
+  ses-01/
+    motion/
+      sub-02_ses-01_motion.csv
+  ses-02/
+    motion/
+      sub-02_ses-02_motion.csv
+```
+
+---
+
+# ⚙️ Bash Command
+
+```bash
+#!/bin/bash
+
+# Create BIDS-like directory structure
+for sub in 01 02; do
+  for ses in 01 02; do
+    mkdir -p sub-${sub}/ses-${ses}/motion
+    # Create a tiny dummy motion CSV file (<1MB)
+    echo "time,dx,dy,dz,rx,ry,rz" > sub-${sub}/ses-${ses}/motion/sub-${sub}_ses-${ses}_motion.csv
+    echo "0,0.1,0.2,0.3,0.01,0.02,0.03" >> sub-${sub}/ses-${ses}/motion/sub-${sub}_ses-${ses}_motion.csv
+    echo "1,0.2,0.3,0.4,0.02,0.03,0.04" >> sub-${sub}/ses-${ses}/motion/sub-${sub}_ses-${ses}_motion.csv
+  done
+done
+```
+
+---
+
+# ✅ Result
+
+- Four CSV files created
+    
+- Each file only a few bytes (tiny)
+    
+- Ready for testing or demonstration
+    
+
+```
+sub-{01,02}/ses-{01,02}/motion/sub-<label>_ses-<label>_motion.csv
+```
+
+Perfect — here’s the **ultra-simple single-file Snakemake example**, using literal paths and no lambdas or wildcards.  
+It just processes one file: `raw/sub-01/ses-01/motion/sub-01_ses-01_motion.csv`.
+
+---
+
+### 4.1.1 _SingleFile_: Create Snakefile
+
+```bash
+# Snakefile (single-file, literal paths only)
+
+configfile: "config.yaml"
+
 rule all:
-    input: "derivatives/dummy-png/out.png"
+    input:
+        "derivatives/pipeline/sub-01/ses-01/motion/sub-01_ses-01_motion_copy.csv"
 
-rule calc:
-    output: "derivatives/dummy-py/out.txt"
-    shell: "python code/calc.py > {output}"
-
-rule plot:
-    input: "derivatives/dummy-py/out.txt"
-    output: "derivatives/dummy-png/out.png"
-    shell: "python code/plot.py {input} {output}"
+rule copy_motion:
+    input:
+        "raw/sub-01/ses-01/motion/sub-01_ses-01_motion.csv"
+    output:
+        "derivatives/pipeline/sub-01/ses-01/motion/sub-01_ses-01_motion_copy.csv"
+    shell:
+        """
+        mkdir -p $(dirname {output})
+        cp {input} {output}
+        echo 'Copied {input} to {output}'
+        """
 ```
 
 ---
 
-## 🧩 Your Turn — Snakemake
-
-> 💡 **Hands-on Practice**
-
-- Copy or create the sample `Snakefile`.
-    
-- Run the workflow:
-    
-    ```bash
-    snakemake --cores 2
-    ```
-    
-- Add a **new rule** that writes today’s date to a file.
-    
-- Generate a **DAG image** and open the `report.html`.
-    
-
-🕐 _10 minutes — make your workflow produce something new!_
-
----
-
-## **D. Integration, FAIR Principles & Sustainability**
-
-### 🎯 **Goal**
-
-Combine all tools under FAIR principles — make workflows reproducible, adaptable, and transparent.
-
----
-
-### 🧠 **Theory**
-
-- Summarize:
-    
-    - **Reproducibility** – “same results anytime.”
-        
-    - **Adaptability** – modular pipelines and reusable code.
-        
-    - **Transparency** – open sharing and provenance tracking.
-        
-- Reference: _Snakemake “Rolling Paper”_ (FAIR workflow concepts).
-    
-
----
-
-### 💻 **Practice**
-
-1. **Make your Snakemake pipeline a CLI tool**:
-    
-    - Add a `code/` folder.
-        
-    - Move Snakefile and scripts inside.
-        
-    - Create a `pyproject.toml` with an **entry point** to run from command line.
-        
-    - Install into environment (`conda activate labpy`).
-        
+### 4.1.2 _SingleFile_: Run `snakemake`
 
 ```bash
-pip install -e .
+snakemake -c 1
 ```
+
+This will:
+
+- Create the output folder `derivatives/pipeline/sub-01/ses-01/motion/`
+    
+- Copy the CSV file from `raw/`
+    
+- Print a simple confirmation message
+    
 
 ---
 
-2. **Run the workflow with provenance tracking**:
-    
+### 4.1.3 _SingleFile_: Check the logs
+
+under `.snakemake`
+
+---
+
+### 4.1.4 _SingleFile_: Create config file
+
+Include a minimal config file (even if not used much yet):
 
 ```bash
-datalad run "snakemake --cores 2"
+# config.yaml
+raw_dir: raw
+out_dir: derivatives/pipeline
+subject: "01"
+session: "01"
 ```
 
 ---
 
-3. **Save and push results**:
-    
+### 4.1.5 _SingleFile_: Run `snakemake`
+
+Same simple execution — config is just declared for consistency:
 
 ```bash
-datalad save -m "run workflow with provenance"
-datalad push
+snakemake -c 1
 ```
 
----
+✅ **Result:**  
+A working minimal Snakemake pipeline that copies one literal file (`sub-01/ses-01`) from `raw/` to `derivatives/pipeline/`.
 
-4. **Promote your package** into a **DataLad subdataset**:
-    
-
-```bash
-datalad create -d slab/packages mytool
-datalad save -m "added CLI tool package"
-```
 
 ---
 
-5. **Write documentation** for your tool under `docs/` (can later integrate with MkDocs).
-    
+### 4.2.1 *MultiFile*: Create Snakefile
 
 ---
 
-6. **Push to shared RIA store**:
-    
-
-```bash
-datalad push --to ria-storage
-```
+### 4.2.2 *MultiFile*: Run `snakemake`
 
 ---
 
-7. Perform all steps on a **feature branch** to protect the main `slab` repository.
-    
+## 4.  `snakebids`
 
 ---
 
-**🎁 Bonus:**
-
-- Inspect your Snakemake log (`snakemake.log` or `.snakemake/log/`).
-    
-- Email the generated HTML report to **Anton Sirota** directly from the terminal (attach the file or convert to PDF first).
-    
+### 5.1 *snakebids*: Create Snakefile
 
 ---
 
-## 🧩 Your Turn — Integration
-
-> 💡 **Hands-on Practice**
-
-- Clone or create a DataLad dataset.
-    
-- Add your `Snakefile` to the project (ideally under `code/`).
-    
-- Run your workflow with provenance tracking:
-    
-    ```bash
-    datalad run "snakemake --cores 2"
-    ```
-    
-- View recorded provenance:
-    
-    ```bash
-    datalad run-record show
-    ```
-    
-- Create a **feature branch**, add a brief `README.md`, and push to the **RIA store**.
-    
-
-🕐 _5–10 minutes — confirm your provenance record works._
+### 5.2 *snakebids*: Run `snakemake`
 
 ---
 
-## FAIR Checklist
 
-- **Findable**: DOI / registered repository
-    
-- **Accessible**: DataLad + open protocols
-    
-- **Interoperable**: BIDS format
-    
-- **Reusable**: Metadata + provenance (Snakemake + DataLad)
-    
 
----
-## Why Reproducible Workflows?
 
-- Increasing complexity of neuroimaging analysis
-    
-- Challenges: sharing, version drift, reruns
-    
-- Solution: FAIR + modular workflow
-    
-    - **BIDS**: structure
-        
-    - **DataLad**: control
-        
-    - **Snakemake**: automation
-        
-    - **Integration**: provenance & sharing
-
----
-
-## 🧾 Summary Workflow Overview
-
-1. **BIDSify** → make your dataset structured.
-    
-2. **DataLad** → track and share it reproducibly.
-    
-3. **Snakemake** → define and execute workflows.
-    
-4. **Integrate + FAIR** → make it reusable, transparent, and versioned.
-    
-
----
-
-## ✅ End of Tutorial — Discussion & Q&A
-
-- What worked smoothly?
-    
-- What would help you apply this to your own data?
-    
-- How can we support reproducibility in the lab’s shared workflows?      </textarea>
+      </textarea>
     </section>
   </div></div>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
