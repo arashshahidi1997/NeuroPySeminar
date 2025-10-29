@@ -1,105 +1,124 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Build all or a subset of decks
+# Build all or selected decks.
 #   scripts/build_reveal.sh
 #   scripts/build_reveal.sh bootcamp emd
 
 export LC_ALL=C.UTF-8
+
 REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 SLIDES_ROOT="$REPO_ROOT/docs/slides"
-VAULT="$SLIDES_ROOT"
+SHARED_DIR="$SLIDES_ROOT/_shared"
 
 command -v obsidian-export >/dev/null || { echo "ERROR: obsidian-export not found"; exit 1; }
+command -v rsync >/dev/null || { echo "ERROR: rsync not found"; exit 1; }
+command -v python3 >/dev/null || { echo "ERROR: python3 not found"; exit 1; }
 
-# Determine which deck directories to build
+# --- discover decks -----------------------------------------------------------
 if (( $# > 0 )); then
   mapfile -t DECK_DIRS < <(for d in "$@"; do echo "$SLIDES_ROOT/$d"; done)
 else
-  mapfile -t DECK_DIRS < <(find "$SLIDES_ROOT" -mindepth 1 -maxdepth 1 -type d ! -name "_shared")
+  mapfile -t DECK_DIRS < <(find "$SLIDES_ROOT" -mindepth 1 -maxdepth 1 -type d ! -name "_shared" | sort)
 fi
 
-TMP="$(mktemp -d)"
-trap 'rm -rf "$TMP"' EXIT
-
-# Export once so all embeds are resolved and front matter is normalized
-obsidian-export "$VAULT" "$TMP" >/dev/null
-
-# Extract a single scalar from YAML front matter in exported MD
-yqval() { # yqval key file
+# --- helpers -----------------------------------------------------------------
+yqval() { # yqval key file   (extracts a simple scalar from YAML front matter)
   awk -v k="$1" '
-    BEGIN { inY=0; dash=0 }
+    BEGIN{inY=0; dash=0}
     /^[[:space:]]*---[[:space:]]*$/ { dash++; if (dash==1) inY=1; else if (dash==2) exit; next }
     inY && $0 ~ "^[[:space:]]*"k":[[:space:]]" {
-      sub("^[[:space:]]*"k":[[:space:]]*", "", $0)
-      print
-      exit
-    }
-  ' "$2"
+      sub("^[[:space:]]*"k":[[:space:]]*", "", $0); print; exit
+    }' "$2" || true
 }
 
+first_h1() { # file -> first line starting with "# "
+  awk '/^# /{sub(/^# /,""); print; exit}' "$1" || true
+}
+
+# --- build loop ---------------------------------------------------------------
+built_any=false
 for DIR in "${DECK_DIRS[@]}"; do
+  slug="${DIR##*/}"
   TPL="$DIR/index.template.html"
-  [ -f "$TPL" ] || { echo "WARN: no index.template.html in $(basename "$DIR")"; continue; }
-
-  REL="${DIR#$SLIDES_ROOT/}"              # slug, used to find export path
-  EXPORTED_MD="$TMP/$REL/slides.md"
-  [ -f "$EXPORTED_MD" ] || { echo "WARN: no exported slides.md for $REL"; continue; }
-
   OUT="$DIR/index.html"
 
-  # Front matter from exported MD (obsidian-export preserves it)
-  TITLE="$(yqval title  "$EXPORTED_MD" || true)"
-  THEME="$(yqval theme  "$EXPORTED_MD" || true)"
-  WIDTH="$(yqval width  "$EXPORTED_MD" || true)"
-  HEIGHT="$(yqval height "$EXPORTED_MD" || true)"
+  if [[ ! -f "$TPL" ]]; then
+    echo "WARN: [$slug] missing index.template.html — skipping"
+    continue
+  fi
 
-  # ---------- Injection option A: sed (placeholder must be on its own line) ----------
-  # This replaces any line that is exactly the placeholder with the file content,
-  # preserving real newlines.
-  #
-  # sed "/{{SLIDES_MD}}/ {
-  #   r $EXPORTED_MD
-  #   d
-  # }" "$TPL" > "$OUT"
+  # Create a tiny per-deck "subset vault": {_shared, this deck}
+  SUBSET="$(mktemp -d)"; EXPORT_DIR="$(mktemp -d)"
+  cleanup() { rm -rf "$SUBSET" "$EXPORT_DIR"; }
+  trap cleanup EXIT
 
-  # ---------- Injection option B: Python (works mid-line as well) ----------
+  mkdir -p "$SUBSET"
+  [[ -d "$SHARED_DIR" ]] && rsync -a "$SHARED_DIR" "$SUBSET/" >/dev/null
+  rsync -a "$DIR" "$SUBSET/" >/dev/null
+
+  # Export just this subset so embeds resolve but other decks can't break it
+  if ! obsidian-export "$SUBSET" "$EXPORT_DIR" >/dev/null 2>&1; then
+    echo "ERROR: [$slug] obsidian-export failed (likely non-UTF8 in this deck)."
+    cleanup; trap - EXIT
+    continue
+  fi
+
+  EXPORTED_MD="$EXPORT_DIR/$slug/slides.md"
+  if [[ ! -f "$EXPORTED_MD" ]]; then
+    echo "WARN: [$slug] exported slides.md not found — skipping"
+    cleanup; trap - EXIT
+    continue
+  fi
+
+  # ---- metadata: deck.env > YAML > first H1 ---------------------------------
+  TITLE=""; THEME="black"; WIDTH="1280"; HEIGHT="720"
+  [[ -f "$DIR/deck.env" ]] && source "$DIR/deck.env"
+
+  # If YAML exists in exported file, it will be clean UTF-8 here
+  if [[ -z "${TITLE:-}" ]]; then TITLE="$(yqval title  "$EXPORTED_MD" || true)"; fi
+  if [[ -n "$(yqval theme  "$EXPORTED_MD" || true)" ]]; then THEME="$(yqval theme "$EXPORTED_MD")"; fi
+  if [[ -n "$(yqval width  "$EXPORTED_MD" || true)" ]]; then WIDTH="$(yqval width "$EXPORTED_MD")"; fi
+  if [[ -n "$(yqval height "$EXPORTED_MD" || true)" ]]; then HEIGHT="$(yqval height "$EXPORTED_MD")"; fi
+  if [[ -z "${TITLE:-}" ]]; then TITLE="$(first_h1 "$EXPORTED_MD")"; fi
+
+  # ---- inject exported markdown into template -------------------------------
   python3 - "$TPL" "$EXPORTED_MD" "$OUT" <<'PY'
-import io, sys, re
-
-tpl_path, md_path, out_path = sys.argv[1:4]
-with io.open(tpl_path, 'r', encoding='utf-8', newline='') as f:
-    html = f.read()
-with io.open(md_path, 'r', encoding='utf-8', newline='') as f:
-    md = f.read()
-
-# Replace all occurrences of the placeholder with the raw markdown (real newlines preserved)
-html = html.replace("{{SLIDES_MD}}", md)
-
-with io.open(out_path, 'w', encoding='utf-8', newline='') as f:
-    f.write(html)
+import io, sys
+tpl, md, out = sys.argv[1:4]
+with io.open(tpl, 'r', encoding='utf-8', newline='') as f: html = f.read()
+with io.open(md,  'r', encoding='utf-8', newline='') as f: body = f.read()
+html = html.replace("{{SLIDES_MD}}", body)
+with io.open(out, 'w', encoding='utf-8', newline='') as f: f.write(html)
 PY
 
-  # Optional tweaks on the generated HTML -------------------------------
-
-  # Update <title>…</title> safely if TITLE provided
+  # ---- apply metadata to HTML ----------------------------------------------
+  # title
   if [[ -n "${TITLE:-}" ]]; then
-    # escape forward slashes for sed
     esc_title="${TITLE//\//\\/}"
     sed -E -i "s#<title>.*</title>#<title>${esc_title}</title>#g" "$OUT"
   fi
-
-  # Swap theme href ending in theme/*.css if THEME provided (expects id="theme")
+  # theme (id="theme" href=".../theme/<name>.css")
   if [[ -n "${THEME:-}" ]]; then
     esc_theme="${THEME//\//\\/}"
-    sed -E -i "s#(href=\".*?/theme/)[A-Za-z0-9_-]+(.css\"[^>]*id=\"theme\")#\1${esc_theme}\2#g" "$OUT"
+    sed -E -i 's#(href="[^"]*/theme/)[A-Za-z0-9_-]+(.css"[^>]*id="theme")#\1REPL\2#g' "$OUT"
+    sed -E -i "s#REPL#${esc_theme}#g" "$OUT"
+  fi
+  # dimensions
+  sed -E -i "s/(width:[[:space:]]*)[0-9]+/\1${WIDTH}/" "$OUT"
+  sed -E -i "s/(height:[[:space:]]*)[0-9]+/\1${HEIGHT}/" "$OUT"
+
+  # sanity: ensure placeholder is gone
+  if grep -q "{{SLIDES_MD}}" "$OUT"; then
+    echo "ERROR: [$slug] injection failed (placeholder still present)."
+    cleanup; trap - EXIT
+    continue
   fi
 
-  # Adjust Reveal size if provided (fallbacks keep existing value if unset)
-  if [[ -n "${WIDTH:-}" || -n "${HEIGHT:-}" ]]; then
-    [[ -n "${WIDTH:-}"  ]] && sed -E -i "s/(width:[[:space:]]*)[0-9]+/\1${WIDTH}/" "$OUT"
-    [[ -n "${HEIGHT:-}" ]] && sed -E -i "s/(height:[[:space:]]*)[0-9]+/\1${HEIGHT}/" "$OUT"
-  fi
-
-  echo "Built $OUT"
+  echo "Built $slug: 
+        $OUT"
+  built_any=true
+  cleanup; trap - EXIT
 done
+
+$built_any || { echo "Nothing built."; exit 0; }

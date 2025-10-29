@@ -102,6 +102,7 @@ Ctrl + J
 
 ---
 
+
 ![[_shared/fragments/terminal-setup/section-heading.md]]
 
 ---
@@ -109,6 +110,7 @@ Ctrl + J
 ![[_shared/fragments/terminal-setup/umask.md]]
 
 ---
+
 ![[_shared/fragments/terminal-setup/alias-riastoreshared.md]]
 
 ---
@@ -515,7 +517,3 @@ A working minimal Snakemake pipeline that copies one literal file (`sub-01/ses-0
 ### 5.2 *snakebids*: Run `snakemake`
 
 ---
-
-
-
-
