@@ -1,11 +1,3 @@
----
-title: Bootcamp II — Progressive, Reproducible Workflow
-author: Arash Shahidi
-theme: black
-width: 1280
-height: 720
----
-
 # Bootcamp II
 ### *Snakebids*
 
@@ -108,13 +100,12 @@ toggle terminal
 Ctrl + J
 ```
 
-
-![[../_shared/fragments/terminal-setup/section-heading.md]]
-![[../_shared/fragments/terminal-setup/umask.md]]
-![[../_shared/fragments/terminal-setup/alias-riastoreshared.md]]
-![[../_shared/fragments/terminal-setup/bashrc-includes.md]]
-![[../_shared/fragments/terminal-setup/conda-shared-alias.md]]
-![[../_shared/fragments/terminal-setup/reload-and-activate.md]]
+![[_shared/fragments/terminal-setup/section-heading.md]]
+![[_shared/fragments/terminal-setup/umask.md]]
+![[_shared/fragments/terminal-setup/alias-riastoreshared.md]]
+![[_shared/fragments/terminal-setup/bashrc-includes.md]]
+![[_shared/fragments/terminal-setup/conda-shared-alias.md]]
+![[_shared/fragments/terminal-setup/reload-and-activate.md]]
 
 
 ---

@@ -1,9 +1,9 @@
 ---
 title: "Multitaper Spectrogram"
-author: "Sirota Lab"
+author: "Arash Shahidi"
 theme: "black"
-width: 1280
-height: 720
+width: 1280 
+height: 720 
 ---
 
 # Multitaper Spectrogram
@@ -14,7 +14,7 @@ Welcome! Replace this content with your slides.
 
 ## Example Fragment Embed
 
-![[../_shared/fragments/terminal-setup/section-heading.md]]
+![[_shared/fragments/terminal-setup/section-heading.md]]
 
 ---
 
