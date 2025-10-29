@@ -48,3 +48,5 @@ nav:
 
   - Slides:
       - Bootcamp: slides/index.html
+    - Autoregressive: slides/autoregressive/index.html
+      
