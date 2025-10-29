@@ -1,14 +1,14 @@
 {
   "main": {
-    "id": "a240290150a9c9c0",
+    "id": "15f47c2544928a3a",
     "type": "split",
     "children": [
       {
-        "id": "b1c6b9ab6119cda2",
+        "id": "68f70bfed9833adc",
         "type": "tabs",
         "children": [
           {
-            "id": "a580524ffb5e0a18",
+            "id": "de4935f3be3cb458",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -23,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "33e029dc8111daeb",
+    "id": "62a016c4afd3dda8",
     "type": "split",
     "children": [
       {
-        "id": "7e81e7d4e1d2ea9f",
+        "id": "56c27c11d86b9732",
         "type": "tabs",
         "children": [
           {
-            "id": "a84a603cc31b7364",
+            "id": "1edeb37cf98e0ebe",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -44,7 +44,7 @@
             }
           },
           {
-            "id": "584a1abd99b2bb03",
+            "id": "428c354b00758890",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -61,7 +61,7 @@
             }
           },
           {
-            "id": "d9d0e17be38500f6",
+            "id": "595170bba7aff12d",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -77,15 +77,15 @@
     "width": 300
   },
   "right": {
-    "id": "c2059d3d084d1dd4",
+    "id": "611978151ab2d877",
     "type": "split",
     "children": [
       {
-        "id": "20c638a6381cf282",
+        "id": "798f04718263c989",
         "type": "tabs",
         "children": [
           {
-            "id": "f44e92eed951c3f4",
+            "id": "4709564ea773540b",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -103,7 +103,7 @@
             }
           },
           {
-            "id": "5972a07fbfe85c6f",
+            "id": "6687224a23328a98",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -116,7 +116,7 @@
             }
           },
           {
-            "id": "f2a7167d9ae1531c",
+            "id": "7e2bf2922a24b0b1",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -131,7 +131,7 @@
             }
           },
           {
-            "id": "7cf2ecd9407b3726",
+            "id": "0bc6ceae725a1cba",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -162,43 +162,23 @@
       "bases:Create new base": false
     }
   },
-  "active": "a84a603cc31b7364",
+  "active": "de4935f3be3cb458",
   "lastOpenFiles": [
-    "docs/NeuroPySlides/_shared/fragments/terminal-setup/umask.md",
-    "docs/NeuroPySlides/_shared/fragments/terminal-setup/section-heading.md",
-    "docs/NeuroPySlides/_shared/fragments/terminal-setup/reload-and-activate.md",
-    "docs/NeuroPySlides/_shared/fragments/terminal-setup/conda-shared-alias.md",
-    "docs/NeuroPySlides/_shared/fragments/terminal-setup/bashrc-includes.md",
-    "docs/NeuroPySlides/_shared/fragments/terminal-setup/alias-riastoreshared.md",
-    "docs/NeuroPySlides/vscode-setup/css/local.css",
-    "docs/NeuroPySlides/snakemake/css/local.css",
-    "docs/NeuroPySlides/sirocampus/css/local.css",
-    "docs/NeuroPySlides/multitaper/css/local.css",
-    "docs/NeuroPySlides/holoviews/css/local.css",
-    "docs/NeuroPySlides/hmm/css/local.css",
-    "docs/NeuroPySlides/gpfa/css/local.css",
-    "docs/NeuroPySlides/emd/css/local.css",
-    "docs/NeuroPySlides/datalad/css/local.css",
-    "docs/NeuroPySlides/cca/css/local.css",
-    "docs/NeuroPySlides/vscode-setup/slides.md",
-    "docs/NeuroPySlides/snakemake/slides.md",
-    "docs/NeuroPySlides/sirocampus/slides.md",
-    "docs/NeuroPySlides/multitaper/slides.md",
-    "docs/NeuroPySlides/holoviews/slides.md",
-    "docs/NeuroPySlides/hmm/slides.md",
-    "docs/NeuroPySlides/gpfa/slides.md",
-    "docs/NeuroPySlides/emd/slides.md",
-    "docs/NeuroPySlides/datalad/slides.md",
-    "docs/NeuroPySlides/cca/slides.md",
-    "docs/NeuroPySlides/bootcamp-ii/tutorial-plan.md",
-    "docs/NeuroPySlides/bootcamp-ii/slides.md",
-    "docs/NeuroPySlides/bootcamp/slides.scaffold.md",
-    "docs/NeuroPySlides/bootcamp/slides.md",
-    "docs/NeuroPySlides/bids/slides.md",
-    "docs/NeuroPySlides/autoregressive/slides.md",
-    "docs/NeuroPySlides/index.md",
-    "docs/slides/index.md",
-    "docs/slides/emd/slides.md",
-    "index.md"
+    "test-deck/sedkcwMTS",
+    "test-deck/index.html",
+    "multitaper/sed5SFdfR",
+    "bootcamp/sedFbvg4K",
+    "bootcamp/slides.md",
+    "bootcamp/slides.md.bak0",
+    "bootcamp/slides.md.tmp",
+    "bootcamp/slides.md.bak",
+    "bootcamp/slides.md.bak1",
+    "bootcamp-ii/XXDgZmMV",
+    "bids/slides.md.tmp",
+    "emd/slides.md.tmp",
+    "test-deck/slides.md",
+    "test/slides.md",
+    "bootcamp-ii/slides.md",
+    "docs/slides/_shared/fragments/terminal-setup/conda-shared-alias.md"
   ]
 }
