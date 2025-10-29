@@ -48,5 +48,10 @@ nav:
 
   - Slides:
       - Bootcamp: slides/index.html
-    - Autoregressive: slides/autoregressive/index.html
-      
+      - Autoregressive: slides/autoregressive/index.html
+      - Multitaper Spectrogram: slides/multitaper/index.html
+      - VSCode Guide: slides/vscode-setup/index.html
+      - Snakemake: slides/snakemake/index.html
+      - Datalad: slides/datalad/index.html
+      - BIDS: slides/bids/index.html
+      - sirocampus: slides/sirocampus/index.html
