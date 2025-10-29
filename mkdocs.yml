@@ -49,7 +49,6 @@ nav:
   - Slides:
       - index: slides/index.md        # 👈 landing page for Slides tab
       - Methods:
-          - index: slides/methods/index.md
           - EMD: slides/emd/index.html
           - Multitaper: slides/multitaper/index.html
           - Autoregressive: slides/autoregressive/index.html
@@ -57,7 +56,6 @@ nav:
           - GPFA: slides/gpfa/index.html
           - HMM: slides/hmm/index.html
       - Tutorials:
-          - index: slides/tutorials/index.md
           - Holoviews: slides/holoviews/index.html
           - BootcampI: slides/bootcamp/index.html
           - BootcampII: slides/bootcamp-ii/index.html
@@ -66,5 +64,4 @@ nav:
           - BIDS: slides/bids/index.html
           - sirocampus: slides/sirocampus/index.html
       - Setup:
-          - index: slides/setup/index.md
           - VSCode: slides/vscode-setup/index.html
