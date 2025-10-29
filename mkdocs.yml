@@ -58,3 +58,6 @@ nav:
       - BIDS: slides/bids/index.html
       - sirocampus: slides/sirocampus/index.html
       - Holoviews: slides/holoviews/index.html
+      - GPFA: slides/gpfa/index.html
+      - HMM: slides/hmm/index.html
+      - CCA: slides/cca/index.html

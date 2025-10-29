@@ -6,6 +6,9 @@ Select a slide deck:
 - [EMD](emd/index.html) — Empirical Mode Decomposition
 - [Multitaper](multitaper/index.html) — Multitaper Spectrogram
 - [Autoregressive](autoregressive/index.html) — Autoregressive Models
+- [CCA](cca/index.html) — Canonical Correlation Analysis 
+- [GPFA](gpfa/index.html) — Gaussian Process Factor Analysis
+- [HMM](hmm/index.html) — Hidden Markov Models
 
 ## Tutorials
 - [Holoviews](holoviews/index.html) — Data Structures and Visualization in Python: Pandas, Xarray, Holoviews
