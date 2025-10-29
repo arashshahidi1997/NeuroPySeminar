@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <title>Bootcamp II</title>
@@ -9,25 +10,42 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-copycode@1.3.2/plugin/copycode/copycode.css" />
   <style>
-    .footnote{position:absolute;bottom:10px;right:20px;font-size:.55em;opacity:.7}
-    .reveal h1,.reveal h2{letter-spacing:.5px}
-    .reveal section img{border-radius:8px}
-    .reveal pre code{font-size:.9em}
+    .footnote {
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      font-size: .55em;
+      opacity: .7
+    }
+
+    .reveal h1,
+    .reveal h2 {
+      letter-spacing: .5px
+    }
+
+    .reveal section img {
+      border-radius: 8px
+    }
+
+    .reveal pre code {
+      font-size: .9em
+    }
+
     .reveal {
-      font-size: 24px; /* default is ~32px */
+      font-size: 24px;
+      /* default is ~32px */
     }
   </style>
 </head>
-<body>
-  <div class="reveal"><div class="slides">
-    <section data-markdown
-             data-separator="^\n---\n$"
-             data-separator-vertical="^\n--\n$"
-             data-separator-notes="^Note:"
-             data-charset="utf-8">
-      <textarea data-template>
 
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^Note:"
+        data-charset="utf-8">
+        <textarea data-template>
 # Bootcamp II
+
 ### *Snakebids*
 
 ---
@@ -35,10 +53,10 @@
 ## Tutorial Overview
 
 1. VSCode SSH Workspace
-2. Terminal Setup
-3. explore `sirocampus` and install `ds-bidsmini`
-4. Part I: Snakemake
-5. Part II: Snakebids
+1. Terminal Setup
+1. explore `sirocampus` and install `ds-bidsmini`
+1. Part I: Snakemake
+1. Part II: Snakebids
 
 ---
 
@@ -50,9 +68,9 @@
 
 Press
 
-```
+````
 Ctrl + Shift + P
-```
+````
 
 A command box will appear.
 
@@ -62,16 +80,17 @@ A command box will appear.
 
 Type and select:
 
-```
+````
 Remote-SSH: Connect to Host...
-```
+````
 
 Enter your host: beta
 
 If no hosts are being shown then type:
-```bash
+
+````bash
 <user>@beta
-```
+````
 
 Enter your **password** when prompted.
 
@@ -81,13 +100,13 @@ Enter your **password** when prompted.
 
 Open VSCode terminal
 
-```bash
+````bash
 Ctrl + J
-```
+````
 
 In the VSCode terminal, run:
 
-```bash
+````bash
 # I have mine under
 snakebidsdir="/storage2/arash/tutorials/snakebids"
 
@@ -97,7 +116,7 @@ mkdir -p $snakebidsdir
 
 # change dir
 cd $snakebidsdir
-```
+````
 
 copy the absolute path to `snakebids` directory (without quotation marks)
 
@@ -107,52 +126,136 @@ copy the absolute path to `snakebids` directory (without quotation marks)
 
 Select:
 
-```
+````
 Open Folder
-```
+````
 
 By default, `/home/<user>` will appear. Replace it by pasting the absolute path of the `snakebids` folder.
 
 When prompted, select:
 
-> ✅ Yes, I trust the authors
+ > 
+ > ✅ Yes, I trust the authors
 
 ---
 
 ### 1.4 VSCode: panels
+
 toggle File explorer
-```
+
+````
 Ctrl + B
-```
+````
+
 toggle terminal
-```
+
+````
 Ctrl + J
-```
+````
 
 ---
 
-
-![[_shared/fragments/terminal-setup/section-heading.md]]
-
----
-
-![[_shared/fragments/terminal-setup/umask.md]]
+## Terminal Setup
 
 ---
 
-![[_shared/fragments/terminal-setup/alias-riastoreshared.md]]
+### UMASK for contribution (optional)
+
+````bash
+# set umask so that new file creation preserves group permissions (idempotent)
+if ! grep -qxF 'umask 0002' ~/.bashrc; then
+  echo 'umask 0002' >> ~/.bashrc
+  echo "Added 'umask 0002' to ~/.bashrc"
+else
+  echo "'umask 0002' already present in ~/.bashrc"
+fi
+Warning: Under shared folders, others can modify files you create if group permissions allow it.
+````
 
 ---
 
-![[_shared/fragments/terminal-setup/bashrc-includes.md]]
+Create riastoreshared alias
+
+````bash
+# Ensure ~/.bash_aliases exists and add riastoreshared (idempotent)
+touch ~/.bash_aliases
+if ! grep -qxF 'export riastoreshared=/storage/share/git/ria-store' ~/.bash_aliases; then
+  echo 'export riastoreshared=/storage/share/git/ria-store' >> ~/.bash_aliases
+  echo "Added riastoreshared to ~/.bash_aliases"
+else
+  echo "riastoreshared alias already present"
+fi
+````
 
 ---
 
-![[_shared/fragments/terminal-setup/conda-shared-alias.md]]
+Include aliases and functions in .bashrc
+If you don't already have the following in ~/.bashrc, add it by running:
+
+````bash
+# Append a guarded include block for aliases & functions (idempotent)
+BLOCK_START='# >>> seminar includes >>>'
+BLOCK_END='# <<< seminar includes <<<'
+
+if ! grep -q "$BLOCK_START" ~/.bashrc; then
+cat <<'EOT' >> ~/.bashrc
+
+# >>> seminar includes >>>
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+# <<< seminar includes <<<
+EOT
+  echo "Added seminar include block to ~/.bashrc"
+else
+  echo "Seminar include block already present in ~/.bashrc"
+fi
+````
 
 ---
 
-![[_shared/fragments/terminal-setup/reload-and-activate.md]]
+Add conda-shared alias
+
+````bash
+# Add conda-shared alias (idempotent)
+if ! grep -qxF "alias conda-shared='source /storage/share/python/environments/Anaconda3/etc/profile.d/conda.sh && echo \"→ Using shared Conda\"'" ~/.bashrc; then
+  echo "alias conda-shared='source /storage/share/python/environments/Anaconda3/etc/profile.d/conda.sh && echo \"→ Using shared Conda\"'" >> ~/.bashrc
+  echo "Added conda-shared alias to ~/.bashrc"
+else
+  echo "conda-shared alias already present in ~/.bashrc"
+fi
+````
+
+---
+
+Finish setup: reload and activate environment
+
+# Reload bash configuration
+
+````bash
+source ~/.bashrc
+````
+
+# Use shared conda and activate the environment
+
+````bash
+conda-shared
+conda activate cogpy
+Check available environments:
+````
+
+````bash
+conda env list
+````
 
 ---
 
@@ -162,29 +265,31 @@ Ctrl + J
 
 ### 3.0 Clone `sirocampus`
 
-```bash
+````bash
 # navigate to your base folder
 cd /storage<storage-number>/<name>/
 # mine is: /storage2/arash
-```
+````
 
 install the `sirocampus`:
 
-```bash
+````bash
 datalad install -s "ria+file://$riastoreshared#~sirocampus" sirocampus
-```
+````
 
 ---
 
 ### 3.1 `sirocampus` tree
 
 run:
-```bash
+
+````bash
 tree -L 3 sirocampus
-```
+````
 
 output:
-```bash
+
+````bash
 ```bash
 sirocampus (the sirotalab super repository)
 ├── bib 
@@ -195,13 +300,13 @@ sirocampus (the sirotalab super repository)
 │   └── ...
 └── code
     └── ...
-```
+````
 
 ---
 
 ### 3.1 `sirocampus` tree
 
-```bash
+````bash
 ```bash
 sirocampus
 ├── bib (lab paper pool > linked with Zotero)
@@ -213,33 +318,36 @@ sirocampus
 │   └── ...
 └── code
     └── ...
-```
+````
 
 run:
-```bash
+
+````bash
 cd sirocampus
 datalad get -n bib
-```
+````
 
 ---
 
 ### 3.2 `sirocampus:bib`
 
 run:
-```bash
+
+````bash
 ls -l bib/pdfs/
-```
+````
 
 to download a paper, run:
-```bash
+
+````bash
 datalad get bib/pdfs/<paper name>
-```
+````
 
 ---
 
 ### 3.3 `sirocampus:data`
 
-```bash
+````bash
 sirocampus (the sirotalab super repository)
 ├── bib (lab paper pool > linked with Zotero)
 ├── data (datalad superdataset containing all sirota lab datasets)
@@ -252,13 +360,13 @@ sirocampus (the sirotalab super repository)
 │   └── ...
 └── code
     └── ...
-```
+````
 
 ---
 
 ### 3.3 `sirocampus:data`
 
-```bash
+````bash
 sirocampus (the sirotalab super repository)
 ├── bib (lab paper pool > linked with Zotero)
 ├── data (datalad superdataset containing all sirota lab datasets)
@@ -271,11 +379,11 @@ sirocampus (the sirotalab super repository)
 │   └── ...
 └── code
     └── ...
-```
+````
 
 ---
 
-### 3.4 `sirocampus:docs` 
+### 3.4 `sirocampus:docs`
 
 Diataxis framework: https://diataxis.fr/
 
@@ -287,9 +395,9 @@ widely adopted by tools for documentation (e.g. pytest, ...)
 
 ---
 
-### 3.4 `sirocampus:docs` 
+### 3.4 `sirocampus:docs`
 
-```bash
+````bash
 ```bash
 sirocampus (the sirotalab super repository)
 ├── bib 
@@ -302,13 +410,13 @@ sirocampus (the sirotalab super repository)
 │   └── explanation
 └── code
     └── ...
-```
+````
 
-### 3.4 `sirocampus:docs` lab wiki 
+### 3.4 `sirocampus:docs` lab wiki
 
 easy contribution to lab wiki
 
-```bash
+````bash
 ```bash
 sirocampus (the sirotalab super repository)
 ├── bib 
@@ -322,7 +430,7 @@ sirocampus (the sirotalab super repository)
 │   └── explanation
 └── code
     └── ...
-```
+````
 
 automatic conversion between dokuwiki and markdown formats.
 
@@ -330,7 +438,7 @@ automatic conversion between dokuwiki and markdown formats.
 
 ### 3.5 `sirocampus:code`
 
-```bash
+````bash
 ```bash
 sirocampus (the sirotalab super repository)
 ├── bib 
@@ -341,13 +449,13 @@ sirocampus (the sirotalab super repository)
     ├── cogpy (ecog package)
     ├── labbox (lab MATLAB toolbox)
     └── labpy (lab Python package)
-```
+````
 
 ---
 
 ### 3.6 `sirocampus` tree
 
-```bash
+````bash
 ```bash
 sirocampus (the sirotalab super repository)
 ├── bib (lab paper pool > linked with Zotero)
@@ -368,8 +476,7 @@ sirocampus (the sirotalab super repository)
     ├── cogpy (ecog package)
     ├── labbox (lab MATLAB toolbox)
     └── labpy (lab Python package)
-```
-
+````
 
 ---
 
@@ -381,18 +488,17 @@ sirocampus (the sirotalab super repository)
 
 Create a **tiny BIDS-style dataset** with:
 
-- 2 subjects: `sub-01`, `sub-02`
-    
-- 2 sessions per subject: `ses-01`, `ses-02`
-    
-- Small dummy motion CSV files in each session directory
-    
+* 2 subjects: `sub-01`, `sub-02`
+
+* 2 sessions per subject: `ses-01`, `ses-02`
+
+* Small dummy motion CSV files in each session directory
 
 ---
 
 # 📁 Desired Structure
 
-```
+````
 sub-01/
   ses-01/
     motion/
@@ -407,13 +513,13 @@ sub-02/
   ses-02/
     motion/
       sub-02_ses-02_motion.csv
-```
+````
 
 ---
 
 # ⚙️ Bash Command
 
-```bash
+````bash
 #!/bin/bash
 mkdir raw
 cd raw
@@ -428,31 +534,30 @@ for sub in 01 02; do
     echo "1,0.2,0.3,0.4,0.02,0.03,0.04" >> sub-${sub}/ses-${ses}/motion/sub-${sub}_ses-${ses}_motion.csv
   done
 done
-```
+````
 
 ---
 
 # ✅ Result
 
-- Four CSV files created
-    
-- Each file only a few bytes (tiny)
-    
-- Ready for testing or demonstration
-    
+* Four CSV files created
 
-```
+* Each file only a few bytes (tiny)
+
+* Ready for testing or demonstration
+
+````
 sub-{01,02}/ses-{01,02}/motion/sub-<label>_ses-<label>_motion.csv
-```
+````
 
 Perfect — here’s the **ultra-simple single-file Snakemake example**, using literal paths and no lambdas or wildcards.  
 It just processes one file: `raw/sub-01/ses-01/motion/sub-01_ses-01_motion.csv`.
 
 ---
 
-### 4.1.1 _SingleFile_: Create Snakefile
+### 4.1.1 *SingleFile*: Create Snakefile
 
-```bash
+````bash
 # Snakefile (single-file, literal paths only)
 
 configfile: "config.yaml"
@@ -472,58 +577,56 @@ rule copy_motion:
         cp {input} {output}
         echo 'Copied {input} to {output}'
         """
-```
+````
 
 ---
 
-### 4.1.2 _SingleFile_: Run `snakemake`
+### 4.1.2 *SingleFile*: Run `snakemake`
 
-```bash
+````bash
 snakemake -c 1
-```
+````
 
 This will:
 
-- Create the output folder `derivatives/pipeline/sub-01/ses-01/motion/`
-    
-- Copy the CSV file from `raw/`
-    
-- Print a simple confirmation message
-    
+* Create the output folder `derivatives/pipeline/sub-01/ses-01/motion/`
+
+* Copy the CSV file from `raw/`
+
+* Print a simple confirmation message
 
 ---
 
-### 4.1.3 _SingleFile_: Check the logs
+### 4.1.3 *SingleFile*: Check the logs
 
 under `.snakemake`
 
 ---
 
-### 4.1.4 _SingleFile_: Create config file
+### 4.1.4 *SingleFile*: Create config file
 
 Include a minimal config file (even if not used much yet):
 
-```bash
+````bash
 # config.yaml
 raw_dir: raw
 out_dir: derivatives/pipeline
 subject: "01"
 session: "01"
-```
+````
 
 ---
 
-### 4.1.5 _SingleFile_: Run `snakemake`
+### 4.1.5 *SingleFile*: Run `snakemake`
 
 Same simple execution — config is just declared for consistency:
 
-```bash
+````bash
 snakemake -c 1
-```
+````
 
 ✅ **Result:**  
 A working minimal Snakemake pipeline that copies one literal file (`sub-01/ses-01`) from `raw/` to `derivatives/pipeline/`.
-
 
 ---
 
@@ -545,9 +648,12 @@ A working minimal Snakemake pipeline that copies one literal file (`sub-01/ses-0
 
 ### 5.2 *snakebids*: Run `snakemake`
 
----      </textarea>
-    </section>
-  </div></div>
+---
+
+      </textarea>
+      </section>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
@@ -562,8 +668,9 @@ A working minimal Snakemake pipeline that copies one literal file (`sub-01/ses-0
       pdfSeparateFragments: false, pdfMaxPagesPerSlide: 1,
       transition: 'slide', backgroundTransition: 'fade',
       copycode: { button: "hover", display: "icons", timeout: 1200 },
-      plugins: [ RevealMarkdown, RevealNotes, RevealHighlight, CopyCode ]
+      plugins: [RevealMarkdown, RevealNotes, RevealHighlight, CopyCode]
     });
   </script>
 </body>
+
 </html>
