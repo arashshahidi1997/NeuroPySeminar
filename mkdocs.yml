@@ -47,6 +47,7 @@ nav:
       - Google Calendar: https://calendar.google.com/calendar/u/0/r?cid=NGFhNzU5NWVhYmU4MTAzNzFmZTkwMTNkYzVkMDZmY2Y1NGI5MDU2ZGViMTk5NDAwMjVjMmQzODdkYTg2MmVmY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t
 
   - Slides:
+      - index: slides/index.md        # 👈 landing page for Slides tab
       - BootcampI: slides/bootcamp/index.html
       - BootcampII: slides/bootcamp-ii/index.html
       - Autoregressive: slides/autoregressive/index.html
@@ -56,3 +57,4 @@ nav:
       - Datalad: slides/datalad/index.html
       - BIDS: slides/bids/index.html
       - sirocampus: slides/sirocampus/index.html
+      - Holoviews: slides/holoviews/index.html

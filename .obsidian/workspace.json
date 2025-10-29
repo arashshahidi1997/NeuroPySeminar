@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "9e73dba65ccb2725",
+        "id": "a1da826331c8fadf",
         "type": "tabs",
         "children": [
           {
-            "id": "ae08c9f3179805d4",
+            "id": "de4ee3fef87b3e6c",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "docs/slides/bootcamp-ii/slides.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "slides"
             }
           }
         ]
@@ -162,8 +166,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "ae08c9f3179805d4",
+  "active": "de4ee3fef87b3e6c",
   "lastOpenFiles": [
+    "docs/slides/snakemake/slides.md",
+    "docs/slides/vscode-setup/slides.md",
+    "docs/slides/holoviews/css/local.css",
+    "docs/slides/holoviews/slides.md",
+    "docs/slides/holoviews/index.template.html",
+    "docs/slides/holoviews/css",
+    "docs/slides/holoviews",
     "docs/schedule/preferred-topics.md",
     "docs/slides/bids/index.html",
     "docs/slides/vscode-setup/index.html",
@@ -172,14 +183,8 @@
     "docs/slides/datalad/index.html",
     "docs/slides/sirocampus/index.html",
     "docs/slides/sirocampus/slides.md",
-    "docs/slides/sirocampus/css/local.css",
-    "docs/slides/sirocampus/index.template.html",
-    "docs/slides/sirocampus/css",
-    "docs/slides/sirocampus",
     "docs/slides/bids/slides.md",
     "docs/slides/datalad/slides.md",
-    "docs/slides/snakemake/slides.md",
-    "docs/slides/vscode-setup/slides.md",
     "docs/slides/multitaper/slides.md",
     "docs/slides/autoregressive/slides.md",
     "docs/slides/bootcamp-ii/slides.md",
