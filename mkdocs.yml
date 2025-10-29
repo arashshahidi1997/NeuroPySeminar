@@ -48,16 +48,23 @@ nav:
 
   - Slides:
       - index: slides/index.md        # 👈 landing page for Slides tab
-      - BootcampI: slides/bootcamp/index.html
-      - BootcampII: slides/bootcamp-ii/index.html
-      - Autoregressive: slides/autoregressive/index.html
-      - Multitaper: slides/multitaper/index.html
-      - VSCode: slides/vscode-setup/index.html
-      - Snakemake: slides/snakemake/index.html
-      - Datalad: slides/datalad/index.html
-      - BIDS: slides/bids/index.html
-      - sirocampus: slides/sirocampus/index.html
-      - Holoviews: slides/holoviews/index.html
-      - GPFA: slides/gpfa/index.html
-      - HMM: slides/hmm/index.html
-      - CCA: slides/cca/index.html
+      - Methods:
+          - index: slides/methods/index.md
+          - EMD: slides/emd/index.html
+          - Multitaper: slides/multitaper/index.html
+          - Autoregressive: slides/autoregressive/index.html
+          - CCA: slides/cca/index.html
+          - GPFA: slides/gpfa/index.html
+          - HMM: slides/hmm/index.html
+      - Tutorials:
+          - index: slides/tutorials/index.md
+          - Holoviews: slides/holoviews/index.html
+          - BootcampI: slides/bootcamp/index.html
+          - BootcampII: slides/bootcamp-ii/index.html
+          - Snakemake: slides/snakemake/index.html
+          - Datalad: slides/datalad/index.html
+          - BIDS: slides/bids/index.html
+          - sirocampus: slides/sirocampus/index.html
+      - Setup:
+          - index: slides/setup/index.md
+          - VSCode: slides/vscode-setup/index.html
