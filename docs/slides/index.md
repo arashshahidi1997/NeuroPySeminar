@@ -2,7 +2,7 @@
 
 Select a slide deck:
 
-- [🧠 BootcampI](NeuroPy/index.html) — OpenScience: BIDS + Datalad + Snakemake.
+- [🧠 BootcampI](bootcamp/index.html) — OpenScience: BIDS + Datalad + Snakemake.
 - [🧠 BootcampII](bootcamp-ii/index.html) — sirocampus & snakebids.
 - [📊 EMD](emd/index.html) — Empirical Mode Decomposition
 - [📊 Multitaper](multitaper/index.html) — Multitaper Spectrogram

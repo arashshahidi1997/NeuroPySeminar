@@ -16,7 +16,6 @@ Rank 3: AR
 2. UMAP
 3. NMF
 # Xuanbing: UMAP
-
 1. UMAP
 2. GPFA
 3. CCA
