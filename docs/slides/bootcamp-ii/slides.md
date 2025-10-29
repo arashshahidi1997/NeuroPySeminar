@@ -1,0 +1,581 @@
+
+# Bootcamp II
+### *Snakebids*
+
+---
+
+## Tutorial Overview
+
+1. VSCode SSH Workspace
+2. Terminal Setup
+3. explore `sirocampus` and install `ds-bidsmini`
+4. Part I: Snakemake
+5. Part II: Snakebids
+
+---
+
+## 1. VSCode SSH Workspace
+
+---
+
+### 1.0 Open VSCode
+
+Press
+
+```
+Ctrl + Shift + P
+```
+
+A command box will appear.
+
+---
+
+### 1.1 Connect via Remote-SSH
+
+Type and select:
+
+```
+Remote-SSH: Connect to Host...
+```
+
+Enter your host: beta
+
+If no hosts are being shown then type:
+```bash
+<user>@beta
+```
+
+Enter your **password** when prompted.
+
+---
+
+### 1.2 Create a tutorial folder
+
+Open VSCode terminal
+
+```bash
+Ctrl + J
+```
+
+In the VSCode terminal, run:
+
+```bash
+# I have mine under
+snakebidsdir="/storage2/arash/tutorials/snakebids"
+
+snakebidsdir="/path/to/.../tutorials/snakebids"
+
+mkdir -p $snakebidsdir
+
+# change dir
+cd $snakebidsdir
+```
+
+copy the absolute path to `snakebids` directory (without quotation marks)
+
+---
+
+### 1.3 VSCode: Open Folder
+
+Select:
+
+```
+Open Folder
+```
+
+By default, `/home/<user>` will appear. Replace it by pasting the absolute path of the `snakebids` folder.
+
+When prompted, select:
+
+> ✅ Yes, I trust the authors
+
+---
+
+### 1.4 VSCode: panels
+toggle File explorer
+```
+Ctrl + B
+```
+toggle terminal
+```
+Ctrl + J
+```
+
+---
+
+## 2. Terminal Setup
+
+---
+
+### 2. Terminal Setup
+
+UMASK for contirbution (optional)
+
+```bash
+# set umask so that new file creation preserves group permissions
+echo 'umask 0002' >> ~/.bashrc
+```
+
+***Warning***: it means under shared folders others can modify files created by you if the group permissions allow it.
+
+---
+
+### 2.1 make an alias 
+
+```bash
+# --- Create ~/.bash_aliases ---
+cat <<'EOT' > ~/.bash_aliases
+export riastoreshared=/storage/share/git/ria-store
+EOT
+```
+
+---
+
+### 2.2 More Setup
+
+If you don't already have the following in `bashrc`, add it by running:
+```bash
+# --- Append to ~/.bashrc ---
+cat <<'EOT' >> ~/.bashrc
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+EOT
+```
+
+---
+
+### 2.3 add `conda-shared` alias
+
+```bash
+# Shared conda
+cat <<'EOT' >> ~/.bashrc
+alias conda-shared='source /storage/share/python/environments/Anaconda3/etc/profile.d/conda.sh && echo "→ Using shared Conda"'
+EOT
+```
+
+---
+
+### 2.4 Setup finished: resource bashrc and activate the `cogpy` environment
+```bash
+# --- Reload bash configuration ---
+source ~/.bashrc
+```
+
+```bash
+conda-shared
+conda activate cogpy
+```
+
+have a look at available conda environments
+```bash
+conda env list
+```
+
+
+---
+
+## 3.  `sirocampus`
+
+---
+
+### 3.0 Clone `sirocampus`
+
+```bash
+# navigate to your base folder
+cd /storage<storage-number>/<name>/
+# mine is: /storage2/arash
+```
+
+install the `sirocampus`:
+
+```bash
+datalad install -s "ria+file://$riastoreshared#~sirocampus" sirocampus
+```
+
+---
+
+### 3.1 `sirocampus` tree
+
+run:
+```bash
+tree -L 3 sirocampus
+```
+
+output:
+```bash
+```bash
+sirocampus (the sirotalab super repository)
+├── bib 
+│   └── ...
+├── data
+│   └── ...
+├── docs
+│   └── ...
+└── code
+    └── ...
+```
+
+---
+
+### 3.1 `sirocampus` tree
+
+```bash
+```bash
+sirocampus
+├── bib (lab paper pool > linked with Zotero)
+│   ├── metadata
+│   └── pdfs
+├── data
+│   └── ...
+├── docs
+│   └── ...
+└── code
+    └── ...
+```
+
+run:
+```bash
+cd sirocampus
+datalad get -n bib
+```
+
+---
+
+### 3.2 `sirocampus:bib`
+
+run:
+```bash
+ls -l bib/pdfs/
+```
+
+to download a paper, run:
+```bash
+datalad get bib/pdfs/<paper name>
+```
+
+---
+
+### 3.3 `sirocampus:data`
+
+```bash
+sirocampus (the sirotalab super repository)
+├── bib (lab paper pool > linked with Zotero)
+├── data (datalad superdataset containing all sirota lab datasets)
+│   ├── ds-bidsmini
+│   ├── ds-msol
+│   ├── ds-gecog
+│   ├── ds-pixecog
+│   └── ... 
+├── docs
+│   └── ...
+└── code
+    └── ...
+```
+
+---
+
+### 3.3 `sirocampus:data`
+
+```bash
+sirocampus (the sirotalab super repository)
+├── bib (lab paper pool > linked with Zotero)
+├── data (datalad superdataset containing all sirota lab datasets)
+│   ├── ds-bidsmini
+│   ├── ds-msol
+│   ├── ds-gecog
+│   ├── ds-pixecog
+│   └── ... To be added by you 🎨! 
+├── docs
+│   └── ...
+└── code
+    └── ...
+```
+
+---
+
+### 3.4 `sirocampus:docs` 
+
+Diataxis framework: https://diataxis.fr/
+
+two axes:
+cognition -> action
+acquisition -> application
+
+widely adopted by tools for documentation (e.g. pytest, ...)
+
+---
+
+### 3.4 `sirocampus:docs` 
+
+```bash
+```bash
+sirocampus (the sirotalab super repository)
+├── bib 
+├── data
+├── docs (lab documents based on Diataxis framework)
+│   ├── logs
+│   ├── how-to
+│   ├── reference
+│   ├── tutorials > snakebids.md
+│   └── explanation
+└── code
+    └── ...
+```
+
+### 3.4 `sirocampus:docs` lab wiki 
+
+easy contribution to lab wiki
+
+```bash
+```bash
+sirocampus (the sirotalab super repository)
+├── bib 
+├── data
+├── docs (lab documents based on Diataxis framework)
+│   ├── wiki (markdown version of all lab dokuwiki files)
+│   ├── logs
+│   ├── how-to
+│   ├── reference
+│   ├── tutorials > snakebids.md
+│   └── explanation
+└── code
+    └── ...
+```
+
+automatic conversion between dokuwiki and markdown formats.
+
+---
+
+### 3.5 `sirocampus:code`
+
+```bash
+```bash
+sirocampus (the sirotalab super repository)
+├── bib 
+├── data
+├── docs
+└── code (sirota lab code)
+    ├── lib (library of third-party tools)
+    ├── cogpy (ecog package)
+    ├── labbox (lab MATLAB toolbox)
+    └── labpy (lab Python package)
+```
+
+---
+
+### 3.6 `sirocampus` tree
+
+```bash
+```bash
+sirocampus (the sirotalab super repository)
+├── bib (lab paper pool > linked with Zotero)
+├── data (datalad superdataset containing all sirota lab datasets)
+│   ├── ds-bidsmini
+│   ├── ds-msol
+│   ├── ds-gecog
+│   ├── ds-pixecog
+│   └── ... To be added by you 🎨! 
+├── docs (lab documents based on Diataxis framework)
+│   ├── logs
+│   ├── how-to
+│   ├── reference
+│   ├── tutorials
+│   └── explanation
+└── code (sirota lab code)
+    ├── lib (library of third-party tools)
+    ├── cogpy (ecog package)
+    ├── labbox (lab MATLAB toolbox)
+    └── labpy (lab Python package)
+```
+
+
+---
+
+## 4.  `snakemake`
+
+---
+
+### 4.0 create a mini bids
+
+Create a **tiny BIDS-style dataset** with:
+
+- 2 subjects: `sub-01`, `sub-02`
+    
+- 2 sessions per subject: `ses-01`, `ses-02`
+    
+- Small dummy motion CSV files in each session directory
+    
+
+---
+
+# 📁 Desired Structure
+
+```
+sub-01/
+  ses-01/
+    motion/
+      sub-01_ses-01_motion.csv
+  ses-02/
+    motion/
+      sub-01_ses-02_motion.csv
+sub-02/
+  ses-01/
+    motion/
+      sub-02_ses-01_motion.csv
+  ses-02/
+    motion/
+      sub-02_ses-02_motion.csv
+```
+
+---
+
+# ⚙️ Bash Command
+
+```bash
+#!/bin/bash
+mkdir raw
+cd raw
+
+# Create BIDS-like directory structure
+for sub in 01 02; do
+  for ses in 01 02; do
+    mkdir -p sub-${sub}/ses-${ses}/motion
+    # Create a tiny dummy motion CSV file (<1MB)
+    echo "time,dx,dy,dz,rx,ry,rz" > sub-${sub}/ses-${ses}/motion/sub-${sub}_ses-${ses}_motion.csv
+    echo "0,0.1,0.2,0.3,0.01,0.02,0.03" >> sub-${sub}/ses-${ses}/motion/sub-${sub}_ses-${ses}_motion.csv
+    echo "1,0.2,0.3,0.4,0.02,0.03,0.04" >> sub-${sub}/ses-${ses}/motion/sub-${sub}_ses-${ses}_motion.csv
+  done
+done
+```
+
+---
+
+# ✅ Result
+
+- Four CSV files created
+    
+- Each file only a few bytes (tiny)
+    
+- Ready for testing or demonstration
+    
+
+```
+sub-{01,02}/ses-{01,02}/motion/sub-<label>_ses-<label>_motion.csv
+```
+
+Perfect — here’s the **ultra-simple single-file Snakemake example**, using literal paths and no lambdas or wildcards.  
+It just processes one file: `raw/sub-01/ses-01/motion/sub-01_ses-01_motion.csv`.
+
+---
+
+### 4.1.1 _SingleFile_: Create Snakefile
+
+```bash
+# Snakefile (single-file, literal paths only)
+
+configfile: "config.yaml"
+
+rule all:
+    input:
+        "derivatives/pipeline/sub-01/ses-01/motion/sub-01_ses-01_motion_copy.csv"
+
+rule copy_motion:
+    input:
+        "raw/sub-01/ses-01/motion/sub-01_ses-01_motion.csv"
+    output:
+        "derivatives/pipeline/sub-01/ses-01/motion/sub-01_ses-01_motion_copy.csv"
+    shell:
+        """
+        mkdir -p $(dirname {output})
+        cp {input} {output}
+        echo 'Copied {input} to {output}'
+        """
+```
+
+---
+
+### 4.1.2 _SingleFile_: Run `snakemake`
+
+```bash
+snakemake -c 1
+```
+
+This will:
+
+- Create the output folder `derivatives/pipeline/sub-01/ses-01/motion/`
+    
+- Copy the CSV file from `raw/`
+    
+- Print a simple confirmation message
+    
+
+---
+
+### 4.1.3 _SingleFile_: Check the logs
+
+under `.snakemake`
+
+---
+
+### 4.1.4 _SingleFile_: Create config file
+
+Include a minimal config file (even if not used much yet):
+
+```bash
+# config.yaml
+raw_dir: raw
+out_dir: derivatives/pipeline
+subject: "01"
+session: "01"
+```
+
+---
+
+### 4.1.5 _SingleFile_: Run `snakemake`
+
+Same simple execution — config is just declared for consistency:
+
+```bash
+snakemake -c 1
+```
+
+✅ **Result:**  
+A working minimal Snakemake pipeline that copies one literal file (`sub-01/ses-01`) from `raw/` to `derivatives/pipeline/`.
+
+
+---
+
+### 4.2.1 *MultiFile*: Create Snakefile
+
+---
+
+### 4.2.2 *MultiFile*: Run `snakemake`
+
+---
+
+## 4.  `snakebids`
+
+---
+
+### 5.1 *snakebids*: Create Snakefile
+
+---
+
+### 5.2 *snakebids*: Run `snakemake`
+
+---
+
+
+
+
