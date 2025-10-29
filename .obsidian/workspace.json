@@ -168,6 +168,9 @@
   },
   "active": "de4ee3fef87b3e6c",
   "lastOpenFiles": [
+    "docs/slides/gpfa/index.html",
+    "docs/slides/hmm/index.html",
+    "docs/slides/cca/index.html",
     "docs/slides/cca/slides.md",
     "docs/slides/cca/css/local.css",
     "docs/slides/cca/index.template.html",
@@ -179,8 +182,6 @@
     "docs/slides/hmm/css",
     "docs/slides/hmm",
     "docs/slides/gpfa/slides.md",
-    "docs/slides/gpfa/css/local.css",
-    "docs/slides/gpfa/index.template.html",
     "docs/slides/snakemake/slides.md",
     "docs/slides/vscode-setup/slides.md",
     "docs/slides/holoviews/slides.md",
