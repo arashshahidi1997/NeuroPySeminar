@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/slides/bootcamp-ii/slides.md",
+                "file": "docs/schedule/preferred-topics.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "slides"
+              "title": "preferred-topics"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "c2059d3d084d1dd4",
@@ -168,6 +169,10 @@
   },
   "active": "e51bc788115cb593",
   "lastOpenFiles": [
+    "docs/schedule/SemesterSchedule.html",
+    "docs/schedule/SemesterSchedule copy.html",
+    "docs/slides/bootcamp-ii/slides.md",
+    "docs/schedule/preferred-topics.md",
     "docs/slides/bootcamp/slides.md",
     "docs/slides/_shared/fragments/terminal-setup/umask.md",
     "docs/slides/_shared/fragments/terminal-setup/section-heading.md",
@@ -175,7 +180,6 @@
     "docs/slides/_shared/fragments/terminal-setup/conda-shared-alias.md",
     "docs/slides/_shared/fragments/terminal-setup/bashrc-includes.md",
     "docs/slides/_shared/fragments/terminal-setup/alias-riastoreshared.md",
-    "docs/slides/bootcamp-ii/slides.md",
     "docs/slides/_shared/fragments/terminal-setup",
     "docs/slides/emd/slides.md",
     "docs/slides/bootcamp/slides.scaffold.md",
