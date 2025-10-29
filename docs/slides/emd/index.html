@@ -27,12 +27,14 @@
              data-charset="utf-8">
       <textarea data-template>
 
-set -euo pipefail
+---
+title: EMD — Empirical Mode Decomposition
+author: Arash Shahidi
+theme: black
+width: 1280
+height: 720
+---
 
-# create slides.md ONLY if it's missing (bootcamp + bootcamp-ii preserved)
-for d in emd; do
-  if [[ ! -f "/slides.md" ]]; then
-    cat > "/slides.md" <<'MD'
 # EMD — Intro
 
 Welcome! Replace this with your EMD deck content.

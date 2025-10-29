@@ -27,6 +27,13 @@
              data-charset="utf-8">
       <textarea data-template>
 
+---
+title: Bootcamp II — Progressive, Reproducible Workflow
+author: Arash Shahidi
+theme: black
+width: 1280
+height: 720
+---
 
 # Bootcamp II
 ### *Snakebids*
@@ -130,86 +137,13 @@ toggle terminal
 Ctrl + J
 ```
 
----
 
-## 2. Terminal Setup
-
----
-
-### 2. Terminal Setup
-
-UMASK for contirbution (optional)
-
-```bash
-# set umask so that new file creation preserves group permissions
-echo 'umask 0002' >> ~/.bashrc
-```
-
-***Warning***: it means under shared folders others can modify files created by you if the group permissions allow it.
-
----
-
-### 2.1 make an alias 
-
-```bash
-# --- Create ~/.bash_aliases ---
-cat <<'EOT' > ~/.bash_aliases
-export riastoreshared=/storage/share/git/ria-store
-EOT
-```
-
----
-
-### 2.2 More Setup
-
-If you don't already have the following in `bashrc`, add it by running:
-```bash
-# --- Append to ~/.bashrc ---
-cat <<'EOT' >> ~/.bashrc
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
-EOT
-```
-
----
-
-### 2.3 add `conda-shared` alias
-
-```bash
-# Shared conda
-cat <<'EOT' >> ~/.bashrc
-alias conda-shared='source /storage/share/python/environments/Anaconda3/etc/profile.d/conda.sh && echo "→ Using shared Conda"'
-EOT
-```
-
----
-
-### 2.4 Setup finished: resource bashrc and activate the `cogpy` environment
-```bash
-# --- Reload bash configuration ---
-source ~/.bashrc
-```
-
-```bash
-conda-shared
-conda activate cogpy
-```
-
-have a look at available conda environments
-```bash
-conda env list
-```
+![[../_shared/fragments/terminal-setup/section-heading.md]]
+![[../_shared/fragments/terminal-setup/umask.md]]
+![[../_shared/fragments/terminal-setup/alias-riastoreshared.md]]
+![[../_shared/fragments/terminal-setup/bashrc-includes.md]]
+![[../_shared/fragments/terminal-setup/conda-shared-alias.md]]
+![[../_shared/fragments/terminal-setup/reload-and-activate.md]]
 
 
 ---
