@@ -5,7 +5,8 @@
 .reveal pre code { font-size: .9em; }
 
 /* Code blocks: comfortable width & wrapping */
-.reveal pre { max-width: 70ch; margin: 0.5em auto; }
+.reveal pre { max-width: 70%; margin: 0.5em auto; }
+
 .reveal pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
 
 /* Optional: limit tall code blocks */

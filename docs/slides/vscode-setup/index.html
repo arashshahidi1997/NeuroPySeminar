@@ -26,7 +26,9 @@
              data-separator-notes="^Note:"
              data-charset="utf-8">
       <textarea data-template>
+
 # VSCode Guide
+
 
 ---
 
@@ -36,9 +38,9 @@
 
 Press
 
-````
+```
 Ctrl + Shift + P
-````
+```
 
 A command box will appear.
 
@@ -46,15 +48,15 @@ A command box will appear.
 
 Type and select:
 
-````
+```
 Remote-SSH: Connect to Host...
-````
+```
 
 Enter your host (replace `<XX>` with your ephys ID):
 
-````bash
+```bash
 ephys<XX>@gamma3
-````
+```
 
 Enter your **password** when prompted.
 
@@ -62,24 +64,22 @@ Enter your **password** when prompted.
 
 Select:
 
-````
+```
 Open Folder
-````
+```
 
 By default, `/home/ephys<XX>` will appear.
 Delete it and instead type:
 
-````bash
+```bash
 /storage2/arash/teaching/neuropy/<name>
-````
+```
 
- > 
- > Replace `<name>` with your **first name in lowercase**.
+> Replace `<name>` with your **first name in lowercase**.
 
 When prompted, select:
 
- > 
- > ✅ Yes, I trust the authors
+> ✅ Yes, I trust the authors
 
 ---
 
@@ -87,30 +87,27 @@ When prompted, select:
 
 Open VSCode terminal
 
-````bash
+```bash
 Ctrl + J
-````
+```
 
 In the VSCode terminal, run:
 
-````bash
+```bash
 conda activate neuropy-env
-````
+```
 
 ---
 
 ### 5. Set Python Inerpreter to `neuropy-env`
 
-````bash
+```bash
 Ctrl + Shift + P
-````
-
+```
 type:
-
-````
+```
 Python: Select Interpreter
-````
-
+```
 choose `neuropy-env`
 
 ---
@@ -118,12 +115,11 @@ choose `neuropy-env`
 ### 6. For `jupyter notebooks`: Set kernel to `neuropy-env`
 
 1. Click on the **kernel name** in the top-right of VSCode.
+2. Choose **Python Environments** → select:
 
-1. Choose **Python Environments** → select:
-   
-   ````
+   ```
    neuropy-env
-   ````
+   ```
 
 ---
 
