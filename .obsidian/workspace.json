@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "docs/slides/bootcamp-ii/slides.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -168,7 +168,19 @@
   },
   "active": "e51bc788115cb593",
   "lastOpenFiles": [
+    "docs/slides/bootcamp/slides.md",
+    "docs/slides/_shared/fragments/terminal-setup/umask.md",
+    "docs/slides/_shared/fragments/terminal-setup/section-heading.md",
+    "docs/slides/_shared/fragments/terminal-setup/reload-and-activate.md",
+    "docs/slides/_shared/fragments/terminal-setup/conda-shared-alias.md",
+    "docs/slides/_shared/fragments/terminal-setup/bashrc-includes.md",
+    "docs/slides/_shared/fragments/terminal-setup/alias-riastoreshared.md",
+    "docs/slides/bootcamp-ii/slides.md",
+    "docs/slides/_shared/fragments/terminal-setup",
     "docs/slides/emd/slides.md",
-    "docs/slides/bootcamp/slides.md"
+    "docs/slides/bootcamp/slides.scaffold.md",
+    "docs/slides/scripts/build_reveal.sh",
+    "docs/slides/scripts",
+    "docs/slides/bootcamp-ii/index.html"
   ]
 }

@@ -1,3 +1,11 @@
+---
+title: Bootcamp II — Progressive, Reproducible Workflow
+author: Arash Shahidi
+theme: black
+width: 1280
+height: 720
+---
+
 # 🧩 Lab Reproducible Workflow Tutorial
 
 _(BIDS → DataLad → Snakemake → Integration & FAIR)_  
