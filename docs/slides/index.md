@@ -2,5 +2,9 @@
 
 Select a slide deck:
 
-- [🧠 Bootcamp](bootcamp/index.html) — Bootcamp presentation materials.
-- [📊 EMD](EMD/index.html) — Placeholder for Empirical Mode Decomposition seminar slides.
+- [🧠 BootcampI](bootcamp/index.html) — OpenScience: BIDS + Datalad + Snakemake.
+- [🧠 BootcampII](bootcamp-ii/index.html) — sirocampus & snakebids.
+- [📊 EMD](emd/index.html) — Empirical Mode Decomposition
+- [📊 Multitaper](multitaper/index.html) — Multitaper Spectrogram
+- [🧠 Autoregressive](autoregressive/index.html) — Autoregressive Models
+
