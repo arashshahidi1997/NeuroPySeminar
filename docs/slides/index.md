@@ -2,13 +2,19 @@
 
 Select a slide deck:
 
-- [🧠 BootcampI](bootcamp/index.html) — OpenScience: BIDS + Datalad + Snakemake.
-- [🧠 BootcampII](bootcamp-ii/index.html) — sirocampus & snakebids.
-- [📊 EMD](emd/index.html) — Empirical Mode Decomposition
-- [📊 Multitaper](multitaper/index.html) — Multitaper Spectrogram
-- [🧠 Autoregressive](autoregressive/index.html) — Autoregressive Models
-- [🧠 VSCode](vscode-setup/index.html) — VSCode setup
-- [🧠 Snakemake](snakemake/index.html) — Pipeline Management
-- [🧠 Datalad](datalad/index.html) — Data Version Control
-- [🧠 BIDS](bids/index.html) — Data Standardization
-- [🧠 `sirocampus`](sirocampus/index.html) — Sirota lab superdataset
+## Methods
+- [EMD](emd/index.html) — Empirical Mode Decomposition
+- [Multitaper](multitaper/index.html) — Multitaper Spectrogram
+- [Autoregressive](autoregressive/index.html) — Autoregressive Models
+
+## Tutorials
+- [Holoviews](holoviews/index.html) — Data Structures and Visualization in Python: Pandas, Xarray, Holoviews
+- [BootcampI](bootcamp/index.html) — OpenScience: BIDS + Datalad + Snakemake.
+- [BootcampII](bootcamp-ii/index.html) — sirocampus & snakebids.
+- [Snakemake](snakemake/index.html) — Pipeline Management
+- [Datalad](datalad/index.html) — Data Version Control
+- [BIDS](bids/index.html) — Data Standardization
+- [`sirocampus`](sirocampus/index.html) — Sirota lab superdataset
+
+## Setup
+- [VSCode](vscode-setup/index.html) — VSCode setup
