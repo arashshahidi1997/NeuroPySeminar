@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Sirota Lab — Progressive, Reproducible Workflow Bootcamp</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css" id="theme" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-copycode@1.3.2/plugin/copycode/copycode.css" />
+  <style>
+    .footnote{position:absolute;bottom:10px;right:20px;font-size:.55em;opacity:.7}
+    .reveal h1,.reveal h2{letter-spacing:.5px}
+    .reveal section img{border-radius:8px}
+    .reveal pre code{font-size:.9em}
+    .reveal {
+      font-size: 24px; /* default is ~32px */
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal"><div class="slides">
+    <section data-markdown
+             data-separator="^\n---\n$"
+             data-separator-vertical="^\n--\n$"
+             data-separator-notes="^Note:"
+             data-charset="utf-8">
+      <textarea data-template>
+
+---
+title: "VSCode Guide"
+author: "Sirota Lab"
+theme: "black"
+width: 1280
+height: 720
+---
+
+# VSCode Guide
+
+Welcome! Replace this content with your slides.
+
+---
+
+## Example Fragment Embed
+
+![[../_shared/fragments/terminal-setup/section-heading.md]]
+
+---
+
+## Outro
+
+Thank you!
+      </textarea>
+    </section>
+  </div></div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js-copycode@1.3.2/plugin/copycode/copycode.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      navigationMode: 'linear',
+      width: 1280, height: 720, margin: 0.04,
+      pdfSeparateFragments: false, pdfMaxPagesPerSlide: 1,
+      transition: 'slide', backgroundTransition: 'fade',
+      copycode: { button: "hover", display: "icons", timeout: 1200 },
+      plugins: [ RevealMarkdown, RevealNotes, RevealHighlight, CopyCode ]
+    });
+  </script>
+</body>
+</html>

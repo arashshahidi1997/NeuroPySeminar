@@ -139,37 +139,51 @@ fi
 MKDOCS="$REPO_ROOT/mkdocs.yml"
 SLIDES_INDEX="$REPO_ROOT/docs/slides/index.md"
 DECK_URL="slides/$SLUG/index.html"
-
-# 1) Append to mkdocs.yml under the Slides nav group
-# We'll insert a line "      - <Title>: slides/<slug>/index.html"
-# after the last item of the Slides group (indented 4 spaces).
+# 1) Append to mkdocs.yml under the Slides nav group with correct indent
 if [[ -f "$MKDOCS" ]]; then
   tmpfile="$(mktemp)"
   awk -v title="$TITLE" -v url="$DECK_URL" '
-    BEGIN { in_slides=0; inserted=0 }
+    function insert_line() {
+      printf("%s- %s: %s\n", item_indent, title, url)
+      inserted=1
+    }
+    BEGIN {
+      in_slides=0
+      inserted=0
+      item_indent="      "   # sensible default: 6 spaces under "  - Slides:"
+      base_indent=0
+    }
     {
       print $0
-      # Detect start of Slides group at top-level (- Slides:)
-      if ($0 ~ /^[[:space:]]*-[[:space:]]+Slides:/) { in_slides=1; next }
-      # While in Slides group, track items indented by 4 spaces and "- "
+
+      # Detect the start of the Slides group: capture its indent
+      if ($0 ~ /^[[:space:]]*-[[:space:]]+Slides:/) {
+        in_slides=1
+        match($0, /^([[:space:]]*)-[[:space:]]Slides:/, m)
+        base_indent = length(m[1])
+        next
+      }
+
       if (in_slides) {
-        if ($0 ~ /^[[:space:]]{4}-[[:space:]]/ ) {
-          last_item_line=NR
-        } else if ($0 ~ /^[[:space:]]*-[[:space:]]/ && !($0 ~ /^[[:space:]]{4}-[[:space:]]/)) {
-          # Next top-level nav item reached; insert after the last slides item
-          if (!inserted) {
-            printf("    - %s: %s\n", title, url)
-            inserted=1
+        # Any list item line: figure out its indent
+        if ($0 ~ /^[[:space:]]*-[[:space:]]/) {
+          match($0, /^([[:space:]]*)-[[:space:]]/, m)
+          cur_indent = length(m[1])
+
+          if (cur_indent <= base_indent) {
+            # We hit the next top-level/sibling group -> insert before leaving
+            if (!inserted) insert_line()
+            in_slides=0
+          } else {
+            # This is an item inside Slides: remember its indent (e.g., 6 spaces)
+            item_indent = substr($0, 1, cur_indent)
           }
-          in_slides=0
         }
       }
     }
     END {
       # If file ended while still in Slides, insert now
-      if (in_slides && !inserted) {
-        printf("    - %s: %s\n", title, url)
-      }
+      if (in_slides && !inserted) insert_line()
     }
   ' "$MKDOCS" > "$tmpfile"
   mv "$tmpfile" "$MKDOCS"
