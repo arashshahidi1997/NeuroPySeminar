@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <title>Sirota Lab — Progressive, Reproducible Workflow Bootcamp</title>
@@ -9,23 +10,48 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-copycode@1.3.2/plugin/copycode/copycode.css" />
   <style>
-    .footnote{position:absolute;bottom:10px;right:20px;font-size:.55em;opacity:.7}
-    .reveal h1,.reveal h2{letter-spacing:.5px}
-    .reveal section img{border-radius:8px}
-    .reveal pre code{font-size:.9em}
+    .footnote {
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      font-size: .55em;
+      opacity: .7
+    }
+
+    .reveal h1,
+    .reveal h2 {
+      letter-spacing: .5px
+    }
+
+    .reveal section img {
+      border-radius: 8px
+    }
+
+    .reveal pre code {
+      font-size: .9em
+    }
+
     .reveal {
-      font-size: 24px; /* default is ~32px */
+      font-size: 24px;
+      /* default is ~32px */
     }
   </style>
 </head>
+
 <body>
-  <div class="reveal"><div class="slides">
-    <section data-markdown
-             data-separator="^\n---\n$"
-             data-separator-vertical="^\n--\n$"
-             data-separator-notes="^Note:"
-             data-charset="utf-8">
-      <textarea data-template>
+  <div class="reveal">
+    <div class="slides">
+      <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^Note:"
+        data-charset="utf-8">
+        <textarea data-template>
+  
+--- 
+title: "Bootcamp II — Progressive, Reproducible Workflow"
+author: "Arash Shahidi"
+theme: "black"
+width: 1280 
+height: 720 
+---
 
 # 🧩 Lab Reproducible Workflow Tutorial
 
@@ -34,6 +60,7 @@ Sirota Lab Meeting — Progressive, reproducible-workflow bootcamp
 
 
 ---
+
 
 ### 🧰 **Setup Conda (Shared vs Personal)**
 
@@ -134,11 +161,11 @@ Learn about BIDS and immediately apply it by BIDS-ifying a dataset.
 | ------------------------------------------- | -------- | ---- | ----------------------------------------------------------------------- | -------- | ---------------------------------------------------------- | ----------------------------- |
 | BIDS: underlying data management principles | Remi Gau | 2022 | Open Research at the Wellcome Center for Integrative Neuroimaging (WIN) | Online   | [link](https://vimeo.com/showcase/7645853/video/668642973) | [link](https://osf.io/h6gsr/) |
 
-[BEP 032: Microelectrode electrophysiology](https://bids.neuroimaging.io/extensions/beps/bep_032.html#bep-032-microelectrode-electrophysiology)
+[BEP 032: Microelectrode electrophysiology](https://bids.neuroimaging.io/extensions/beps/bep_032.html#bep-032-microelectrode-electrophysiology)
 
 ---
 
-### 🧠 **Theory**
+###   **Theory**
 
 - Introduce the **BIDS standard**: motivation, structure, metadata files.
     
@@ -194,7 +221,7 @@ Learn how to use DataLad to manage datasets, track changes, and share data under
 
 ---
 
-### 🧠 **Theory**
+###   **Theory**
 
 - Introduce **DataLad concepts**:
     
@@ -302,7 +329,7 @@ Snakemake tutorial slides: https://slides.com/johanneskoester/snakemake-tutorial
 
 ---
 
-### 🧠 **Theory**
+###   **Theory**
 
 - What is a **Snakefile**?
     
@@ -416,7 +443,7 @@ Combine all tools under FAIR principles — make workflows reproducible, adaptab
 
 ---
 
-### 🧠 **Theory**
+###   **Theory**
 
 - Summarize:
     
@@ -546,6 +573,7 @@ datalad push --to ria-storage
     
 
 ---
+
 ## Why Reproducible Workflows?
 
 - Increasing complexity of neuroimaging analysis
@@ -583,14 +611,17 @@ datalad push --to ria-storage
     
 - What would help you apply this to your own data?
     
-- How can we support reproducibility in the lab’s shared workflows?      </textarea>
-    </section>
-  </div></div>
+- How can we support reproducibility in the lab’s shared workflows?
+      </textarea>
+      </section>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js-copycode@1.3.2/plugin/copycode/copycode.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
   <script>
     Reveal.initialize({
       hash: true,
@@ -600,8 +631,9 @@ datalad push --to ria-storage
       pdfSeparateFragments: false, pdfMaxPagesPerSlide: 1,
       transition: 'slide', backgroundTransition: 'fade',
       copycode: { button: "hover", display: "icons", timeout: 1200 },
-      plugins: [ RevealMarkdown, RevealNotes, RevealHighlight, CopyCode ]
+      plugins: [RevealMarkdown, RevealNotes, RevealHighlight, CopyCode, RevealMath.KaTeX]
     });
   </script>
 </body>
+
 </html>

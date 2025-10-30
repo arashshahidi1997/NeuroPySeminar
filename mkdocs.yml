@@ -47,4 +47,21 @@ nav:
       - Google Calendar: https://calendar.google.com/calendar/u/0/r?cid=NGFhNzU5NWVhYmU4MTAzNzFmZTkwMTNkYzVkMDZmY2Y1NGI5MDU2ZGViMTk5NDAwMjVjMmQzODdkYTg2MmVmY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t
 
   - Slides:
-      - Bootcamp: slides/index.html
+      - index: slides/index.md        # 👈 landing page for Slides tab
+      - Methods:
+          - EMD: slides/emd/index.html
+          - Multitaper: slides/multitaper/index.html
+          - Autoregressive: slides/autoregressive/index.html
+          - CCA: slides/cca/index.html
+          - GPFA: slides/gpfa/index.html
+          - HMM: slides/hmm/index.html
+      - Tutorials:
+          - Holoviews: slides/holoviews/index.html
+          - BootcampI: slides/bootcamp/index.html
+          - BootcampII: slides/bootcamp-ii/index.html
+          - Snakemake: slides/snakemake/index.html
+          - Datalad: slides/datalad/index.html
+          - BIDS: slides/bids/index.html
+          - sirocampus: slides/sirocampus/index.html
+      - Setup:
+          - VSCode: slides/vscode-setup/index.html

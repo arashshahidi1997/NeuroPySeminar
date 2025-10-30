@@ -1,3 +1,11 @@
+--- 
+title: "Bootcamp II — Progressive, Reproducible Workflow"
+author: "Arash Shahidi"
+theme: "black"
+width: 1280 
+height: 720 
+---
+
 # 🧩 Lab Reproducible Workflow Tutorial
 
 _(BIDS → DataLad → Snakemake → Integration & FAIR)_  
@@ -5,6 +13,7 @@ Sirota Lab Meeting — Progressive, reproducible-workflow bootcamp
 
 
 ---
+
 
 ### 🧰 **Setup Conda (Shared vs Personal)**
 
@@ -105,11 +114,11 @@ Learn about BIDS and immediately apply it by BIDS-ifying a dataset.
 | ------------------------------------------- | -------- | ---- | ----------------------------------------------------------------------- | -------- | ---------------------------------------------------------- | ----------------------------- |
 | BIDS: underlying data management principles | Remi Gau | 2022 | Open Research at the Wellcome Center for Integrative Neuroimaging (WIN) | Online   | [link](https://vimeo.com/showcase/7645853/video/668642973) | [link](https://osf.io/h6gsr/) |
 
-[BEP 032: Microelectrode electrophysiology](https://bids.neuroimaging.io/extensions/beps/bep_032.html#bep-032-microelectrode-electrophysiology)
+[BEP 032: Microelectrode electrophysiology](https://bids.neuroimaging.io/extensions/beps/bep_032.html#bep-032-microelectrode-electrophysiology)
 
 ---
 
-### 🧠 **Theory**
+###   **Theory**
 
 - Introduce the **BIDS standard**: motivation, structure, metadata files.
     
@@ -165,7 +174,7 @@ Learn how to use DataLad to manage datasets, track changes, and share data under
 
 ---
 
-### 🧠 **Theory**
+###   **Theory**
 
 - Introduce **DataLad concepts**:
     
@@ -273,7 +282,7 @@ Snakemake tutorial slides: https://slides.com/johanneskoester/snakemake-tutorial
 
 ---
 
-### 🧠 **Theory**
+###   **Theory**
 
 - What is a **Snakefile**?
     
@@ -387,7 +396,7 @@ Combine all tools under FAIR principles — make workflows reproducible, adaptab
 
 ---
 
-### 🧠 **Theory**
+###   **Theory**
 
 - Summarize:
     
@@ -517,6 +526,7 @@ datalad push --to ria-storage
     
 
 ---
+
 ## Why Reproducible Workflows?
 
 - Increasing complexity of neuroimaging analysis
