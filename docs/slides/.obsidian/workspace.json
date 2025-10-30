@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "68f70bfed9833adc",
+        "id": "22b19fc44aa4f151",
         "type": "tabs",
         "children": [
           {
-            "id": "de4935f3be3cb458",
+            "id": "ac408e1a651b0fd5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "multitaper/slides.md",
+                "mode": "source",
+                "source": true
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "slides"
             }
           }
         ]
@@ -162,19 +166,32 @@
       "bases:Create new base": false
     }
   },
-  "active": "de4935f3be3cb458",
+  "active": "ac408e1a651b0fd5",
   "lastOpenFiles": [
+    "test-deck/sedPbR6bj",
+    "multitaper/sediMCyy9",
+    "_shared/fragments/fourier-transform/slide_10.md",
+    "_shared/fragments/fourier-transform/slide_09.md",
+    "_shared/fragments/fourier-transform/slide_08.md",
+    "_shared/fragments/fourier-transform/slide_07.md",
+    "_shared/fragments/fourier-transform/slide_06.md",
+    "_shared/fragments/fourier-transform/slide_05.md",
+    "_shared/fragments/fourier-transform/slide_04.md",
+    "_shared/fragments/fourier-transform/slide_03.md",
+    "_shared/fragments/fourier-transform/slide_02.md",
+    "_shared/fragments/fourier-transform/slides.md",
+    "_shared/fragments/fourier-transform",
+    "multitaper/sedl0asOs",
+    "multitaper/sedzCDKjg",
+    "bootcamp/sedcuUNHl",
+    "multitaper/slides.md",
+    "multitaper/slides-wp7 copy.md",
+    "multitaper/slides-wp7.md",
     "test-deck/sedZnmCsd",
     "test-deck/sedD5Rd6b",
     "bootcamp/sedTqfMod",
     "scripts/build_reveal.sh",
     "scripts/build_reveal-perdeck.sh.bk",
-    "vscode-setup/sedibfDLH",
-    "vscode-setup/sedHAFYaR",
-    "vscode-setup/sedjKFbHV",
-    "test-deck/sedV0e4kC",
-    "test-deck/sedHMzbqG",
-    "test-deck/sed6O0pPy",
     "bootcamp/slides.md",
     "test-deck/slides.md",
     "test/slides.md",

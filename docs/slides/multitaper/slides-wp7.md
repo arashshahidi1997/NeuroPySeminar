@@ -6,49 +6,7 @@ width: 1280
 height: 720 
 ---
 
----
-
-# Multitaper Spectrogram
-
----
-
-### Resources:
-
----
-
-#### 1. Fourier Transform 
-
-Interactive Website:
-- https://www.jezzamon.com/fourier/
-- https://www.falstad.com/fourier/
-
-3Blue1Brown: https://www.youtube.com/watch?v=spUNpyF58BY
-
----
-
-#### 2. Multitaper Spectral Estimation
-
-Prerau's Lab (https://prerau.bwh.harvard.edu/) Youtube Tutorial on Multitaper Methods:
-https://www.youtube.com/watch?v=OVsZJLtzNsw&list=PLUhCVmP2y7PAQpaqCc6ANMjWwPZ2rbJeE
-
-https://docs.stingray.science/en/stable/notebooks/Multitaper/multitaper_example.html
-
----
-
-#### 3. Reference Papers: 
-
-Investigating large-scale brain dynamics using field potential recordings: analysis and interpretation
-
-Bijan Pesaran, Martin Vinck, Gaute T. Einevoll, Anton Sirota, Pascal Fries, Markus Siegel, Wilson Truccolo, Charles E. Schroeder & Ramesh Srinivasan 
-
-https://www.nature.com/articles/s41593-018-0171-8
-
-Gamma oscillations dynamically couple hippocampal CA3 and CA1 regions during memory task performance 
-(Sean M. Montgomery and György Buzsáki)
-
-https://www.pnas.org/doi/10.1073/pnas.0701826104?url_ver=Z39.88-2003&rfr_id=ori%3Arid%3Acrossref.org&rfr_dat=cr_pub++0pubmed
-
----
+# Spectral analysis Lecture 1
 
 # Recommended resources
 
@@ -61,8 +19,6 @@ https://www.pnas.org/doi/10.1073/pnas.0701826104?url_ver=Z39.88-2003&rfr_id=ori%
   * <http://ctnsrv.uwaterloo.ca/vandermeerlab/doku.php?id=analysis:course-w16>
   * Chronux and FieldTrip matlab toolboxes (<http://www.fieldtriptoolbox.org/start>)
 
----
-
 # Objectives of univariate spectral analysis
 
 Given a signal (e.g. voltage in time from the brain), we want to characterize its frequency content over time. For instance, we would like to
@@ -73,8 +29,6 @@ Given a signal (e.g. voltage in time from the brain), we want to characterize it
 
 To do that, we first need a good description of the frequency content of the signal
 
----
-
 # Time series – definitions (1)
 
   * A stochastic process – is a single realization of some PDF where the values are indexed
@@ -82,8 +36,6 @@ To do that, we first need a good description of the frequency content of the sig
   * The time series is considered stationary if its PDF does not change when the signal is shifted over time. Then parameters (e.g. mean, variance, and skewness) are fixed over time
   * A process is considered ergodic if its parameters can be determined from a finite sample
   * We usually assume that signals are ergodic but non-stationary
-
----
 
 # Time series – definitions (2)
 
@@ -97,16 +49,12 @@ To do that, we first need a good description of the frequency content of the sig
 
   * Although that is a weaker assumption than stationarity, even WSS is unusually not met, so most analyses have to be done in "windows” or segments in which WSS can be assumed
 
----
-
 # Sampling a continuous signal (1)
 
   * In reality, we process signals using digital computers. In the transition from a continuous signal to a computerized representation there are two steps
     1.  Digitization – division of the ordinate (values) of the signal into a reduced set. This is called analog-to-digital (AD) conversion and is mathematically equivalent to division and rounding
     2.  Discretization – sampling the signal in discrete points in time (division of the abscissa). For instance, if we sample x(t) every $\\Delta t$ sec, we then have a sampled (discretized) signal x\[n\]=x(n$\\Delta t$), with n=1,2,...,N. In that case the sampling frequency is fs =1/$\\Delta t$
   * Digitization only causes loss of resolution, but discretization can cause errors in the spectral estimation (aliasing or folding)
-
----
 
 # Sampling a continuous signal (2)
 
@@ -120,8 +68,6 @@ To do that, we first need a good description of the frequency content of the sig
 
   * Since in general signals are not band-limited, a low-pass filter is usually applied prior to sampling to avoid aliasing
 
----
-
 # Fourier transform (1)
 
   * For a given frequency f, the continuous FT is a complex function of the signal x(t):
@@ -132,8 +78,6 @@ To do that, we first need a good description of the frequency content of the sig
     
       * Basis change – the FT can be regarded as a change of basis from time to frequency
       * Decomposition – the FT describes x(t) in terms of complex exponentials; because $e^{\\wedge}(ix)=cos\~x+i\~sin\~x$ it is equivalent to describing x(t) as a weighted sum of cosines and sines
-
----
 
 # Fourier transform (2)
 
@@ -157,56 +101,6 @@ To do that, we first need a good description of the frequency content of the sig
     
     $X\_{k}=\\sum\_{n=0}^{N-1}x\_{n}e^{-\\frac{2\\pi i}{N}kn} k=0,...,N-1$
 
----
-
-### Fourier aliasing demo
-
-<iframe
-  data-src="https://www.falstad.com/fourier/e-alias.html"
-  width="100%" height="650" style="border:0;"
-  allowfullscreen
-  loading="lazy"
-></iframe>
-
-<p class="footnote">
-  <a href="https://www.falstad.com/fourier/e-alias.html">Open in new tab</a>
-</p>
-
----
-
-### Fourier transform demo
-
-<iframe
-  data-src="https://www.falstad.com/fourier/Fourier.html"
-  width="100%" height="650" style="border:0;"
-  allowfullscreen
-  loading="lazy"
-></iframe>
-
-<p class="footnote">
-  <a href="https://www.falstad.com/fourier/Fourier.html">Open in new tab</a>
-</p>
-
----
-
-## Further 'reading' for intuition on Fourier transforms
-
-To learn more, some really good resources you can check out are:
-
-[An Interactive Guide To The Fourier Transform](https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/)
-A great article that digs more into the mathematics of what happens.
-
-[But what is the Fourier Transform? A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY)
-A great Youtube video by 3Blue1Brown, also explaining the maths of Fourier transforms from an audio perspective.
-
-[A Tale of Math & Art: Creating the Fourier Series Harmonic Circles Visualization](https://alex.miller.im/posts/fourier-series-spinning-circles-visualization/)
-Another article explaining how you can use epicycles to draw a path, explained from a linear algebra perspective.
-
-[Fourier transform (Wikipedia)](https://en.wikipedia.org/wiki/Fourier_transform)
-And of course, the Wikipedia article is pretty good too.
-
----
-
 # Spectral energy density
 
   * Spectral density of a signal is defined as the square of its FT:
@@ -220,8 +114,6 @@ And of course, the Wikipedia article is pretty good too.
     $r\_{xx}\[k\]=E\[x\[n\]x^{\*
     }\[n-k\]\]$
     \=\>PSD exists only if the signal is WSS and thus the auto- correlation can be written as a function of one variable
-
----
 
 # Properties of the FT and spectral density
 
@@ -237,15 +129,11 @@ And of course, the Wikipedia article is pretty good too.
     
     $\\int\_{-\\infty}^{\\infty}|f(x)|^{2}dx=\\int\_{-\\infty}^{\\infty}|\\hat{f}(\\xi)|^{2}d\\xi.$
 
----
-
 # Real data – no assumptions are met
 
   * Nonstationarity (at most piece-wise weak-sense stationarity)
   * Nonlinearity
   * Nongaussianity
-
----
 
 # Time-frequency localization or spectral concentration problem
 
@@ -266,8 +154,6 @@ Problem: time-frequency localization Heisenberg-Gabor uncertainty principle
 
 $\\Delta f\~\\Delta t\>1/(4\\pi)$
 
----
-
 # Narrowband and broadband bias
 
 <br>
@@ -275,11 +161,7 @@ $\\Delta f\~\\Delta t\>1/(4\\pi)$
 <br>
 Two problems caused by the finite window:
 (a) central lobe has finite width, $\Delta f=2/T$ (&quot;narrowband bias&quot;)
-(b) Large side lobes: height of first side lobe is 20% of central lobe (&quot;broadband ---
-bias&quot;). Doesn&
-#39;t decrease with increase of T.
-
----
+(b) Large side lobes: height of first side lobe is 20% of central lobe (&quot;broadband bias&quot;). Doesn&#39;t decrease with increase of T.
 
 # Bias reduction
 
@@ -294,8 +176,6 @@ Tapering causes us to down- weight the edges of the data window (we lose data). 
 Does not reduce the variance.
 What is the optimal taper?
 
----
-
 # Variance reduction tradeoffs
 
   * Segmentation into small windows increases the narrowband bias
@@ -303,8 +183,6 @@ What is the optimal taper?
   * Uncontrolled smoothing is bad if the spectrum is mixed (spectral lines on a smooth background).
   * Smoothers are nonlinear, since smoothers work on the raw spectrum estimation, phase information is lost and not used, and line detection is less efficient.
   * What is the optimal way to reduce the variance and keep the bias low?
-
----
 
 # Direct estimators: fight with bias and variance
 
@@ -329,8 +207,6 @@ What is the optimal taper?
 
   * Or any combination of segmentation, windowing and smoothing.. But what is the optimal way to control bias and variance?
 
----
-
 # Multitaper framework for Spectral Concentration Problem
 
 Find strictly time localized functions $W\_{t}, t=1..T$ whose Fourier transforms are maximally localized on a frequency interval $\[-W,W\]$. This gives a basis set (Slepian functions) used for spectral estimation on finite time segments
@@ -347,8 +223,6 @@ $\\sum\_{t=1}^{T}\\frac{sin\[2\\pi W(t-t^{\\prime})\]}{\\pi(t-t^{\\prime})}w(t^{
 
 Eigenvectors = Slepian sequences - optimal tapers, Eigenvalues – their spectral concentration
 
----
-
 # Spectral and statistical properties of the Slepian functions
 
   * K=2WT Eigenvalues are close to 1 (rest close to 0), corresponding to 2WT functions concentrated within $\[-W,W\]$ – yield an ensemble of estimates
@@ -364,8 +238,6 @@ Eigenvectors = Slepian sequences - optimal tapers, Eigenvalues – their spectra
 <br>
 <br>
 
----
-
 # Multitaper spectral estimator
 
 $S\_{MT}=\\frac{1}{K}\\sum\_{k=1}^{K}||x\_{k}(f)||^{2}$
@@ -378,8 +250,6 @@ Replaces Dirichlet kernel with $H(f)=\\frac{1}{k}\\sum\_{k=1}^{K}|U\_{k}(f)|^{2}
 In practice, one could do: weighting by $1/\\lambda\_{k,.}$ or better adaptive iterative weighting procedure
 
 $S\_{dHf}(f)=\\frac{\\sum\_{k=1}^{k}|d\_{k}(f)x\_{k}(f)|^{2}}{\\sum\_{k=1}^{k}|d\_{k}(f)|^{2}}d\_{k}(f)=\\frac{\\sqrt{2\_{\_{k}}}S\_{k,,}(f)}{\\lambda\_{k}S\_{k,,(f)+(1-\\delta\_{k})\\sigma^{2}}$
-
----
 
 # Illustration of multitaper estimator
 
@@ -399,8 +269,6 @@ $S\_{dHf}(f)=\\frac{\\sum\_{k=1}^{k}|d\_{k}(f)x\_{k}(f)|^{2}}{\\sum\_{k=1}^{k}|d
 Multitaper (9 tapers) vs theoretical spectrum
 <br>
 
----
-
 # Illustration: Periodogram vs multitaper estimator
 
 <br>
@@ -413,8 +281,6 @@ Multitaper (9 tapers) vs theoretical spectrum
 <br>
 <br>
 <br>
-
----
 
 # Illustration: Effect of number of windows/trials
 
@@ -429,94 +295,12 @@ Multitaper (9 tapers) vs theoretical spectrum
 <br>
 <br>
 
----
-
-<iframe
-  data-src="https://prerau.bwh.harvard.edu/multitaper/#params"
-  width="100%" height="650" style="border:0;"
-  allowfullscreen
-  loading="lazy"
-></iframe>
-
-<p class="footnote">
-  <a href="https://prerau.bwh.harvard.edu/multitaper/#params">Open in new tab</a>
-</p>
-
----
-
-<iframe
-  data-src="https://prerau.bwh.harvard.edu/multitaper/#df"
-  width="100%" height="650" style="border:0;"
-  allowfullscreen
-  loading="lazy"
-></iframe>
-
-<p class="footnote">
-  <a href="https://prerau.bwh.harvard.edu/multitaper/#df">Open in new tab</a>
-</p>
-
----
-
-<iframe
-  data-src="https://prerau.bwh.harvard.edu/multitaper/#TW"
-  width="100%" height="650" style="border:0;"
-  allowfullscreen
-  loading="lazy"
-></iframe>
-
-<p class="footnote">
-  <a href="https://prerau.bwh.harvard.edu/multitaper/#TW">Open in new tab</a>
-</p>
-
----
-
-<iframe
-  data-src="https://prerau.bwh.harvard.edu/multitaper/#L"
-  width="100%" height="650" style="border:0;"
-  allowfullscreen
-  loading="lazy"
-></iframe>
-
-<p class="footnote">
-  <a href="https://prerau.bwh.harvard.edu/multitaper/#L">Open in new tab</a>
-</p>
-
----
-
-<iframe
-  data-src="https://prerau.bwh.harvard.edu/multitaper/#MTSprocedure"
-  width="100%" height="650" style="border:0;"
-  allowfullscreen
-  loading="lazy"
-></iframe>
-
-<p class="footnote">
-  <a href="https://prerau.bwh.harvard.edu/multitaper/#MTSprocedure">Open in new tab</a>
-</p>
-
----
-
-<iframe
-  data-src="https://prerau.bwh.harvard.edu/multitaper/#calc"
-  width="100%" height="650" style="border:0;"
-  allowfullscreen
-  loading="lazy"
-></iframe>
-
-<p class="footnote">
-  <a href="https://prerau.bwh.harvard.edu/multitaper/#calc">Open in new tab</a>
-</p>
-
----
-
 # Statistical issues
 
   * The classical theoretical framework for the statistical analysis of univariate spectral measures is Gaussian
   * The underlying assumption is not that the process X is Gaussian but rather that its FT is Gaussian
   * This is motivated by the fact that the DFT is a sum of many terms and is therefore approximately Gaussian (central limit theorem)
   * Assuming that spectra have been estimated using M windows (Welch method and/or multi-taper method), the confidence limits under a Gaussian assumption are obtained by computing the SD and taking e.g. for a 95% confidence limit, 1.96 SDs around the mean (or expected value)
-
----
 
 # Statistical analysis of the spectrum
 
@@ -531,15 +315,11 @@ with v d.f., M is \~ Chi-sq distributed
   * Thomson: “Gaussianity and stationarity are fairy tales invented for the amusement of undergraduates”.
   * In real life one can estimate bias/variance and construct error bars using the jackknife over ensemble of spectrum estimates.
 
----
-
 # Non-Gaussian statistics: the jackknife
 
   * The Gaussian framework (and central limit theorem) assume that the terms are iid, which is rarely the case for serially-correlated time series
   * An alternative framework is non-parametric. The simplest of these is the jackknife (leave-one-out)
   * Using the jackknife, M statistics Oik are computed, each based on M- 1 samples (e.g. all but one of the tapers, or all but one of the Welch windows)
-
----
 
 # Jackknife bias and variance
 
