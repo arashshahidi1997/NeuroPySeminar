@@ -1,0 +1,20 @@
+# Snakefile
+
+# Discover all .py notebooks in raw/
+PY_SCRIPTS = glob_wildcards("raw/{name}.py").name
+
+# Default target: all corresponding .ipynb files in notebook/
+rule all:
+    input:
+        expand("notebook/{name}.ipynb", name=PY_SCRIPTS)
+
+# Convert raw/{name}.py -> notebook/{name}.ipynb
+rule py_to_ipynb:
+    input:
+        "raw/{name}.py"
+    output:
+        "notebook/{name}.ipynb"
+    shell:
+        """
+        jupytext --to notebook --output {output} {input}
+        """

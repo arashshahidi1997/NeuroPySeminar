@@ -1,0 +1,38 @@
+Assuming unrestricted shared filesystem usage.
+host: gamma3
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job            count
+-----------  -------
+all                1
+py_to_ipynb        1
+total              2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Oct 25 09:18:29 2025]
+localrule py_to_ipynb:
+    input: raw/emd-exercise.py
+    output: notebook/emd-exercise.ipynb
+    jobid: 1
+    reason: Updated input files: raw/emd-exercise.py
+    wildcards: name=emd-exercise
+    resources: tmpdir=/tmp
+[Sat Oct 25 09:18:29 2025]
+Finished jobid: 1 (Rule: py_to_ipynb)
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Oct 25 09:18:29 2025]
+localrule all:
+    input: notebook/emd-exercise.ipynb
+    jobid: 0
+    reason: Input files updated by another job: notebook/emd-exercise.ipynb
+    resources: tmpdir=/tmp
+[Sat Oct 25 09:18:29 2025]
+Finished jobid: 0 (Rule: all)
+2 of 2 steps (100%) done
+Complete log(s): /storage2/arash/teaching/NeuroPySeminar/scripts/factory/.snakemake/log/2025-10-25T091828.674848.snakemake.log

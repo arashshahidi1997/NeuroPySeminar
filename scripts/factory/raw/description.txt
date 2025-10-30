@@ -1,0 +1,4 @@
+# This folder contains Jupytext-compatible Python scripts mirroring a Jupyter notebook using the **percent** format.
+# - Each cell is marked with `# %%` (code) or `# %% [markdown]` (text).
+# - Explanations appear as dedicated **markdown cells** below.
+# - "Hint boxes" are included as commented blocks that you can expand if needed.
