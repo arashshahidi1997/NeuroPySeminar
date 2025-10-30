@@ -622,12 +622,7 @@ with v d.f., M is \~ Chi-sq distributed
       pdfSeparateFragments: false, pdfMaxPagesPerSlide: 1,
       transition: 'slide', backgroundTransition: 'fade',
       copycode: { button: "hover", display: "icons", timeout: 1200 },
-      mathjax3: {
-        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
-        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-        options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
-      },
-      plugins: [RevealMarkdown, RevealNotes, RevealHighlight, CopyCode, RevealMath.MathJax3]
+      plugins: [RevealMarkdown, RevealNotes, RevealHighlight, CopyCode]
     });
   </script>
 </body>
