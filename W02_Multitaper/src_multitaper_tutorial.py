@@ -15,11 +15,15 @@ fs = 1250  # Sampling frequency in Hz
 channel = 0  # Select the first channel
 signal = lfp[channel, :]
 
+# Read the documentation for the multitaper spectrogram function: gsp.mtm_spectrogram
+print(help(gsp.mtm_spectrogram))
+
 # Parameters for multitaper spectral estimation
 bandwidth = 4.0  # Time-bandwidth product
 nfft = 2048          # Number of FFT points
 # ... adjust parameters as needed
 
-# run spectral estimation
+# run mtm_spectrogram
 
 # explore and do the exercise!
+
