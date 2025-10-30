@@ -44,7 +44,7 @@
       <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^Note:"
         data-charset="utf-8">
         <textarea data-template>
-
+  
 ---
 title: "Multitaper Spectrogram"
 author: "Arash Shahidi"
@@ -612,7 +612,7 @@ with v d.f., M is \~ Chi-sq distributed
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js-copycode@1.3.2/plugin/copycode/copycode.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
   <script>
     Reveal.initialize({
       hash: true,
@@ -622,7 +622,7 @@ with v d.f., M is \~ Chi-sq distributed
       pdfSeparateFragments: false, pdfMaxPagesPerSlide: 1,
       transition: 'slide', backgroundTransition: 'fade',
       copycode: { button: "hover", display: "icons", timeout: 1200 },
-      plugins: [RevealMarkdown, RevealNotes, RevealHighlight, CopyCode]
+      plugins: [RevealMarkdown, RevealNotes, RevealHighlight, CopyCode, RevealMath.KaTeX]
     });
   </script>
 </body>
