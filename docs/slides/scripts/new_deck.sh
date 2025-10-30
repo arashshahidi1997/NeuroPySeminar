@@ -6,17 +6,22 @@ usage() {
 Usage:
   scripts/new_deck.sh <deck-slug> [Title]
   scripts/new_deck.sh --deploy <deck-slug> [Title]
+  scripts/new_deck.sh --update <deck-slug> [Title]
+
 Options:
   -d, --deploy   Also register deck in mkdocs.yml and docs/slides/index.md
+  -u, --update   Re-apply deck scaffolding even if it exists (backup slides.md -> slides.md.bk)
 USAGE
   exit 1
 }
 
 DEPLOY=false
+UPDATE=false
 ARGS=()
 while [[ $# -gt 0 ]]; do
   case "$1" in
     -d|--deploy) DEPLOY=true; shift ;;
+    -u|--update) UPDATE=true; shift ;;
     -h|--help) usage ;;
     *) ARGS+=("$1"); shift ;;
   esac
@@ -31,12 +36,21 @@ REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 DECK_DIR="$REPO_ROOT/docs/slides/$SLUG"
 BOOTCAMP_DIR="$REPO_ROOT/docs/slides/bootcamp"
 
-if [[ -d "$DECK_DIR" ]]; then
+# Creation / update gate
+if [[ -d "$DECK_DIR" && $UPDATE == false ]]; then
   echo "Deck '$SLUG' already exists at $DECK_DIR" >&2
+  echo "Hint: use --update to refresh scaffold (backs up slides.md to slides.md.bk)." >&2
   exit 1
 fi
 
+# Ensure directories exist
 mkdir -p "$DECK_DIR/css"
+
+# If updating and slides.md exists, back it up before regenerating
+if [[ $UPDATE == true && -f "$DECK_DIR/slides.md" ]]; then
+  mv -f "$DECK_DIR/slides.md" "$DECK_DIR/slides.md.bk"
+  echo "🗄️  Backed up slides.md -> slides.md.bk"
+fi
 
 # Use bootcamp template as a base; fall back to a fresh template if missing
 TPL_SRC="$BOOTCAMP_DIR/index.template.html"
@@ -74,6 +88,7 @@ else
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js-copycode@1.3.2/plugin/copycode/copycode.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
   <script>
     Reveal.initialize({
       hash: true,
@@ -83,7 +98,7 @@ else
       pdfSeparateFragments: false, pdfMaxPagesPerSlide: 1,
       transition: 'slide', backgroundTransition: 'fade',
       copycode: { button: "hover", display: "icons", timeout: 1200 },
-      plugins: [ RevealMarkdown, RevealNotes, RevealHighlight, CopyCode ]
+      plugins: [ RevealMarkdown, RevealNotes, RevealHighlight, CopyCode, RevealMath.KaTeX]
     });
   </script>
 </body>
@@ -98,7 +113,7 @@ else
   : > "$DECK_DIR/css/local.css"
 fi
 
-# slides.md scaffold
+# slides.md scaffold (recreated on update; prior one saved as .bk if present)
 cat > "$DECK_DIR/slides.md" <<MD
 --- 
 title: "$TITLE"
@@ -125,7 +140,11 @@ Welcome! Replace this content with your slides.
 Thank you!
 MD
 
-echo "✅ Created new deck: $DECK_DIR"
+if [[ $UPDATE == true ]]; then
+  echo "✅ Updated deck scaffold at: $DECK_DIR (slides.md backed up)"
+else
+  echo "✅ Created new deck: $DECK_DIR"
+fi
 
 if ! $DEPLOY; then
   echo "Run: scripts/build_reveal.sh $SLUG"
@@ -139,6 +158,7 @@ fi
 MKDOCS="$REPO_ROOT/mkdocs.yml"
 SLIDES_INDEX="$REPO_ROOT/docs/slides/index.md"
 DECK_URL="slides/$SLUG/index.html"
+
 # 1) Append to mkdocs.yml under the Slides nav group with correct indent
 if [[ -f "$MKDOCS" ]]; then
   tmpfile="$(mktemp)"
