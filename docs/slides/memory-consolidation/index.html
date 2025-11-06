@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Sirota Lab — Progressive, Reproducible Workflow Bootcamp</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css" id="theme" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-copycode@1.3.2/plugin/copycode/copycode.css" />
+  <style>
+    .footnote {
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      font-size: .55em;
+      opacity: .7
+    }
+
+    .reveal h1,
+    .reveal h2 {
+      letter-spacing: .5px
+    }
+
+    .reveal section img {
+      border-radius: 8px
+    }
+
+    .reveal pre code {
+      font-size: .9em
+    }
+
+    .reveal {
+      font-size: 24px;
+      /* default is ~32px */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^Note:"
+        data-charset="utf-8">
+        <textarea data-template>
+  
+--- 
+title: "MemoryConsolidation"
+author: "Arash Shahidi"
+theme: "black"
+width: 1280 
+height: 720 
+---
+
+# 🧠 Sleep and Memory Consolidation
+
+- During **sleep**, short-term memories in the **hippocampus** are stabilized into long-term cortical storage.  
+- Non-REM (NREM) sleep supports this process.  
+- Central question: *How does the hippocampus communicate with cortex during sleep?*
+
+---
+
+# ⚡ Sharp-Wave Ripples (SWRs)
+
+- Brief, high-frequency (150–250 Hz) hippocampal events during NREM sleep.  
+- Coordinate reactivation (“replay”) of neurons encoding recent experiences.  
+- Thought to drive information transfer to cortex.
+
+**[Animation placeholder: SWR waveform + ripple burst firing]**
+
+---
+
+# 🔁 Memory Reactivation (“Replay”)
+
+- Neurons that fired during learning **replay** their activity during SWRs.  
+- This replay can also be observed in **prefrontal cortex (PFC)**.  
+- Only ~10–30% of SWRs show replay → not all are memory-relevant.
+
+**[Animation placeholder: waking sequence vs. sleep replay]**
+
+---
+
+# ❓ Key Question
+
+- Are certain SWRs (e.g., large ones) specifically responsible for memory reactivation?  
+- Do they causally contribute to better memory performance?
+
+---
+
+# 💡 Closed-Loop Optogenetic Boosting
+
+- Detect SWRs in real time and deliver a light pulse to **amplify** them.  
+- Tests whether **enhanced SWRs** increase hippocampus–PFC reactivation and memory.
+
+**[Animation placeholder: SWR detection → blue light → boosted ripple]**
+
+---
+
+# 🧬 Findings
+
+- **Large SWRs** linked to stronger replay in hippocampus and PFC.  
+- Their frequency increases after learning.  
+- **Boosting SWRs**:
+  - Enhanced ensemble reactivation  
+  - Improved later memory recall  
+  - Increased hippocampus–PFC synchrony
+
+**[Plot placeholder: Control vs. Boosted memory performance]**
+
+---
+
+# 🔗 Summary
+
+- Sleep SWRs coordinate memory replay and hippocampo-cortical communication.  
+- Only a subset (“large SWRs”) drives consolidation.  
+- Causal boosting strengthens both neural replay and behavioral recall.
+
+---
+
+      </textarea>
+      </section>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js-copycode@1.3.2/plugin/copycode/copycode.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      navigationMode: 'linear',
+      width: 1280, height: 720, margin: 0.04,
+      pdfSeparateFragments: false, pdfMaxPagesPerSlide: 1,
+      transition: 'slide', backgroundTransition: 'fade',
+      copycode: { button: "hover", display: "icons", timeout: 1200 },
+      plugins: [RevealMarkdown, RevealNotes, RevealHighlight, CopyCode, RevealMath.KaTeX]
+    });
+  </script>
+</body>
+
+</html>

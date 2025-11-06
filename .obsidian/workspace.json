@@ -11,10 +11,14 @@
             "id": "a580524ffb5e0a18",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "index.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "index"
             }
           }
         ]
@@ -162,8 +166,20 @@
       "bases:Create new base": false
     }
   },
-  "active": "a84a603cc31b7364",
+  "active": "a580524ffb5e0a18",
   "lastOpenFiles": [
+    "docs/slides/memory-consolidation/slides-extended.md",
+    "docs/slides/memory-consolidation/slides.md",
+    "docs/slides/memory-consolidation/css/local.css",
+    "docs/slides/memory-consolidation/index.template.html",
+    "docs/slides/memory-consolidation/css",
+    "docs/slides/memory-consolidation",
+    "docs/slides/cheatsheet.md",
+    "docs/slides/README.md",
+    "README.md",
+    "docs/slides/_shared/fragments/terminal-setup/umask.md",
+    "docs/slides/bootcamp-ii/slides.md",
+    "docs/slides/bootcamp-ii/tutorial-plan.md",
     "docs/NeuroPySlides/_shared/fragments/terminal-setup/umask.md",
     "docs/NeuroPySlides/_shared/fragments/terminal-setup/section-heading.md",
     "docs/NeuroPySlides/_shared/fragments/terminal-setup/reload-and-activate.md",
@@ -176,10 +192,6 @@
     "docs/NeuroPySlides/multitaper/css/local.css",
     "docs/NeuroPySlides/holoviews/css/local.css",
     "docs/NeuroPySlides/hmm/css/local.css",
-    "docs/NeuroPySlides/gpfa/css/local.css",
-    "docs/NeuroPySlides/emd/css/local.css",
-    "docs/NeuroPySlides/datalad/css/local.css",
-    "docs/NeuroPySlides/cca/css/local.css",
     "docs/NeuroPySlides/vscode-setup/slides.md",
     "docs/NeuroPySlides/snakemake/slides.md",
     "docs/NeuroPySlides/sirocampus/slides.md",
@@ -191,14 +203,6 @@
     "docs/NeuroPySlides/datalad/slides.md",
     "docs/NeuroPySlides/cca/slides.md",
     "docs/NeuroPySlides/bootcamp-ii/tutorial-plan.md",
-    "docs/NeuroPySlides/bootcamp-ii/slides.md",
-    "docs/NeuroPySlides/bootcamp/slides.scaffold.md",
-    "docs/NeuroPySlides/bootcamp/slides.md",
-    "docs/NeuroPySlides/bids/slides.md",
-    "docs/NeuroPySlides/autoregressive/slides.md",
-    "docs/NeuroPySlides/index.md",
-    "docs/slides/index.md",
-    "docs/slides/emd/slides.md",
-    "index.md"
+    "docs/NeuroPySlides/bootcamp-ii/slides.md"
   ]
 }
