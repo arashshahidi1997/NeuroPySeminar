@@ -12,10 +12,54 @@ height: 720
 
 ---
 
+### Resources:
+
+---
+
 #### 1. Fourier Transform 
 
 Interactive Website:
 - https://www.jezzamon.com/fourier/
+- https://www.falstad.com/fourier/
+
+3Blue1Brown: https://www.youtube.com/watch?v=spUNpyF58BY
+
+---
+
+#### 2. Multitaper Spectral Estimation
+
+Prerau's Lab (https://prerau.bwh.harvard.edu/) Youtube Tutorial on Multitaper Methods:
+https://www.youtube.com/watch?v=OVsZJLtzNsw&list=PLUhCVmP2y7PAQpaqCc6ANMjWwPZ2rbJeE
+
+https://docs.stingray.science/en/stable/notebooks/Multitaper/multitaper_example.html
+
+---
+
+#### 3. Reference Papers: 
+
+Investigating large-scale brain dynamics using field potential recordings: analysis and interpretation
+
+Bijan Pesaran, Martin Vinck, Gaute T. Einevoll, Anton Sirota, Pascal Fries, Markus Siegel, Wilson Truccolo, Charles E. Schroeder & Ramesh Srinivasan 
+
+https://www.nature.com/articles/s41593-018-0171-8
+
+Gamma oscillations dynamically couple hippocampal CA3 and CA1 regions during memory task performance 
+(Sean M. Montgomery and György Buzsáki)
+
+https://www.pnas.org/doi/10.1073/pnas.0701826104?url_ver=Z39.88-2003&rfr_id=ori%3Arid%3Acrossref.org&rfr_dat=cr_pub++0pubmed
+
+---
+
+# Recommended resources
+
+  * Mitra, P.P., and Pesaran, B. (1999). Analysis of Dynamic Brain Imaging Data. Biophys J 76, 691-708.
+  * Digital signal processing using Matlab for students and researchers by John Leis
+  * Observed Brain Dynamics by Partha Mitra and Heman Bokil
+  * Analyzing Neural Time Series Data (Issues in Clinical and Cognitive Neuropsychology) by Mike Cohen
+  * Bruns, A. (2004). Fourier-, Hilbert- and wavelet-based signal analysis: are they really different approaches? J Neurosci Methods 137, 321-332.
+  * Pereda, E., Quiroga, R.Q., and Bhattacharya, J. (2005). Nonlinear multivariate analysis of neurophysiological signals. Prog Neurobiol 77, 1-37.
+  * <http://ctnsrv.uwaterloo.ca/vandermeerlab/doku.php?id=analysis:course-w16>
+  * Chronux and FieldTrip matlab toolboxes (<http://www.fieldtriptoolbox.org/start>)
 
 ---
 
@@ -59,20 +103,20 @@ To do that, we first need a good description of the frequency content of the sig
 
   * In reality, we process signals using digital computers. In the transition from a continuous signal to a computerized representation there are two steps
     1.  Digitization – division of the ordinate (values) of the signal into a reduced set. This is called analog-to-digital (AD) conversion and is mathematically equivalent to division and rounding
-    2.  Discretization – sampling the signal in discrete points in time (division of the abscissa). For instance, if we sample x(t) every $\\Delta t$ sec, we then have a sampled (discretized) signal $x[n]=x(n\\Delta t)$, with n=1,2,...,N. In that case the sampling frequency is $f_s =1/\\Delta t$
+    2.  Discretization – sampling the signal in discrete points in time (division of the abscissa). For instance, if we sample x(t) every $\\Delta t$ sec, we then have a sampled (discretized) signal x\[n\]=x(n$\\Delta t$), with n=1,2,...,N. In that case the sampling frequency is fs =1/$\\Delta t$
   * Digitization only causes loss of resolution, but discretization can cause errors in the spectral estimation (aliasing or folding)
 
 ---
 
 # Sampling a continuous signal (2)
 
-  * Nyquist-Shannon sampling theorem states that signals that are band-limited (their maximal frequency is f) can be reconstructed perfectly from the sampled version if fs $\\ge 2f$
+  * Nyquist-Shannon sampling theorem states that signals that are band-limited (their maximal frequency is f) can be reconstructed perfectly from the sampled version if fs $\\ge 2^{\*}f$
 
   * The reconstruction is done by Whittaker-Shannon interpolation – multiplying each sample by a sinc function
+    
+    $x(t)=\\sum\_{n=-\\infty}^{\\infty}x\[n\]\\cdot sinc(\\frac{t-nT}{T})$
 
-    $x(t)=\\sum\_{n=-\\infty}^{\\infty}x[n]\\cdot sinc(\\frac{t-nT}{T})$
-
-  * The maximal frequency that can be represented by sampling without aliasing is thus fs/2; this is called the Nyquist frequency
+  * The maximal frequency that can be represented by sampling without aliasing is thus fs/2; this is called the Nyquisit frequency
 
   * Since in general signals are not band-limited, a low-pass filter is usually applied prior to sampling to avoid aliasing
 
@@ -80,15 +124,15 @@ To do that, we first need a good description of the frequency content of the sig
 
 # Fourier transform (1)
 
-  * For a given frequency f, the continuous FT is a complex function of the signal $x(t)$:
+  * For a given frequency f, the continuous FT is a complex function of the signal x(t):
     
     $X(f)=\\int\_{-\\infty}^{\\infty}x(t)\\cdot e^{-i2\\pi ft}dt.$
 
   * Interpretations:
     
       * Basis change – the FT can be regarded as a change of basis from time to frequency
-      * Decomposition – the FT describes x(t) in terms of complex exponentials; because $e^{\\wedge}(ix)=cos\~x+i\~sin\~x$ it is equivalent to describing $x(t)$ as a weighted sum of cosines and sines
-  
+      * Decomposition – the FT describes x(t) in terms of complex exponentials; because $e^{\\wedge}(ix)=cos\~x+i\~sin\~x$ it is equivalent to describing x(t) as a weighted sum of cosines and sines
+
 ---
 
 # Fourier transform (2)
@@ -512,56 +556,3 @@ with v d.f., M is \~ Chi-sq distributed
   * Useful related measure : pseudovalue
     
     $PV(S)*{i}=nS(X)-(n-1)S(X*{i})$
-
----
-
-### Resources:
-
----
-
-#### 1. Fourier Transform 
-
-Interactive Website:
-- https://www.jezzamon.com/fourier/
-- https://www.falstad.com/fourier/
-
-3Blue1Brown: https://www.youtube.com/watch?v=spUNpyF58BY
-
----
-
-#### 2. Multitaper Spectral Estimation
-
-Prerau's Lab (https://prerau.bwh.harvard.edu/) Youtube Tutorial on Multitaper Methods:
-https://www.youtube.com/watch?v=OVsZJLtzNsw&list=PLUhCVmP2y7PAQpaqCc6ANMjWwPZ2rbJeE
-
-https://docs.stingray.science/en/stable/notebooks/Multitaper/multitaper_example.html
-
----
-
-#### 3. Reference Papers: 
-
-Investigating large-scale brain dynamics using field potential recordings: analysis and interpretation
-
-Bijan Pesaran, Martin Vinck, Gaute T. Einevoll, Anton Sirota, Pascal Fries, Markus Siegel, Wilson Truccolo, Charles E. Schroeder & Ramesh Srinivasan 
-
-https://www.nature.com/articles/s41593-018-0171-8
-
-Gamma oscillations dynamically couple hippocampal CA3 and CA1 regions during memory task performance 
-(Sean M. Montgomery and György Buzsáki)
-
-https://www.pnas.org/doi/10.1073/pnas.0701826104?url_ver=Z39.88-2003&rfr_id=ori%3Arid%3Acrossref.org&rfr_dat=cr_pub++0pubmed
-
----
-
-# Recommended resources
-
-  * Mitra, P.P., and Pesaran, B. (1999). Analysis of Dynamic Brain Imaging Data. Biophys J 76, 691-708.
-  * Digital signal processing using Matlab for students and researchers by John Leis
-  * Observed Brain Dynamics by Partha Mitra and Heman Bokil
-  * Analyzing Neural Time Series Data (Issues in Clinical and Cognitive Neuropsychology) by Mike Cohen
-  * Bruns, A. (2004). Fourier-, Hilbert- and wavelet-based signal analysis: are they really different approaches? J Neurosci Methods 137, 321-332.
-  * Pereda, E., Quiroga, R.Q., and Bhattacharya, J. (2005). Nonlinear multivariate analysis of neurophysiological signals. Prog Neurobiol 77, 1-37.
-  * <http://ctnsrv.uwaterloo.ca/vandermeerlab/doku.php?id=analysis:course-w16>
-  * Chronux and FieldTrip matlab toolboxes (<http://www.fieldtriptoolbox.org/start>)
-
----
