@@ -65,3 +65,5 @@ nav:
           - sirocampus: slides/sirocampus/index.html
       - Setup:
           - VSCode: slides/vscode-setup/index.html
+      - Miscellaneous:
+          - Memory Consolidation: slides/memory-consolidation/index.html
