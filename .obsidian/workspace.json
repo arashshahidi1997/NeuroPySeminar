@@ -168,6 +168,7 @@
   },
   "active": "a580524ffb5e0a18",
   "lastOpenFiles": [
+    "docs/slides/memory-consolidation/index.html",
     "docs/slides/memory-consolidation/slides-extended.md",
     "docs/slides/memory-consolidation/slides.md",
     "docs/slides/memory-consolidation/css/local.css",
@@ -202,7 +203,6 @@
     "docs/NeuroPySlides/emd/slides.md",
     "docs/NeuroPySlides/datalad/slides.md",
     "docs/NeuroPySlides/cca/slides.md",
-    "docs/NeuroPySlides/bootcamp-ii/tutorial-plan.md",
-    "docs/NeuroPySlides/bootcamp-ii/slides.md"
+    "docs/NeuroPySlides/bootcamp-ii/tutorial-plan.md"
   ]
 }
