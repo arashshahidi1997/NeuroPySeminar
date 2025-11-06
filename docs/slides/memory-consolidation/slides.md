@@ -16,7 +16,7 @@ height: 720
 
 <!-- cortex and hippocampus 2:42 - 3:04 -->
 <iframe width="800" height="450"
-  src="https://www.youtube.com/watch?v=NteHQv0ceN4?start=162&end=184"
+  src="https://www.youtube.com/embed/NteHQv0ceN4?start=162&end=184"
   title=""
   frameborder="0"
   allow="autoplay; encrypted-media"
