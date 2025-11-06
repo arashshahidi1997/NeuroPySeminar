@@ -21,3 +21,6 @@ Select a slide deck:
 
 ## Setup
 - [VSCode](vscode-setup/index.html) — VSCode setup
+
+## Miscellaneous
+- [Memory Consolidation](memory-consolidation/index.html) — Sharp-Wave Ripples and Memory Consolidation

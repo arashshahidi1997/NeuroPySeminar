@@ -168,6 +168,9 @@
   },
   "active": "a580524ffb5e0a18",
   "lastOpenFiles": [
+    "docs/slides/scripts/build_reveal.sh",
+    "docs/slides/scripts/build_reveal-dep.sh",
+    "docs/slides/memory-consolidation/index.html",
     "docs/slides/memory-consolidation/slides-extended.md",
     "docs/slides/memory-consolidation/slides.md",
     "docs/slides/memory-consolidation/css/local.css",
@@ -190,8 +193,6 @@
     "docs/NeuroPySlides/snakemake/css/local.css",
     "docs/NeuroPySlides/sirocampus/css/local.css",
     "docs/NeuroPySlides/multitaper/css/local.css",
-    "docs/NeuroPySlides/holoviews/css/local.css",
-    "docs/NeuroPySlides/hmm/css/local.css",
     "docs/NeuroPySlides/vscode-setup/slides.md",
     "docs/NeuroPySlides/snakemake/slides.md",
     "docs/NeuroPySlides/sirocampus/slides.md",
@@ -202,7 +203,6 @@
     "docs/NeuroPySlides/emd/slides.md",
     "docs/NeuroPySlides/datalad/slides.md",
     "docs/NeuroPySlides/cca/slides.md",
-    "docs/NeuroPySlides/bootcamp-ii/tutorial-plan.md",
-    "docs/NeuroPySlides/bootcamp-ii/slides.md"
+    "docs/NeuroPySlides/bootcamp-ii/tutorial-plan.md"
   ]
 }
