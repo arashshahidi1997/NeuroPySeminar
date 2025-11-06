@@ -168,8 +168,11 @@
   },
   "active": "a580524ffb5e0a18",
   "lastOpenFiles": [
+<<<<<<< HEAD
     "docs/slides/scripts/build_reveal.sh",
     "docs/slides/scripts/build_reveal-dep.sh",
+=======
+>>>>>>> 14162874ab71101fd363f820f77ea086686ac04b
     "docs/slides/memory-consolidation/index.html",
     "docs/slides/memory-consolidation/slides-extended.md",
     "docs/slides/memory-consolidation/slides.md",
