@@ -1,0 +1,60 @@
+FREQS = [5., 10., 20.]
+RS = [0.5, 0.7, 0.9]
+
+rule all:
+    input:
+        expand("figures/python-plot/freq-{freq}_r-{r}_amplitude.png", freq=FREQS, r=RS)
+
+rule generate_data:
+    output:
+        "raw/freq-{freq}_r-{r}.npy"
+    params:
+        freq=lambda wildcards: float(wildcards.freq),
+        r=lambda wildcards: float(wildcards.r),
+        sample_rate=1000.,
+        seconds=10.,
+        noise_std=0.1
+    run:
+        from emd.simulate import ar_oscillator
+        import os
+        import numpy as np
+        osc = ar_oscillator(
+            params.freq, params.sample_rate, params.seconds, params.r, params.noise_std
+        )
+        os.makedirs(os.path.dirname(output[0]), exist_ok=True)
+        np.save(output[0], osc)
+
+
+rule bandpass:
+    input:
+        "raw/freq-{freq}_r-{r}.npy",
+    output:
+        "derivatives/bandpass/freq-{freq}_r-{r}.npy"
+    params:
+        freq=lambda wildcards: float(wildcards.freq),
+    script:
+        "../scripts/bandpass.py"
+
+rule hilbert:
+    input:
+        "derivatives/bandpass/freq-{freq}_r-{r}.npy"
+    output:
+        amp="derivatives/hilbert/freq-{freq}_r-{r}_amplitude.npy",
+        phase="derivatives/hilbert/freq-{freq}_r-{r}_phase.npy"
+    params:
+        freq=lambda wildcards: float(wildcards.freq),
+    script:
+        "../scripts/hilbert.py"
+
+rule plot_with_python:
+    input:
+        "derivatives/hilbert/freq-{freq}_r-{r}_amplitude.npy"
+    output:
+        report(
+            "figures/python-plot/freq-{freq}_r-{r}_amplitude.png",
+            category="Plot",
+            labels={"plot": "amplitude"},
+        )
+    script:
+        "../scripts/plot.py"
+

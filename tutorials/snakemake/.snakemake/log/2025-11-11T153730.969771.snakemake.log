@@ -1,0 +1,24 @@
+Building DAG of jobs...
+Creating report...
+Adding freq-5.0_r-0.5_amplitude.png (57.93 KB).
+Missing metadata for file raw/freq-5.0_r-0.5.npy. Maybe metadata was deleted or it was created using an older version of Snakemake. This is a non critical warning.
+Adding freq-5.0_r-0.7_amplitude.png (53.84 KB).
+Missing metadata for file raw/freq-5.0_r-0.7.npy. Maybe metadata was deleted or it was created using an older version of Snakemake. This is a non critical warning.
+Adding freq-5.0_r-0.9_amplitude.png (60.17 KB).
+Missing metadata for file raw/freq-5.0_r-0.9.npy. Maybe metadata was deleted or it was created using an older version of Snakemake. This is a non critical warning.
+Adding freq-10.0_r-0.5_amplitude.png (43.76 KB).
+Missing metadata for file raw/freq-10.0_r-0.5.npy. Maybe metadata was deleted or it was created using an older version of Snakemake. This is a non critical warning.
+Adding freq-10.0_r-0.7_amplitude.png (42.76 KB).
+Missing metadata for file raw/freq-10.0_r-0.7.npy. Maybe metadata was deleted or it was created using an older version of Snakemake. This is a non critical warning.
+Adding freq-10.0_r-0.9_amplitude.png (52.59 KB).
+Missing metadata for file raw/freq-10.0_r-0.9.npy. Maybe metadata was deleted or it was created using an older version of Snakemake. This is a non critical warning.
+Adding freq-20.0_r-0.5_amplitude.png (53.41 KB).
+Missing metadata for file raw/freq-20.0_r-0.5.npy. Maybe metadata was deleted or it was created using an older version of Snakemake. This is a non critical warning.
+Adding freq-20.0_r-0.7_amplitude.png (49.69 KB).
+Missing metadata for file raw/freq-20.0_r-0.7.npy. Maybe metadata was deleted or it was created using an older version of Snakemake. This is a non critical warning.
+Adding freq-20.0_r-0.9_amplitude.png (54.31 KB).
+Missing metadata for file raw/freq-20.0_r-0.9.npy. Maybe metadata was deleted or it was created using an older version of Snakemake. This is a non critical warning.
+Loading script code for rule plot_with_python
+Loading script code for rule hilbert
+Loading script code for rule bandpass
+Report created.

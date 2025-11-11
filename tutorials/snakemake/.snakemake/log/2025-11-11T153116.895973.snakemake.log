@@ -1,0 +1,378 @@
+Assuming unrestricted shared filesystem usage.
+host: gamma1
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+bandpass                9
+hilbert                 9
+plot_with_python        9
+total                  28
+
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Nov 11 15:31:17 2025]
+localrule bandpass:
+    input: raw/freq-10.0_r-0.7.npy
+    output: derivatives/bandpass/freq-10.0_r-0.7.npy
+    jobid: 19
+    reason: Missing output files: derivatives/bandpass/freq-10.0_r-0.7.npy
+    wildcards: freq=10.0, r=0.7
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:19 2025]
+Finished jobid: 19 (Rule: bandpass)
+1 of 28 steps (4%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:19 2025]
+localrule bandpass:
+    input: raw/freq-20.0_r-0.5.npy
+    output: derivatives/bandpass/freq-20.0_r-0.5.npy
+    jobid: 27
+    reason: Missing output files: derivatives/bandpass/freq-20.0_r-0.5.npy
+    wildcards: freq=20.0, r=0.5
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:20 2025]
+Finished jobid: 27 (Rule: bandpass)
+2 of 28 steps (7%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:20 2025]
+localrule bandpass:
+    input: raw/freq-10.0_r-0.5.npy
+    output: derivatives/bandpass/freq-10.0_r-0.5.npy
+    jobid: 15
+    reason: Missing output files: derivatives/bandpass/freq-10.0_r-0.5.npy
+    wildcards: freq=10.0, r=0.5
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:21 2025]
+Finished jobid: 15 (Rule: bandpass)
+3 of 28 steps (11%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:21 2025]
+localrule bandpass:
+    input: raw/freq-10.0_r-0.9.npy
+    output: derivatives/bandpass/freq-10.0_r-0.9.npy
+    jobid: 23
+    reason: Missing output files: derivatives/bandpass/freq-10.0_r-0.9.npy
+    wildcards: freq=10.0, r=0.9
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:22 2025]
+Finished jobid: 23 (Rule: bandpass)
+4 of 28 steps (14%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:22 2025]
+localrule hilbert:
+    input: derivatives/bandpass/freq-10.0_r-0.9.npy
+    output: derivatives/hilbert/freq-10.0_r-0.9_amplitude.npy, derivatives/hilbert/freq-10.0_r-0.9_phase.npy
+    jobid: 22
+    reason: Missing output files: derivatives/hilbert/freq-10.0_r-0.9_amplitude.npy; Input files updated by another job: derivatives/bandpass/freq-10.0_r-0.9.npy
+    wildcards: freq=10.0, r=0.9
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:23 2025]
+Finished jobid: 22 (Rule: hilbert)
+5 of 28 steps (18%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:23 2025]
+localrule plot_with_python:
+    input: derivatives/hilbert/freq-10.0_r-0.9_amplitude.npy
+    output: figures/python-plot/freq-10.0_r-0.9_amplitude.png
+    jobid: 21
+    reason: Missing output files: figures/python-plot/freq-10.0_r-0.9_amplitude.png; Input files updated by another job: derivatives/hilbert/freq-10.0_r-0.9_amplitude.npy
+    wildcards: freq=10.0, r=0.9
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:24 2025]
+Finished jobid: 21 (Rule: plot_with_python)
+6 of 28 steps (21%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:24 2025]
+localrule bandpass:
+    input: raw/freq-5.0_r-0.9.npy
+    output: derivatives/bandpass/freq-5.0_r-0.9.npy
+    jobid: 11
+    reason: Missing output files: derivatives/bandpass/freq-5.0_r-0.9.npy
+    wildcards: freq=5.0, r=0.9
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:25 2025]
+Finished jobid: 11 (Rule: bandpass)
+7 of 28 steps (25%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:25 2025]
+localrule bandpass:
+    input: raw/freq-20.0_r-0.7.npy
+    output: derivatives/bandpass/freq-20.0_r-0.7.npy
+    jobid: 31
+    reason: Missing output files: derivatives/bandpass/freq-20.0_r-0.7.npy
+    wildcards: freq=20.0, r=0.7
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:26 2025]
+Finished jobid: 31 (Rule: bandpass)
+8 of 28 steps (29%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:26 2025]
+localrule hilbert:
+    input: derivatives/bandpass/freq-20.0_r-0.7.npy
+    output: derivatives/hilbert/freq-20.0_r-0.7_amplitude.npy, derivatives/hilbert/freq-20.0_r-0.7_phase.npy
+    jobid: 30
+    reason: Missing output files: derivatives/hilbert/freq-20.0_r-0.7_amplitude.npy; Input files updated by another job: derivatives/bandpass/freq-20.0_r-0.7.npy
+    wildcards: freq=20.0, r=0.7
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:27 2025]
+Finished jobid: 30 (Rule: hilbert)
+9 of 28 steps (32%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:27 2025]
+localrule plot_with_python:
+    input: derivatives/hilbert/freq-20.0_r-0.7_amplitude.npy
+    output: figures/python-plot/freq-20.0_r-0.7_amplitude.png
+    jobid: 29
+    reason: Missing output files: figures/python-plot/freq-20.0_r-0.7_amplitude.png; Input files updated by another job: derivatives/hilbert/freq-20.0_r-0.7_amplitude.npy
+    wildcards: freq=20.0, r=0.7
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:28 2025]
+Finished jobid: 29 (Rule: plot_with_python)
+10 of 28 steps (36%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:28 2025]
+localrule bandpass:
+    input: raw/freq-5.0_r-0.5.npy
+    output: derivatives/bandpass/freq-5.0_r-0.5.npy
+    jobid: 3
+    reason: Missing output files: derivatives/bandpass/freq-5.0_r-0.5.npy
+    wildcards: freq=5.0, r=0.5
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:29 2025]
+Finished jobid: 3 (Rule: bandpass)
+11 of 28 steps (39%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:29 2025]
+localrule hilbert:
+    input: derivatives/bandpass/freq-5.0_r-0.5.npy
+    output: derivatives/hilbert/freq-5.0_r-0.5_amplitude.npy, derivatives/hilbert/freq-5.0_r-0.5_phase.npy
+    jobid: 2
+    reason: Missing output files: derivatives/hilbert/freq-5.0_r-0.5_amplitude.npy; Input files updated by another job: derivatives/bandpass/freq-5.0_r-0.5.npy
+    wildcards: freq=5.0, r=0.5
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:30 2025]
+Finished jobid: 2 (Rule: hilbert)
+12 of 28 steps (43%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:30 2025]
+localrule plot_with_python:
+    input: derivatives/hilbert/freq-5.0_r-0.5_amplitude.npy
+    output: figures/python-plot/freq-5.0_r-0.5_amplitude.png
+    jobid: 1
+    reason: Missing output files: figures/python-plot/freq-5.0_r-0.5_amplitude.png; Input files updated by another job: derivatives/hilbert/freq-5.0_r-0.5_amplitude.npy
+    wildcards: freq=5.0, r=0.5
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:31 2025]
+Finished jobid: 1 (Rule: plot_with_python)
+13 of 28 steps (46%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:31 2025]
+localrule bandpass:
+    input: raw/freq-5.0_r-0.7.npy
+    output: derivatives/bandpass/freq-5.0_r-0.7.npy
+    jobid: 7
+    reason: Missing output files: derivatives/bandpass/freq-5.0_r-0.7.npy
+    wildcards: freq=5.0, r=0.7
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:32 2025]
+Finished jobid: 7 (Rule: bandpass)
+14 of 28 steps (50%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:32 2025]
+localrule hilbert:
+    input: derivatives/bandpass/freq-5.0_r-0.7.npy
+    output: derivatives/hilbert/freq-5.0_r-0.7_amplitude.npy, derivatives/hilbert/freq-5.0_r-0.7_phase.npy
+    jobid: 6
+    reason: Missing output files: derivatives/hilbert/freq-5.0_r-0.7_amplitude.npy; Input files updated by another job: derivatives/bandpass/freq-5.0_r-0.7.npy
+    wildcards: freq=5.0, r=0.7
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:33 2025]
+Finished jobid: 6 (Rule: hilbert)
+15 of 28 steps (54%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:34 2025]
+localrule plot_with_python:
+    input: derivatives/hilbert/freq-5.0_r-0.7_amplitude.npy
+    output: figures/python-plot/freq-5.0_r-0.7_amplitude.png
+    jobid: 5
+    reason: Missing output files: figures/python-plot/freq-5.0_r-0.7_amplitude.png; Input files updated by another job: derivatives/hilbert/freq-5.0_r-0.7_amplitude.npy
+    wildcards: freq=5.0, r=0.7
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:35 2025]
+Finished jobid: 5 (Rule: plot_with_python)
+16 of 28 steps (57%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:35 2025]
+localrule hilbert:
+    input: derivatives/bandpass/freq-10.0_r-0.7.npy
+    output: derivatives/hilbert/freq-10.0_r-0.7_amplitude.npy, derivatives/hilbert/freq-10.0_r-0.7_phase.npy
+    jobid: 18
+    reason: Missing output files: derivatives/hilbert/freq-10.0_r-0.7_amplitude.npy; Input files updated by another job: derivatives/bandpass/freq-10.0_r-0.7.npy
+    wildcards: freq=10.0, r=0.7
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:36 2025]
+Finished jobid: 18 (Rule: hilbert)
+17 of 28 steps (61%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:36 2025]
+localrule plot_with_python:
+    input: derivatives/hilbert/freq-10.0_r-0.7_amplitude.npy
+    output: figures/python-plot/freq-10.0_r-0.7_amplitude.png
+    jobid: 17
+    reason: Missing output files: figures/python-plot/freq-10.0_r-0.7_amplitude.png; Input files updated by another job: derivatives/hilbert/freq-10.0_r-0.7_amplitude.npy
+    wildcards: freq=10.0, r=0.7
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:37 2025]
+Finished jobid: 17 (Rule: plot_with_python)
+18 of 28 steps (64%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:37 2025]
+localrule hilbert:
+    input: derivatives/bandpass/freq-20.0_r-0.5.npy
+    output: derivatives/hilbert/freq-20.0_r-0.5_amplitude.npy, derivatives/hilbert/freq-20.0_r-0.5_phase.npy
+    jobid: 26
+    reason: Missing output files: derivatives/hilbert/freq-20.0_r-0.5_amplitude.npy; Input files updated by another job: derivatives/bandpass/freq-20.0_r-0.5.npy
+    wildcards: freq=20.0, r=0.5
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:38 2025]
+Finished jobid: 26 (Rule: hilbert)
+19 of 28 steps (68%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:38 2025]
+localrule plot_with_python:
+    input: derivatives/hilbert/freq-20.0_r-0.5_amplitude.npy
+    output: figures/python-plot/freq-20.0_r-0.5_amplitude.png
+    jobid: 25
+    reason: Missing output files: figures/python-plot/freq-20.0_r-0.5_amplitude.png; Input files updated by another job: derivatives/hilbert/freq-20.0_r-0.5_amplitude.npy
+    wildcards: freq=20.0, r=0.5
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:39 2025]
+Finished jobid: 25 (Rule: plot_with_python)
+20 of 28 steps (71%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:39 2025]
+localrule bandpass:
+    input: raw/freq-20.0_r-0.9.npy
+    output: derivatives/bandpass/freq-20.0_r-0.9.npy
+    jobid: 35
+    reason: Missing output files: derivatives/bandpass/freq-20.0_r-0.9.npy
+    wildcards: freq=20.0, r=0.9
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:40 2025]
+Finished jobid: 35 (Rule: bandpass)
+21 of 28 steps (75%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:40 2025]
+localrule hilbert:
+    input: derivatives/bandpass/freq-10.0_r-0.5.npy
+    output: derivatives/hilbert/freq-10.0_r-0.5_amplitude.npy, derivatives/hilbert/freq-10.0_r-0.5_phase.npy
+    jobid: 14
+    reason: Missing output files: derivatives/hilbert/freq-10.0_r-0.5_amplitude.npy; Input files updated by another job: derivatives/bandpass/freq-10.0_r-0.5.npy
+    wildcards: freq=10.0, r=0.5
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:41 2025]
+Finished jobid: 14 (Rule: hilbert)
+22 of 28 steps (79%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:41 2025]
+localrule plot_with_python:
+    input: derivatives/hilbert/freq-10.0_r-0.5_amplitude.npy
+    output: figures/python-plot/freq-10.0_r-0.5_amplitude.png
+    jobid: 13
+    reason: Missing output files: figures/python-plot/freq-10.0_r-0.5_amplitude.png; Input files updated by another job: derivatives/hilbert/freq-10.0_r-0.5_amplitude.npy
+    wildcards: freq=10.0, r=0.5
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:42 2025]
+Finished jobid: 13 (Rule: plot_with_python)
+23 of 28 steps (82%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:42 2025]
+localrule hilbert:
+    input: derivatives/bandpass/freq-5.0_r-0.9.npy
+    output: derivatives/hilbert/freq-5.0_r-0.9_amplitude.npy, derivatives/hilbert/freq-5.0_r-0.9_phase.npy
+    jobid: 10
+    reason: Missing output files: derivatives/hilbert/freq-5.0_r-0.9_amplitude.npy; Input files updated by another job: derivatives/bandpass/freq-5.0_r-0.9.npy
+    wildcards: freq=5.0, r=0.9
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:43 2025]
+Finished jobid: 10 (Rule: hilbert)
+24 of 28 steps (86%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:43 2025]
+localrule hilbert:
+    input: derivatives/bandpass/freq-20.0_r-0.9.npy
+    output: derivatives/hilbert/freq-20.0_r-0.9_amplitude.npy, derivatives/hilbert/freq-20.0_r-0.9_phase.npy
+    jobid: 34
+    reason: Missing output files: derivatives/hilbert/freq-20.0_r-0.9_amplitude.npy; Input files updated by another job: derivatives/bandpass/freq-20.0_r-0.9.npy
+    wildcards: freq=20.0, r=0.9
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:44 2025]
+Finished jobid: 34 (Rule: hilbert)
+25 of 28 steps (89%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:44 2025]
+localrule plot_with_python:
+    input: derivatives/hilbert/freq-5.0_r-0.9_amplitude.npy
+    output: figures/python-plot/freq-5.0_r-0.9_amplitude.png
+    jobid: 9
+    reason: Missing output files: figures/python-plot/freq-5.0_r-0.9_amplitude.png; Input files updated by another job: derivatives/hilbert/freq-5.0_r-0.9_amplitude.npy
+    wildcards: freq=5.0, r=0.9
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Tue Nov 11 15:31:45 2025]
+Finished jobid: 9 (Rule: plot_with_python)
+26 of 28 steps (93%) done
+Execute 1 jobs...
+[Tue Nov 11 15:31:45 2025]
+localrule plot_with_python:
+    input: derivatives/hilbert/freq-20.0_r-0.9_amplitude.npy
+    output: figures/python-plot/freq-20.0_r-0.9_amplitude.png
+    jobid: 33
+    reason: Missing output files: figures/python-plot/freq-20.0_r-0.9_amplitude.png; Input files updated by another job: derivatives/hilbert/freq-20.0_r-0.9_amplitude.npy
+    wildcards: freq=20.0, r=0.9
+    resources: tmpdir=/tmp
+[Tue Nov 11 15:31:46 2025]
+Finished jobid: 33 (Rule: plot_with_python)
+27 of 28 steps (96%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Nov 11 15:31:46 2025]
+localrule all:
+    input: figures/python-plot/freq-5.0_r-0.5_amplitude.png, figures/python-plot/freq-5.0_r-0.7_amplitude.png, figures/python-plot/freq-5.0_r-0.9_amplitude.png, figures/python-plot/freq-10.0_r-0.5_amplitude.png, figures/python-plot/freq-10.0_r-0.7_amplitude.png, figures/python-plot/freq-10.0_r-0.9_amplitude.png, figures/python-plot/freq-20.0_r-0.5_amplitude.png, figures/python-plot/freq-20.0_r-0.7_amplitude.png, figures/python-plot/freq-20.0_r-0.9_amplitude.png
+    jobid: 0
+    reason: Input files updated by another job: figures/python-plot/freq-10.0_r-0.9_amplitude.png, figures/python-plot/freq-20.0_r-0.9_amplitude.png, figures/python-plot/freq-10.0_r-0.7_amplitude.png, figures/python-plot/freq-5.0_r-0.9_amplitude.png, figures/python-plot/freq-20.0_r-0.5_amplitude.png, figures/python-plot/freq-5.0_r-0.5_amplitude.png, figures/python-plot/freq-10.0_r-0.5_amplitude.png, figures/python-plot/freq-20.0_r-0.7_amplitude.png, figures/python-plot/freq-5.0_r-0.7_amplitude.png
+    resources: tmpdir=/tmp
+[Tue Nov 11 15:31:46 2025]
+Finished jobid: 0 (Rule: all)
+28 of 28 steps (100%) done
+Complete log(s): /storage2/arash/sirocampus/docs/tutorials/snakemake/.snakemake/log/2025-11-11T153116.895973.snakemake.log
