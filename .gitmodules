@@ -1,3 +1,7 @@
 [submodule "src/waveform"]
 	path = src/waveform
 	url = git@github.com:OHBA-analysis/Quinn2021_Waveform.git
+[submodule "tutorials/holoviews"]
+	path = tutorials/holoviews
+	url = git@github.com:holoviz/holoviews.git
+	datalad-url = git@github.com:holoviz/holoviews.git
