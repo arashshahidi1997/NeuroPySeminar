@@ -1,24 +1,20 @@
 {
   "main": {
-    "id": "a240290150a9c9c0",
+    "id": "7235842e7a873144",
     "type": "split",
     "children": [
       {
-        "id": "b1c6b9ab6119cda2",
+        "id": "387be8f5f4407e20",
         "type": "tabs",
         "children": [
           {
-            "id": "a580524ffb5e0a18",
+            "id": "a5c1a541a0bdb871",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "index.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "index"
+              "title": "New tab"
             }
           }
         ]
@@ -27,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "33e029dc8111daeb",
+    "id": "1a07630b2716934e",
     "type": "split",
     "children": [
       {
-        "id": "7e81e7d4e1d2ea9f",
+        "id": "179b02434fbfa7c2",
         "type": "tabs",
         "children": [
           {
-            "id": "a84a603cc31b7364",
+            "id": "416f37ef4c073e25",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +44,7 @@
             }
           },
           {
-            "id": "584a1abd99b2bb03",
+            "id": "b99dadfaed7bec8d",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +61,7 @@
             }
           },
           {
-            "id": "d9d0e17be38500f6",
+            "id": "fd8209dc7bd613b0",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,15 +77,15 @@
     "width": 300
   },
   "right": {
-    "id": "c2059d3d084d1dd4",
+    "id": "62b2a5ee2d172205",
     "type": "split",
     "children": [
       {
-        "id": "20c638a6381cf282",
+        "id": "020f4f25e808ce8d",
         "type": "tabs",
         "children": [
           {
-            "id": "f44e92eed951c3f4",
+            "id": "0339352fafa7fa10",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -107,7 +103,7 @@
             }
           },
           {
-            "id": "5972a07fbfe85c6f",
+            "id": "9eff02f13f85a0fc",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -120,7 +116,7 @@
             }
           },
           {
-            "id": "f2a7167d9ae1531c",
+            "id": "b4712809742f28c8",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -135,7 +131,7 @@
             }
           },
           {
-            "id": "7cf2ecd9407b3726",
+            "id": "ff5e465c2ba814eb",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -166,46 +162,6 @@
       "bases:Create new base": false
     }
   },
-  "active": "a580524ffb5e0a18",
-  "lastOpenFiles": [
-<<<<<<< HEAD
-    "docs/slides/scripts/build_reveal.sh",
-    "docs/slides/scripts/build_reveal-dep.sh",
-=======
->>>>>>> 14162874ab71101fd363f820f77ea086686ac04b
-    "docs/slides/memory-consolidation/index.html",
-    "docs/slides/memory-consolidation/slides-extended.md",
-    "docs/slides/memory-consolidation/slides.md",
-    "docs/slides/memory-consolidation/css/local.css",
-    "docs/slides/memory-consolidation/index.template.html",
-    "docs/slides/memory-consolidation/css",
-    "docs/slides/memory-consolidation",
-    "docs/slides/cheatsheet.md",
-    "docs/slides/README.md",
-    "README.md",
-    "docs/slides/_shared/fragments/terminal-setup/umask.md",
-    "docs/slides/bootcamp-ii/slides.md",
-    "docs/slides/bootcamp-ii/tutorial-plan.md",
-    "docs/NeuroPySlides/_shared/fragments/terminal-setup/umask.md",
-    "docs/NeuroPySlides/_shared/fragments/terminal-setup/section-heading.md",
-    "docs/NeuroPySlides/_shared/fragments/terminal-setup/reload-and-activate.md",
-    "docs/NeuroPySlides/_shared/fragments/terminal-setup/conda-shared-alias.md",
-    "docs/NeuroPySlides/_shared/fragments/terminal-setup/bashrc-includes.md",
-    "docs/NeuroPySlides/_shared/fragments/terminal-setup/alias-riastoreshared.md",
-    "docs/NeuroPySlides/vscode-setup/css/local.css",
-    "docs/NeuroPySlides/snakemake/css/local.css",
-    "docs/NeuroPySlides/sirocampus/css/local.css",
-    "docs/NeuroPySlides/multitaper/css/local.css",
-    "docs/NeuroPySlides/vscode-setup/slides.md",
-    "docs/NeuroPySlides/snakemake/slides.md",
-    "docs/NeuroPySlides/sirocampus/slides.md",
-    "docs/NeuroPySlides/multitaper/slides.md",
-    "docs/NeuroPySlides/holoviews/slides.md",
-    "docs/NeuroPySlides/hmm/slides.md",
-    "docs/NeuroPySlides/gpfa/slides.md",
-    "docs/NeuroPySlides/emd/slides.md",
-    "docs/NeuroPySlides/datalad/slides.md",
-    "docs/NeuroPySlides/cca/slides.md",
-    "docs/NeuroPySlides/bootcamp-ii/tutorial-plan.md"
-  ]
+  "active": "a5c1a541a0bdb871",
+  "lastOpenFiles": []
 }
