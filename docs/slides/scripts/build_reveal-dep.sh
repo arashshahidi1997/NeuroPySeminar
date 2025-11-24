@@ -14,7 +14,7 @@ command -v obsidian-export >/dev/null || { echo "ERROR: obsidian-export not foun
 
 # Determine which deck directories to build
 if (( $# > 0 )); then
-  mapfile -t DECK_DIRS < <(for d in "$@"; do printf '%s/%s\n' "$SLIDES_ROOT" "$d"; done)
+  mapfile -t DECK_DIRS < <(for d in "$@"; do echo "$SLIDES_ROOT/$d"; done)
 else
   mapfile -t DECK_DIRS < <(find "$SLIDES_ROOT" -mindepth 1 -maxdepth 1 -type d ! -name "_shared")
 fi
@@ -40,11 +40,11 @@ yqval() { # yqval key file
 
 for DIR in "${DECK_DIRS[@]}"; do
   TPL="$DIR/index.template.html"
-  [[ -f "$TPL" ]] || { echo "WARN: no index.template.html in $(basename "$DIR")"; continue; }
+  [ -f "$TPL" ] || { echo "WARN: no index.template.html in $(basename "$DIR")"; continue; }
 
   REL="${DIR#$SLIDES_ROOT/}"              # slug, used to find export path
   EXPORTED_MD="$TMP/$REL/slides.md"
-  [[ -f "$EXPORTED_MD" ]] || { echo "WARN: no exported slides.md for $REL"; continue; }
+  [ -f "$EXPORTED_MD" ] || { echo "WARN: no exported slides.md for $REL"; continue; }
 
   OUT="$DIR/index.html"
 
@@ -54,9 +54,18 @@ for DIR in "${DECK_DIRS[@]}"; do
   WIDTH="$(yqval width  "$EXPORTED_MD" || true)"
   HEIGHT="$(yqval height "$EXPORTED_MD" || true)"
 
-  # ---------- Inject Markdown BODY (frontmatter stripped) into {{SLIDES_MD}} ----------
+  # ---------- Injection option A: sed (placeholder must be on its own line) ----------
+  # This replaces any line that is exactly the placeholder with the file content,
+  # preserving real newlines.
+  #
+  # sed "/{{SLIDES_MD}}/ {
+  #   r $EXPORTED_MD
+  #   d
+  # }" "$TPL" > "$OUT"
+
+  # ---------- Injection option B: Python (works mid-line as well) ----------
   python3 - "$TPL" "$EXPORTED_MD" "$OUT" <<'PY'
-import io, sys
+import io, sys, re
 
 tpl_path, md_path, out_path = sys.argv[1:4]
 with io.open(tpl_path, 'r', encoding='utf-8', newline='') as f:
@@ -64,35 +73,18 @@ with io.open(tpl_path, 'r', encoding='utf-8', newline='') as f:
 with io.open(md_path, 'r', encoding='utf-8', newline='') as f:
     md = f.read()
 
-def strip_frontmatter(text: str) -> str:
-    # Trim UTF-8 BOM if present
-    if text.startswith("\ufeff"):
-        text = text.lstrip("\ufeff")
-    if text.startswith('---'):
-        lines = text.splitlines(True)  # keep line endings
-        # find closing fence on its own line
-        for i in range(1, len(lines)):
-            if lines[i].strip() == '---':
-                body = ''.join(lines[i+1:])
-                # remove a single leading blank line if present
-                if body.startswith('\r\n'):
-                    body = body[2:]
-                elif body.startswith('\n'):
-                    body = body[1:]
-                return body
-    return text
-
-md_body = strip_frontmatter(md)
-html = html.replace("{{SLIDES_MD}}", md_body)
+# Replace all occurrences of the placeholder with the raw markdown (real newlines preserved)
+html = html.replace("{{SLIDES_MD}}", md)
 
 with io.open(out_path, 'w', encoding='utf-8', newline='') as f:
     f.write(html)
 PY
 
-  # ---------- Optional tweaks on the generated HTML -------------------------------
+  # Optional tweaks on the generated HTML -------------------------------
 
   # Update <title>…</title> safely if TITLE provided
   if [[ -n "${TITLE:-}" ]]; then
+    # escape forward slashes for sed
     esc_title="${TITLE//\//\\/}"
     sed -E -i "s#<title>.*</title>#<title>${esc_title}</title>#g" "$OUT"
   fi
