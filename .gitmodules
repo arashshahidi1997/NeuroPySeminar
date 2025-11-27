@@ -5,3 +5,7 @@
 	path = tutorials/holoviews
 	url = git@github.com:holoviz/holoviews.git
 	datalad-url = git@github.com:holoviz/holoviews.git
+[submodule "resources/drawdata"]
+	path = resources/drawdata
+	url = git@github.com:koaning/drawdata.git
+	datalad-url = git@github.com:koaning/drawdata.git
