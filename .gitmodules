@@ -9,3 +9,8 @@
 	path = resources/drawdata
 	url = git@github.com:koaning/drawdata.git
 	datalad-url = git@github.com:koaning/drawdata.git
+[submodule "bib"]
+	path = bib
+	url = git@github.com:arashshahidi1997/bib.git
+	datalad-id = b4bf85e4-3ab7-4903-8a13-eec90b1753d3
+	datalad-url = git@github.com:arashshahidi1997/bib.git
