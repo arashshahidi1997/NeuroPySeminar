@@ -1,0 +1,20 @@
+blob 821014a4d874a9f22b45e67cd527cf5dc733febd 936828200 W06_UMAP/stringer_orientations.npy
+blob 18a1e3ab1363edeb6132e237dd84f6ea0a5c9cb2 20971720 W05_ICA/resources/SparseCoding-OlshausenField-Model-master/datasets/IMAGES.mat
+blob bc5042ffd6449bedd837ecf95d03cda3bf22cb7a 20971720 W05_ICA/resources/SparseCoding-OlshausenField-Model-master/datasets/IMAGES_RAW.mat
+blob 55c25158eeff91004d9aa253319e041c441d0120 11644245 PaperPool/PaperPool/Calcium Imaging/Zhou et al_2018_Efficient and accurate extraction of in vivo calcium signals from.pdf
+blob f79a54ceba478e641d0229edc84290a4ac8d4c5f 7412511 W06_UMAP/stringer_orientations_pca.npy
+blob 96af6fe9b0d4247a658dacbdd148682eefedfcaf 7090484 W06_UMAP/stringer_orientations_decoding.html
+blob ab55a58c14acb7c6c261e5b3b26e5c8a4e2a8872 7005025 PaperPool/Moca et al_2021_Time-frequency super-resolution with superlets.pdf
+blob 539a0243f48344898e947d8595f7aed860369644 6799791 PaperPool/Lopes-dos-Santos et al_2013_Detecting cell assemblies in large neuronal populations.pdf
+blob 44293e96ca87f6916cd3aee7a7732816f5ca215d 4601557 PaperPool/Lopes-Dos-Santos et al_2018_Parsing Hippocampal Theta Oscillations by Nested Spectral Components during.pdf
+blob a53e179952d26ff143847b1a8665e7bd2a124763 4140822 PaperPool/Pandarinath et al_2018_Inferring single-trial neural population dynamics using sequential auto-encoders.pdf
+blob bcd6a0d80da14115e3c9a91b9ed349c57c448b58 3972028 PaperPool/Durstewitz et al_2023_Reconstructing computational system dynamics from neural data with recurrent.pdf
+blob e6fb29ff7059ac867eca31dbf889b404f74606d6 3630823 tutorials/snakemake/report.html
+blob 3e1cba36173ca3dc1f294ded8b0efb5c31a27ed2 3571571 PaperPool/PaperPool/Calcium Imaging/Liu_Vinck_2022_Improved visualization of high-dimensional data using the distance-of-distance.pdf
+blob e5773f57b8b92304ae2e85c1e3611a0407b6da09 3414205 PaperPool/Donoghue et al_2020_Parameterizing neural power spectra into periodic and aperiodic components.pdf
+blob f6225be598fb7cde78917652a8a8d9882bca992e 3352937 PaperPool/Mart├нn-V├бzquez et al_2013_Determining the True Polarity and Amplitude of Synaptic Currents Underlying.pdf
+blob 6b92d258a5cdcd056f23cf78f484e0bf93ad908b 3286215 PaperPool/Langdon et al_2023_A unifying perspective on neural manifolds and circuits for cognition.pdf
+blob f80503358d9cad9b204bdd36fc9b1e6bfcfab478 2414399 PaperPool/PaperPool/Varley_Sporns_2022_Network Analysis of Time Series.pdf
+blob 6437dee352944bef8e3263cc6a7154eb5b96abd1 2294987 PaperPool/PaperPool/Calcium Imaging/Mukamel et al_2009_Automated Analysis of Cellular Signals from Large-Scale Calcium Imaging Data.pdf
+blob a5ad86a1adbdeccd646e359758e8e9c46fe5b9d6 2120598 W07_TBA/resources/Lesson 12_ Factor Analysis_files/tex-mml-svg.js
+blob 1de05c1860d646ec6ba9e2917c44d53e09c9c55b 1735815 PaperPool/PaperPool/Bressler et al_2022_Brain Synchronization and Multivariate Autoregressive (MVAR) Modeling in.pdf
