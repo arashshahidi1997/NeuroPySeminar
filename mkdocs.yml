@@ -13,6 +13,8 @@ theme:
 plugins:
   - search
   - roamlinks
+  - monorepo
+  - ezlinks
 
 markdown_extensions:
   - admonition
@@ -67,3 +69,4 @@ nav:
           - VSCode: slides/vscode-setup/index.html
       - Miscellaneous:
           - Memory Consolidation: slides/memory-consolidation/index.html
+  - Pipelines: '!include ./docs/pipelines/mkdocs.yml'
