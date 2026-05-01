@@ -1,0 +1,36 @@
+pdf_root: bib/articles
+pdf_pattern: '{citekey}/{citekey}.pdf'
+out_root: bib/derivatives/docling
+docling:
+  cmd: docling
+  to:
+  - md
+  - json
+  image_export_mode: referenced
+openalex:
+  src_dir: bib/srcbib
+  src_glob: '*.bib'
+  cache_root: bib/derivatives/openalex/cache
+  out_jsonl: bib/derivatives/openalex/resolved.jsonl
+  out_csv: bib/derivatives/openalex/resolved.csv
+bibtex:
+  fetch:
+    src_dir: bib/srcbib
+    src_glob: '*.bib'
+    mode: copy
+    hash: md5
+    manifest: .projio/biblio/logs/pdf_manifest.json
+    missing_log: .projio/biblio/logs/missing_pdfs.txt
+  merge:
+    src_dir: bib/srcbib
+    src_glob: '*.bib'
+    out_bib: .projio/biblio/merged.bib
+    file_field_mode: drop
+    file_field_template: bib/articles/{citekey}/{citekey}.pdf
+    duplicates_log: .projio/biblio/logs/duplicate_bib_ids.txt
+zotero:
+  library_id: '10523360'
+  library_type: user
+  local: false
+  collection: 49ZP7DHM
+  citekey_mode: zotero

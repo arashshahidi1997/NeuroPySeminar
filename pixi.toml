@@ -1,0 +1,49 @@
+[workspace]
+name = "neuropyseminar"
+version = "0.1.0"
+description = "Advances in Data Analysis: Python — LMU seminar (WiSe 2025/26)"
+authors = ["Arash Shahidi <shahidi.arash@gmail.com>"]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-arm64", "osx-64", "win-64"]
+
+[dependencies]
+python = "3.10.*"
+
+# Core scientific stack — shared by every week
+numpy = "<2"
+scipy = "*"
+pandas = "*"
+matplotlib = "*"
+seaborn = "*"
+scikit-learn = "*"
+tqdm = "*"
+
+# Jupyter / interactive
+ipykernel = "*"
+ipympl = "*"
+ipywidgets = "*"
+jupyterlab = "*"
+
+# Method libraries (folded in: previously per-week)
+emd = "==0.6.2"        # W01
+statsmodels = "*"      # W03 AR/ARIMA
+networkx = "*"         # W11 Network
+umap-learn = "*"       # W06 UMAP
+quantities = "*"       # W09 (elephant dep)
+
+# Testing
+pytest = "*"
+
+# pysindy imports `pkg_resources`, which was removed from setuptools 81+
+setuptools = "<81"
+
+[pypi-dependencies]
+# Not consistently on conda-forge across all platforms (esp. osx-arm64)
+elephant = "*"         # W09 GPFA
+neo = "*"              # W09 (elephant dep)
+pysindy = "*"          # W10 SINDy
+
+[tasks]
+lab = "jupyter lab"
+kernel = "python -m ipykernel install --user --name neuropyseminar --display-name 'Python (NeuroPySeminar)'"
+test = "pytest"
