@@ -4,6 +4,12 @@ docs/export-slides
 # pixi
 .pixi/
 
+# Python build artifacts
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
 # >>> projio >>>
 *.ipynb
 .claude/commands/
