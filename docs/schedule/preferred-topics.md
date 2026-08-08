@@ -1,26 +1,17 @@
-# Arda: PCA
-Rank 1: PCA  
-Rank 2: ICA  
-Rank 3: UMAP  
+# Preferred Topics — WiSe 2026/27
 
-# Aryna: SINDy
-Rank 1: SINDy  
-Rank 2: HMM  
-Rank 3: GPFA  
-# Arsenii: Network
-Rank 1: Network  
-Rank 2: SINDy  
-Rank 3: AR  
-# Ruoqing: NMF
-1. PCA
-2. UMAP
-3. NMF
-# Xuanbing: UMAP
-1. UMAP
-2. GPFA
-3. CCA
+Students submit their **top 3 method choices** (theory + exercise pairs) via the
+[Method Picker](../tools/MethodPicker.html). Record each student's ranked picks
+below as they come in; the instructor assigns final presenter slots once
+registration closes and fills any unclaimed weeks ("Arash takes the rest").
 
-# Michael: ICA
-1. NNMF  
-2. ICA  
-3. SINDy
+<!-- Template — one block per student:
+
+# <Name>: <assigned method>
+Rank 1: <method>
+Rank 2: <method>
+Rank 3: <method>
+
+-->
+
+_No picks recorded yet._

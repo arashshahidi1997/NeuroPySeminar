@@ -1,0 +1,75 @@
+# Cohort 2026 — NeuroPySeminar, WiSe 2026/27.
+#
+# SINGLE SOURCE OF TRUTH for everything that changes year to year: term dates,
+# the session grid, presenter assignments, deadlines, and the per-term external
+# IDs (LSF, Moodle, Google Calendar).
+#
+# Rollover recipe (borrowed from ../../wp7-course/config/cohort-2026.yaml):
+#   1. Copy this file to cohort-<NEXT_YEAR>.yaml.
+#   2. Update `term`, `term_start`, `term_end`, the `schedule` dates, and the
+#      `external` IDs. The method lineup and cadence usually stay the same.
+#   3. Presenters start as "TBA" and get filled in once registration closes and
+#      students send their top-3 picks — "Arash takes the rest."
+#   4. Apply the changes to the rendered files (docs/schedule/SemesterSchedule.html,
+#      notes/CourseDescription.md, docs/announcements/index.md, docs/tools/*.html).
+
+term: "WiSe 2026/27"
+term_start: 2026-10-12   # LMU winter-semester lecture period start (Mon)
+term_end:   2027-02-05   # LMU winter-semester lecture period end (Fri)
+lecture_free:
+  - { name: "Christmas break", from: 2026-12-24, to: 2027-01-06 }  # no lectures
+
+max_participants: 12
+language: English
+
+# Rolling application deadline, ~2 weeks into term (last year: 2025-10-30).
+# TENTATIVE — confirm before publishing.
+application_deadline: 2026-10-29
+
+# ---------------------------------------------------------------------------
+# Per-term external IDs — CHANGE EVERY YEAR. Fill these in once LMU issues the
+# new course. TODO(2026/27): update all of the below before the site goes live.
+# ---------------------------------------------------------------------------
+external:
+  lsf_number: "TODO"           # last year: 19409
+  lsf_url:    "TODO"           # last year: https://lsf.verwaltung.uni-muenchen.de/...publishid=1094473...
+  moodle_url: "TODO"           # last year: https://moodle.lmu.de/course/view.php?id=31553
+  gcal_cid:   "TODO"           # new Google Calendar for the 2026/27 cohort
+  gcal_url:   "TODO"
+
+# ---------------------------------------------------------------------------
+# Session grid. `week` is the session-week index shown in the schedule table
+# (note: differs from the method W-number because Data Hacks is inserted at
+# week 4). `method` keys map to notes/methods.json. Presenter "TBA" until picks.
+# Dates derived from term_start on the Tue-theory / Thu-exercise cadence,
+# skipping the Christmas break.
+# ---------------------------------------------------------------------------
+schedule:
+  - { week: 0,  date: 2026-10-15, day: Thu, type: Exercise,      topic: "Intro Session",                           presenter: Arash }
+  - { week: 1,  date: 2026-10-20, day: Tue, type: Theory,        method: EMD,        presenter: TBA }
+  - { week: 1,  date: 2026-10-22, day: Thu, type: Exercise,      method: EMD,        presenter: TBA }
+  - { week: 2,  date: 2026-10-27, day: Tue, type: Theory,        method: Multitaper, presenter: TBA }
+  - { week: 2,  date: 2026-10-29, day: Thu, type: Exercise,      method: Multitaper, presenter: TBA }
+  - { week: 3,  date: 2026-11-03, day: Tue, type: Theory,        method: AR,         presenter: TBA }
+  - { week: 3,  date: 2026-11-05, day: Thu, type: Exercise,      method: AR,         presenter: TBA }
+  - { week: 4,  date: 2026-11-10, day: Tue, type: "Data Hacks I",  topic: "Project management (git, datalad, snakemake)",   presenter: Arash }
+  - { week: 4,  date: 2026-11-12, day: Thu, type: "Data Hacks II", topic: "Plotting multidimensional data (xarray, holoviews)", presenter: Arash }
+  - { week: 5,  date: 2026-11-17, day: Tue, type: Theory,        method: PCA,        presenter: TBA }
+  - { week: 5,  date: 2026-11-19, day: Thu, type: Exercise,      method: PCA,        presenter: TBA }
+  - { week: 6,  date: 2026-11-24, day: Tue, type: Theory,        method: ICA,        presenter: TBA }
+  - { week: 6,  date: 2026-11-26, day: Thu, type: Exercise,      method: ICA,        presenter: TBA }
+  - { week: 7,  date: 2026-12-01, day: Tue, type: Theory,        method: UMAP,       presenter: TBA }
+  - { week: 7,  date: 2026-12-03, day: Thu, type: Exercise,      method: UMAP,       presenter: TBA }
+  - { week: 8,  date: 2026-12-08, day: Tue, type: Theory,        method: CCA,        presenter: TBA }
+  - { week: 8,  date: 2026-12-10, day: Thu, type: Exercise,      method: CCA,        presenter: TBA }
+  - { week: 9,  date: 2026-12-15, day: Tue, type: Theory,        method: NNMF,       presenter: TBA }
+  - { week: 9,  date: 2026-12-17, day: Thu, type: Exercise,      method: NNMF,       presenter: TBA }
+  # --- Christmas break 2026-12-24 .. 2027-01-06 ---
+  - { week: 10, date: 2027-01-12, day: Tue, type: Theory,        method: GPFA,       presenter: TBA }
+  - { week: 10, date: 2027-01-14, day: Thu, type: Exercise,      method: GPFA,       presenter: TBA }
+  - { week: 11, date: 2027-01-19, day: Tue, type: Theory,        method: SINDy,      presenter: TBA }
+  - { week: 11, date: 2027-01-21, day: Thu, type: Exercise,      method: SINDy,      presenter: TBA }
+  - { week: 12, date: 2027-01-26, day: Tue, type: Theory,        method: Network,    presenter: TBA }
+  - { week: 12, date: 2027-01-28, day: Thu, type: Exercise,      method: Network,    presenter: TBA }
+  - { week: 13, date: 2027-02-02, day: Tue, type: Theory,        method: HMM,        presenter: TBA }
+  - { week: 13, date: 2027-02-04, day: Thu, type: Exercise,      method: HMM,        presenter: TBA }

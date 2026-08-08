@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NeuroPySeminar • Schedule &amp; Picker (WiSe 2025)</title>
+  <title>NeuroPySeminar • Schedule &amp; Picker (WiSe 2026/27)</title>
   <style>:root {
     --bg: #0b0c10;
     --card: #14161a;
@@ -312,7 +312,7 @@ document.getElementById('clear').addEventListener('click', () => {
 document.getElementById('email').addEventListener('click', () => {
     const rankedTopics = Object.entries(topicRank).filter(([, r]) => r).sort((a, b) => a[1].localeCompare(b[1]));
     if (!rankedTopics.length) { alert('No selections yet. Assign Rank 1–3 first.'); return; }
-    let bodyTxt = 'Here are my top 3 method picks for NeuroPy 2025:\n\n';
+    let bodyTxt = 'Here are my top 3 method picks for NeuroPy 2026:\n\n';
     rankedTopics.forEach(([topic, rank]) => {
         const pair = rowsForTopic(topic);
         bodyTxt += `Rank ${rank}: ${topic}\n`;
@@ -325,7 +325,7 @@ document.getElementById('email').addEventListener('click', () => {
     bodyTxt += '\nName: ';
     const name = (document.getElementById('name').value || '').trim();
     bodyTxt += name;
-    const subject = encodeURIComponent(`NeuroPy 2025: My Top 3 Methods (Theory + Exercise pairs) - ${name}`);
+    const subject = encodeURIComponent(`NeuroPy 2026: My Top 3 Methods (Theory + Exercise pairs) - ${name}`);
     const body = encodeURIComponent(bodyTxt.trim());
     window.location.href = `mailto:neuropy.seminar@gmail.com?subject=${subject}&body=${body}`;
 });

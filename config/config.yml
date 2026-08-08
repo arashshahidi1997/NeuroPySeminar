@@ -1,0 +1,28 @@
+# Stable, cross-cohort constants for NeuroPySeminar.
+#
+# Per-year values (term dates, deadlines, LSF/Moodle IDs, the calendar link,
+# and the presenter roster) live in cohort-<year>.yaml, NOT here.
+#
+# Pattern borrowed from ../../wp7-course/config/. This file is currently the
+# human source-of-truth / checklist; the site is not yet wired to read it via
+# mkdocs-macros (that would be the next step if desired).
+
+repo:
+  github: https://github.com/arashshahidi1997/NeuroPySeminar
+  pages:  https://arashshahidi1997.github.io/NeuroPySeminar/
+
+# Google Drive folders — stable across years (same folders are reused).
+drive:
+  paper_pool:      https://drive.google.com/drive/folders/1VpsuUBgtw8SKk-36mkHAx9cFyWfhLA1e?usp=drive_link
+  slides:          https://drive.google.com/drive/folders/1QMZwbCVyKqIJ01K1uxoHsYW4xBDH8xlG?usp=drive_link
+  zoom_recordings: https://drive.google.com/drive/folders/1o9tTZ_LfwnQWAnxSxXk3oYVJTAju2xeJ?usp=drive_link
+
+contact:
+  instructor: Arash Shahidi
+  email:      neuropy.seminar@gmail.com
+  affiliation: Sirota Lab, Faculty of Biology, LMU Munich
+
+# Session cadence — stable year over year.
+cadence:
+  theory:   { day: Tue, start: "15:45", duration_min: 60 }
+  exercise: { day: Thu, start: "14:30", duration_min: 60 }

@@ -125,9 +125,9 @@ An interactive Python-based seminar repository diving into contemporary data ana
 ## Course Description
 Type of Course: Seminar
 
-LSF Number: 19409
+LSF Number: TBA (2026/27)
 
-Term: WiSe2025/26
+Term: WiSe 2026/27
 
 Max. participants: 12
 
