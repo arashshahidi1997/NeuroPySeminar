@@ -33,7 +33,7 @@ application_deadline: 2026-10-29
 external:
   lsf_number: "19293"          # last year: 19409
   lsf_url:    "https://lsf.verwaltung.uni-muenchen.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=1136215&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
-  moodle_url: "TODO"           # last year: https://moodle.lmu.de/course/view.php?id=31553
+  moodle_url: "https://moodle.lmu.de/course/view.php?id=31553"  # reused from 2025/26 (same course id)
   gcal_cid:   "TODO"           # new Google Calendar for the 2026/27 cohort
   gcal_url:   "TODO"
 
