@@ -116,7 +116,7 @@ An interactive Python-based seminar repository diving into contemporary data ana
 
 [ZoomRecordings](https://drive.google.com/drive/folders/1o9tTZ_LfwnQWAnxSxXk3oYVJTAju2xeJ?usp=drive_link)
 
-[LSF](https://lsf.verwaltung.uni-muenchen.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=1094473&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung)
+[LSF](https://lsf.verwaltung.uni-muenchen.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=1136215&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung)
 
 [Moodle](https://moodle.lmu.de/course/view.php?id=31553)
 
@@ -125,7 +125,7 @@ An interactive Python-based seminar repository diving into contemporary data ana
 ## Course Description
 Type of Course: Seminar
 
-LSF Number: TBA (2026/27)
+LSF Number: 19293
 
 Term: WiSe 2026/27
 

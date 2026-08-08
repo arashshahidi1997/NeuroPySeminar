@@ -1,6 +1,6 @@
 Type of Course: Seminar
 
-LSF Number: TBA (2026/27)
+LSF Number: 19293
 
 Term: WiSe 2026/27
 
