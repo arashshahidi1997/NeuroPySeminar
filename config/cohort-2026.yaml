@@ -34,8 +34,12 @@ external:
   lsf_number: "19293"          # last year: 19409
   lsf_url:    "https://lsf.verwaltung.uni-muenchen.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=1136215&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
   moodle_url: "https://moodle.lmu.de/course/view.php?id=31553"  # reused from 2025/26 (same course id)
-  gcal_cid:   "TODO"           # new Google Calendar for the 2026/27 cohort
-  gcal_url:   "TODO"
+  # Reused the dedicated NeuroPy group calendar (same cid as prior years, so the
+  # subscribe link never changes); populated with the 27 sessions below for 2026/27.
+  # Calendar is still titled "NeuroPy2025" in Google Calendar — rename it there
+  # (a year-agnostic name like "NeuroPy Seminar" avoids future churn).
+  gcal_cid:   "NGFhNzU5NWVhYmU4MTAzNzFmZTkwMTNkYzVkMDZmY2Y1NGI5MDU2ZGViMTk5NDAwMjVjMmQzODdkYTg2MmVmY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
+  gcal_url:   "https://calendar.google.com/calendar/u/0?cid=NGFhNzU5NWVhYmU4MTAzNzFmZTkwMTNkYzVkMDZmY2Y1NGI5MDU2ZGViMTk5NDAwMjVjMmQzODdkYTg2MmVmY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
 
 # ---------------------------------------------------------------------------
 # Session grid. `week` is the session-week index shown in the schedule table
