@@ -26,8 +26,8 @@ language: English
 application_deadline: 2026-10-29
 
 # ---------------------------------------------------------------------------
-# Per-term external IDs — CHANGE EVERY YEAR. Fill these in once LMU issues the
-# new course. TODO(2026/27): update all of the below before the site goes live.
+# Per-term external IDs — CHANGE EVERY YEAR (fill in once LMU issues the new
+# course). All resolved for 2026/27; next rollover must re-check every entry.
 # ---------------------------------------------------------------------------
 external:
   lsf_number: "19293"          # last year: 19409
