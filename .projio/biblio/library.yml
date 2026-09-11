@@ -1,0 +1,36 @@
+papers:
+  cunningham_2014_DimensionalityReduction:
+    status: unread
+    tags:
+    - W04_PCA
+    - dimensionality-reduction
+  durstewitz_2017_AdvancedData:
+    status: unread
+    tags:
+    - W04_PCA
+    - dimensionality-reduction
+  hotelling_1933_AnalysisComplex:
+    status: unread
+    tags:
+    - W04_PCA
+    - dimensionality-reduction
+  jolliffe_2016_PrincipalComponent:
+    status: unread
+    tags:
+    - W04_PCA
+    - dimensionality-reduction
+  pearson_1901_LiiiLines:
+    status: unread
+    tags:
+    - W04_PCA
+    - dimensionality-reduction
+  shlens_2014_TutorialPrincipal:
+    status: unread
+    tags:
+    - W04_PCA
+    - dimensionality-reduction
+  tipping_1999_ProbabilisticPrincipal:
+    status: unread
+    tags:
+    - W04_PCA
+    - dimensionality-reduction

@@ -19,7 +19,7 @@ low-dimensional representation that keeps what matters — for visualization,
 denoising, compression, or as a first step before clustering/regression. In
 systems neuroscience this is now routine: population activity of hundreds of
 neurons is often well described by a handful of latent dimensions
-[@cunningham2014].
+[@cunningham_2014_DimensionalityReduction].
 
 PCA is the canonical **linear** answer: find a small set of orthogonal directions
 that capture as much of the data's variance as possible.
@@ -43,9 +43,9 @@ PCA.** Everything below follows from this one fact.
 
 PCA was introduced twice, from two directions that turn out to coincide:
 
-- **Maximum variance** [@hotelling1933]: find the direction along which the
+- **Maximum variance** [@hotelling_1933_AnalysisComplex]: find the direction along which the
   projected data vary most.
-- **Best linear fit** [@pearson1901]: find the low-dimensional subspace that
+- **Best linear fit** [@pearson_1901_LiiiLines]: find the low-dimensional subspace that
   minimizes squared reconstruction (orthogonal) distance.
 
 That these give the *same* answer is the content of the Eckart–Young theorem
@@ -94,7 +94,7 @@ $$
 So the **right singular vectors $V$ are the principal directions**, and
 $\lambda_i = \sigma_i^2 / (n-1)$. Numerically stable implementations take the SVD
 of $X_c$ directly and never form $C$ (squaring the data worsens conditioning)
-[@shlens2014].
+[@shlens_2014_TutorialPrincipal].
 
 ## 6. Optimal low-rank approximation (Eckart–Young)
 
@@ -114,7 +114,7 @@ PCA is a **rotation** of the coordinate axes onto the directions of the data
 cloud, ordered by spread. In the principal basis the covariance is diagonal
 ($V^\top C V = \Lambda$): PCA *removes linear correlations*. Rescaling each score
 by $1/\sqrt{\lambda_i}$ makes the covariance the identity — **whitening** — which
-is the standard preprocessing step before ICA (W05) [@jolliffe2016].
+is the standard preprocessing step before ICA (W05) [@jolliffe_2016_PrincipalComponent].
 
 ## 8. Using PCA in practice
 
@@ -125,7 +125,7 @@ is the standard preprocessing step before ICA (W05) [@jolliffe2016].
   matrix.
 - **Choosing $k$:** look for an elbow in the scree plot, a cumulative-variance
   threshold (e.g. 90%), or use parallel analysis / cross-validation. There is no
-  universal rule; the right $k$ depends on the question [@jolliffe2016].
+  universal rule; the right $k$ depends on the question [@jolliffe_2016_PrincipalComponent].
 
 ## 9. Assumptions and failure modes
 
@@ -155,7 +155,7 @@ bite:
 - **Nonlinear → UMAP (W06).** When the data lie on a curved manifold, linear PCA
   is insufficient.
 - **Probabilistic cousins.** Probabilistic PCA and factor analysis place PCA in a
-  latent-variable / generative framework [@tipping1999], the same framework that
+  latent-variable / generative framework [@tipping_1999_ProbabilisticPrincipal], the same framework that
   underlies GPFA (W09).
 
 ---
@@ -163,20 +163,20 @@ bite:
 ## References
 
 - Pearson, K. (1901). On lines and planes of closest fit to systems of points in
-  space. *Philosophical Magazine* 2(11), 559–572. `[@pearson1901]`
+  space. *Philosophical Magazine* 2(11), 559–572. `[@pearson_1901_LiiiLines]`
 - Hotelling, H. (1933). Analysis of a complex of statistical variables into
   principal components. *Journal of Educational Psychology* 24(6), 417–441.
-  `[@hotelling1933]`
+  `[@hotelling_1933_AnalysisComplex]`
 - Tipping, M.E. & Bishop, C.M. (1999). Probabilistic principal component analysis.
-  *J. R. Stat. Soc. B* 61(3), 611–622. `[@tipping1999]`
+  *J. R. Stat. Soc. B* 61(3), 611–622. `[@tipping_1999_ProbabilisticPrincipal]`
 - Shlens, J. (2014). A tutorial on principal component analysis.
-  *arXiv:1404.1100*. `[@shlens2014]`
+  *arXiv:1404.1100*. `[@shlens_2014_TutorialPrincipal]`
 - Cunningham, J.P. & Yu, B.M. (2014). Dimensionality reduction for large-scale
-  neural recordings. *Nature Neuroscience* 17, 1500–1509. `[@cunningham2014]`
+  neural recordings. *Nature Neuroscience* 17, 1500–1509. `[@cunningham_2014_DimensionalityReduction]`
 - Jolliffe, I.T. & Cadima, J. (2016). Principal component analysis: a review and
-  recent developments. *Phil. Trans. R. Soc. A* 374, 20150202. `[@jolliffe2016]`
+  recent developments. *Phil. Trans. R. Soc. A* 374, 20150202. `[@jolliffe_2016_PrincipalComponent]`
 - Durstewitz, D. (2017). *Advanced Data Analysis in Neuroscience.* Springer.
-  (course textbook) `[@durstewitz2017]`
+  (course textbook) `[@durstewitz_2017_AdvancedData]`
 
 > **Companion exercise:** [`../exercise/pca_from_covariance.ipynb`](../exercise/pca_from_covariance.ipynb)
 > works through the derivation numerically (from-scratch PCA vs. `sklearn`),
