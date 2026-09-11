@@ -1,7 +1,7 @@
 [workspace]
 name = "neuropyseminar"
 version = "0.1.0"
-description = "Advances in Data Analysis: Python — LMU seminar (WiSe 2025/26)"
+description = "Advances in Data Analysis: Python — LMU seminar (WiSe 2026/27)"
 authors = ["Arash Shahidi <shahidi.arash@gmail.com>"]
 channels = ["conda-forge"]
 platforms = ["linux-64", "osx-arm64", "osx-64", "win-64"]
@@ -48,3 +48,7 @@ pysindy = "*"          # W10 SINDy
 lab = "jupyter lab"
 kernel = "python -m ipykernel install --user --name neuropyseminar --display-name 'Python (NeuroPySeminar)'"
 test = "pytest"
+# Notebook source/generated discipline: edit the jupytext .md source, then sync
+# to regenerate the paired .ipynb (outputs preserved). Usage:
+#   pixi run nb-sync W04_PCA/exercise/pca_from_covariance.ipynb
+nb-sync = "jupytext --sync"
