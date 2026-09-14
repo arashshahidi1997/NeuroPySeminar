@@ -13,7 +13,6 @@ theme:
 plugins:
   - search
   - roamlinks
-  - monorepo
   - ezlinks
 
 markdown_extensions:
@@ -25,6 +24,19 @@ markdown_extensions:
 
 docs_dir: docs
 site_dir: site
+
+# Exclude slides content whose bytes live in git-annex (absent on the public GitHub
+# checkout → broken symlinks) or that is reveal.js *source* (not a mkdocs page).
+# Without this the Pages build aborts trying to read those files.
+exclude_docs: |
+  slides/ica/
+  slides/pca/
+  slides/holoviews/
+  slides/.obsidian/
+  slides/_shared/
+  slides/README.md
+  slides/Pasted image*
+  slides/*/slides*.md
 
 nav:
   - Registration: register.md
@@ -57,8 +69,6 @@ nav:
           - CCA: slides/cca/index.html
           - GPFA: slides/gpfa/index.html
           - HMM: slides/hmm/index.html
-      - Tutorials:
-          - Holoviews: slides/holoviews/index.html
           - BootcampI: slides/bootcamp/index.html
           - BootcampII: slides/bootcamp-ii/index.html
           - Snakemake: slides/snakemake/index.html
@@ -69,4 +79,3 @@ nav:
           - VSCode: slides/vscode-setup/index.html
       - Miscellaneous:
           - Memory Consolidation: slides/memory-consolidation/index.html
-  - Pipelines: '!include ./docs/pipelines/mkdocs.yml'

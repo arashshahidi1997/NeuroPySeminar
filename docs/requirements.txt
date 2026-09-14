@@ -1,0 +1,6 @@
+# MkDocs site build dependencies.
+# KEEP IN SYNC with the `plugins:` list in mkdocs.yml — CI installs from this file,
+# so any plugin added to mkdocs.yml must be added here or the Pages build fails.
+mkdocs-material
+mkdocs-roamlinks-plugin
+mkdocs-ezlinks-plugin
